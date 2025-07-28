@@ -73,6 +73,14 @@
       transition: background 0.18s;
     }
     .toggle-btn:hover { background: var(--clr-accent); }
+    .hamburger-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--clr-primary);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
     /* CARDS */
     .grid-container {
       width: min(75rem, 100%);
@@ -287,4 +295,26 @@
       font-weight: 500;
       border-radius: 14px 14px 0 0;
       letter-spacing: 0.01em;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--clr-glass);
+        padding: 1rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger-menu {
+        display: block;
+      }
+      .ops-modal, .modal-content, #chatbot-container {
+        width: 90vw;
+        padding: 1.5rem;
+      }
     }
