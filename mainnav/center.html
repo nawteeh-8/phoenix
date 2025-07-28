@@ -55,15 +55,17 @@
       background-color: #b39ddb;
       color: #222;
     }
+
     /* Toggles container */
-       #toggles {
+    #toggles {
       display: flex;
       justify-content: flex-end;
       gap: 16px;
       margin-bottom: 40px;
       flex-wrap: wrap;
     }
-/* Dark Mode (default) */
+
+    /* Dark Mode (default) */
     #toggles button {
       background-color: transparent;
       border: 2px solid #4dabf7;  /* Electric blue border */
@@ -87,20 +89,24 @@
       border-color: #0d47a1;     /* Darker blue border */
       color: #a3c9f1;            /* Soft pastel blue text */
     }
+
     /* Light Mode Overrides */
     body.light #toggles button {
-      background-color: #fff;        /* White background */
-      border-color: #d35400;         /* Deep orange border */
+      background: linear-gradient(135deg, #f9d423, #ff4e50); /* warm orange-yellow gradient */
+      border: 2px solid transparent;
       color: #222222;                /* Dark gray text */
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      transition: background-position 0.5s ease, color 0.3s, border-color 0.3s;
     }
     body.light #toggles button:hover {
-      background-color: #e67e22;     /* Burnt orange hover */
-      border-color: #e67e22;
-      color: #fff;                   /* White text on hover */
+      background-position: 100% 50%;  /* shift gradient */
+      color: #fff;                   /* white text on hover */
+      border-color: #ff4e50;         /* bright orange border */
     }
-      body.light #toggles button.active {
-      background-color: #e67e22;
-      border-color: #e67e22;
+    body.light #toggles button.active {
+      background: linear-gradient(135deg, #ff512f, #dd2476); /* deeper reddish-pink gradient */
+      border-color: #dd2476;
       color: #fff;
     }
 
@@ -377,7 +383,7 @@
   </section>
 
   <!-- Contact Form -->
-   <section id="form">
+  <section id="form">
     <h2 data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
     <form>
       <input
