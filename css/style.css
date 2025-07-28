@@ -85,7 +85,7 @@
     .grid-container {
       width: min(75rem, 100%);
       margin-inline: auto;
-      margin-top: 135px;
+      margin-top: 110px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
       gap: 1.5rem;
@@ -318,7 +318,8 @@
         padding: 1.5rem;
       }
     }
-    @media (max-width: 480px) {
+
+@media (max-width: 480px) {
       .ops-modal, .modal-content, #chatbot-container {
         padding: 1rem;
       }
