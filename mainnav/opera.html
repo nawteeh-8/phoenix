@@ -112,13 +112,12 @@
       color: white;
       outline: none;
     }
-
     /* Toggles container */
     #toggles {
       display: flex;
       justify-content: flex-end;
       gap: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
     #toggles button {
@@ -129,21 +128,34 @@
       font-weight: 600;
       border-radius: 20px;
       cursor: pointer;
-      min-width: 110px;
+      min-width: 120px;
       transition: background-color 0.3s, color 0.3s;
       user-select: none;
     }
     #toggles button:hover {
-      background-color: #8e44ad;
+      background-color: #512da8;
       border-color: #fff;
       color: #fff;
     }
     #toggles button.active {
-      background-color: #8e44ad;
+      background-color: #512da8;
       border-color: #fff;
       color: #fff;
     }
-
+    body.light #toggles button {
+      border-color: #444;
+      color: #444;
+    }
+    body.light #toggles button:hover {
+      background-color: #b39ddb;
+      color: #222;
+      border-color: #b39ddb;
+    }
+    body.light #toggles button.active {
+      background-color: #7e57c2;
+      border-color: #7e57c2;
+      color: #222;
+    }
     /* Header */
     header {
       text-align: center;
@@ -402,7 +414,7 @@
     <a href="pros.html" data-en="Professionals" data-es="Profesionales">Professionals</a>
   </nav>
 
-  <!-- Toggles container -->
+  <!-- Toggles for language and theme -->
   <div id="toggles">
     <button id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
     <button id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
