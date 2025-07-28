@@ -22,6 +22,9 @@
       <button class="toggle-btn" id="lang-toggle">ES</button>
       <button class="toggle-btn" id="theme-toggle">Dark</button>
     </div>
+    <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </nav>
   <!-- CARDS GRID -->
   <div class="grid-container">
@@ -291,6 +294,10 @@
       .then(r => r.text())
       .then(h => { document.body.insertAdjacentHTML('beforeend', h); })
       .catch(err => console.error('FABs load error', err));
+
+    document.getElementById('hamburger-menu').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
   </script>
 </body>
 </html>

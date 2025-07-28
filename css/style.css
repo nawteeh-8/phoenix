@@ -73,6 +73,14 @@
       transition: background 0.18s;
     }
     .toggle-btn:hover { background: var(--clr-accent); }
+    .hamburger-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--clr-primary);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
     /* CARDS */
     .grid-container {
       width: min(75rem, 100%);
@@ -177,7 +185,7 @@
     .modal-header { display: flex; gap: 1.3em; align-items: center; margin-bottom: 1em; }
     .modal-header img.modal-img { width: 72px; height: 72px; object-fit: cover; border-radius: 1.2em; border: 2px solid #f5e0ff; }
     .modal-title { font-size: 1.16em; font-weight: 700; text-transform: uppercase; }
-    .modal-content-body { margin-bottom: 1.1em; font-size: 1.05em; }
+    .modal-content-body { margin-bottom: 1.1em; font-size: 1.05em; max-height: 50vh; overflow-y: auto; }
     .modal-video { background: #f7f4fb; color: #ab8adc; border-radius: 1em; margin-bottom: 1em; padding: 1em; text-align: center; }
     body.dark .modal-video { background: #18162a; color: #ffe7fe; }
     .modal-actions {
@@ -287,4 +295,45 @@
       font-weight: 500;
       border-radius: 14px 14px 0 0;
       letter-spacing: 0.01em;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--clr-glass);
+        padding: 1rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger-menu {
+        display: block;
+      }
+      .ops-modal, .modal-content, #chatbot-container {
+        width: 90vw;
+        padding: 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .ops-modal, .modal-content, #chatbot-container {
+        padding: 1rem;
+      }
+      .modal-title {
+        font-size: 1rem;
+      }
+      .modal-content-body {
+        font-size: 0.9rem;
+      }
+      .modal-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .modal-btn {
+        width: 100%;
+        text-align: center;
+      }
     }
