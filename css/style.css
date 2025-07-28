@@ -318,3 +318,29 @@
         padding: 1.5rem;
       }
     }
+
+#fab-container {
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2000;
+}
+#fab-container a {
+  background: var(--clr-accent, #ff3bdc);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-size: 1.2rem;
+}
+#fab-container a:hover {
+  background: var(--clr-accent-dark, #e000be);
+}

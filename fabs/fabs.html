@@ -1,47 +1,5 @@
 <!-- Floating Action Buttons snippet -->
-<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
-<style>
-#fab-container {
-  position: fixed;
-  bottom: 15px;
-  right: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 2000;
-}
-#fab-container a {
-  background: var(--clr-accent, #ff3bdc);
-  color: #fff;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  font-size: 1.2rem;
-}
-#fab-container a:hover {
-  background: var(--clr-accent-dark, #e000be);
-}
-:root{--clr-primary:#00c4ff;--clr-accent:#ff3bdb;--clr-accent-dark:#e000be;}
-/* Copied from FABs in min.css and adapted for horizontal mobile nav */
-.mobile-nav{position:fixed;bottom:25px;right:15px;display:flex;align-items:center;gap:10px;z-index:1000;transition:width .3s;}
-.mobile-nav .nav-items{display:none;gap:10px;}
-.mobile-nav.open{width:90%;justify-content:flex-end;}
-.mobile-nav.open .nav-items{display:flex;flex-wrap:nowrap;}
-.nav-btn{width:44px;height:44px;border-radius:50%;border:none;background:var(--clr-primary);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px #0005;}
-.nav-btn.main{background:var(--clr-accent);}
-.nav-btn.main.open{transform:rotate(135deg);}
-/* Services dropdown */
-.dropdown{position:relative;}
-.dropdown-menu{position:absolute;bottom:50px;right:0;background:#333;color:#fff;border-radius:8px;padding:6px 8px;display:none;flex-direction:column;gap:4px;font-size:.9rem;}
-.dropdown-menu a{color:#fff;text-decoration:none;padding:4px 6px;white-space:nowrap;}
-.dropdown.open .dropdown-menu{display:flex;}
-</style>
 <div id="fab-container">
   <a href="../fabs/chatbot.html" title="Chatbot"><i class="fa fa-comment"></i></a>
   <a href="../fabs/contactus.html" title="Contact Us"><i class="fa fa-envelope"></i></a>
