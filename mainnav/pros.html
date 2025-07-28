@@ -65,11 +65,11 @@
   flex-wrap: wrap;
 }
 
-/* Default Dark Mode (base) */
+/* Dark Mode (default) */
 #toggles button {
-  background: transparent;
-  border: 2px solid #ccc;  /* Light gray border for contrast on dark */
-  color: #eee;             /* Light text */
+  background-color: transparent;
+  border: 2px solid #4dabf7;  /* Electric blue border */
+  color: #e0e0e0;             /* Soft white text */
   padding: 8px 14px;
   font-weight: 600;
   border-radius: 20px;
@@ -77,38 +77,40 @@
   min-width: 120px;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   user-select: none;
+  background: #121212; /* Dark charcoal bg */
 }
 
 #toggles button:hover {
-  background-color: #512da8; /* Accent purple */
-  border-color: #c8a2c8;     /* Lighter purple border */
-  color: #fff;
+  background-color: #1de9b6; /* Teal hover */
+  border-color: #1de9b6;
+  color: #121212;            /* Dark text on hover */
 }
 
 #toggles button.active {
-  background-color: #7b4fc0; /* Stronger purple */
-  border-color: #7b4fc0;
-  color: #fff;
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+  color: #121212;
 }
 
 /* Light Mode Overrides */
 body.light #toggles button {
-  background-color: #fefefe; /* Near-white background */
-  border-color: #333;        /* Dark border */
-  color: #111;               /* Very dark text */
+  background-color: #fff;        /* White background */
+  border-color: #d35400;         /* Deep orange border */
+  color: #222222;                /* Dark gray text */
 }
 
 body.light #toggles button:hover {
-  background-color: #d0c4f7; /* Light pastel purple hover */
-  border-color: #7e57c2;     /* Medium purple border */
-  color: #000;               /* Pure black text */
+  background-color: #e67e22;     /* Burnt orange hover */
+  border-color: #e67e22;
+  color: #fff;                   /* White text on hover */
 }
 
 body.light #toggles button.active {
-  background-color: #7e57c2; /* Medium purple background */
-  border-color: #7e57c2;
-  color: #000;
+  background-color: #e67e22;
+  border-color: #e67e22;
+  color: #fff;
 }
+
     /* Header */
     header {
       text-align: center;
