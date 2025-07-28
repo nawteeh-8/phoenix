@@ -1,0 +1,130 @@
+/* FANCY BUTTON */
+.fancy-btn{
+  position:relative;
+  display:inline-block;
+  padding:14px 28px;
+  border:2px solid transparent;
+  border-radius:8px;
+  background:linear-gradient(45deg, var(--clr-primary), var(--clr-accent));
+  color:white;
+  font-weight:600;
+  font-size:1.1rem;
+  cursor:pointer;
+  overflow:hidden;
+  box-shadow:0 6px 12px #0004;
+  transition:transform .2s, box-shadow .2s;
+  user-select:none;
+}
+.fancy-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px #0006;
+}
+.fancy-btn::before{
+  content:'';
+  position:absolute;
+  top:50%; left:50%;
+  width:150%; height:150%;
+  background:radial-gradient(circle, #fff3 5%, transparent 40%);
+  transform:translate(-50%,-50%) scale(0);
+  transition:transform .5s;
+}
+.fancy-btn:active::before{
+  transform:translate(-50%,-50%) scale(2);
+  transition:transform 0s;
+}
+
+/* FLOATING ACTION BUTTONS (FABs) */
+.fabs-container{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column-reverse;
+  align-items:center;
+  gap:12px;
+  z-index:1000;
+}
+.fab{
+  width:56px; height:56px;
+  border-radius:50%;
+  border:none;
+  background:var(--clr-primary);
+  color:white;
+  font-size:1.8rem;
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 4px 12px #0005;
+  transition:all .3s;
+}
+.fab.main{
+  background:var(--clr-accent);
+  transform:rotate(0);
+}
+.fab.main.open{transform:rotate(135deg)}
+.fab:not(.main){
+  transform:scale(0);
+  opacity:0;
+  visibility:hidden;
+  transition:all .3s;
+}
+.fabs-container.open .fab:not(.main){
+  transform:scale(1);
+  opacity:1;
+  visibility:visible;
+}
+.fab-label{
+  position:absolute;
+  right:70px;
+  background:#333;
+  color:white;
+  padding:4px 8px;
+  border-radius:4px;
+  white-space:nowrap;
+  font-size:0.9rem;
+  opacity:0;
+  transform:translateX(10px);
+  transition:all .3s;
+  pointer-events:none;
+}
+.fab:hover .fab-label{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* MODAL */
+.modal-backdrop{
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:#0008;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+.modal-content{
+  background:var(--clr-bg);
+  color:var(--clr-tx);
+  padding:2rem;
+  border-radius:12px;
+  max-width:500px;
+  width:90%;
+  box-shadow:0 8px 32px #0006;
+}
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:1rem;
+}
+.modal-header h2{margin:0}
+.close-modal{
+  background:none;
+  border:none;
+  font-size:1.8rem;
+  cursor:pointer;
+  color:var(--clr-tx);
+}
+.dark .modal-content{background:var(--clr-bg-dark); color:var(--clr-tx-dark)}
+.dark .close-modal{color:var(--clr-tx-dark)}
