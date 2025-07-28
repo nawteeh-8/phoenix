@@ -1,9 +1,9 @@
 <!-- Floating Action Buttons snippet -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
 <div id="fab-container">
-  <a href="../fabs/chatbot.html" title="Chatbot"><i class="fa fa-comment"></i></a>
-  <a href="../fabs/contactus.html" title="Contact Us"><i class="fa fa-envelope"></i></a>
-  <a href="../fabs/joinus.html" title="Join Us"><i class="fa fa-user-plus"></i></a>
+  <button onclick="openChatbotModal()" title="Chatbot"><i class="fa fa-comment"></i></button>
+  <button onclick="openContactModal()" title="Contact Us"><i class="fa fa-envelope"></i></button>
+  <button onclick="openJoinModal()" title="Join Us"><i class="fa fa-user-plus"></i></button>
 </div>
 <div id="mobileNav" class="mobile-nav">
   <div class="nav-items">
@@ -19,9 +19,9 @@
     </div>
     <button id="langBtn" class="nav-btn">ES</button>
     <button id="themeBtn" class="nav-btn">Dark</button>
-    <a href="chatbot.html" class="nav-btn" title="Chatbot"><i class="fa fa-comment"></i></a>
-    <a href="joinus.html" class="nav-btn" title="Join Us"><i class="fa fa-user-plus"></i></a>
-    <a href="contactus.html" class="nav-btn" title="Contact Us"><i class="fa fa-envelope"></i></a>
+    <button onclick="openChatbotModal()" class="nav-btn" title="Chatbot"><i class="fa fa-comment"></i></button>
+    <button onclick="openJoinModal()" class="nav-btn" title="Join Us"><i class="fa fa-user-plus"></i></button>
+    <button onclick="openContactModal()" class="nav-btn" title="Contact Us"><i class="fa fa-envelope"></i></button>
   </div>
   <button id="toggleNav" class="nav-btn main" aria-label="Menu"><i class="fa fa-plus"></i></button>
 </div>
