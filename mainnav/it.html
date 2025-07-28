@@ -56,64 +56,59 @@
       color: #222;
     }
     /* Toggles container */
-    #toggles {
-      display: flex;
-      justify-content: flex-end;
-      gap: 16px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    #toggles button {
-      background: transparent;
-      border: 2px solid #fff;
-      color: #fff;
-      padding: 8px 14px;
-      font-weight: 600;
-      border-radius: 20px;
-      cursor: pointer;
-      min-width: 120px;
-      transition: background-color 0.3s, color 0.3s;
-      user-select: none;
-    }
-    #toggles button:hover {
-      background-color: #512da8;
-      border-color: #fff;
-      color: #fff;
-    }
-    #toggles button.active {
-      background-color: #512da8;
-      border-color: #fff;
-      color: #fff;
-    }
-    body.light #toggles button {
-      border-color: #444;
-      color: #444;
-    }
-    body.light #toggles button:hover {
-      background-color: #b39ddb;
-      color: #222;
-      border-color: #b39ddb;
-    }
-    body.light #toggles button.active {
-      background-color: #7e57c2;
-      border-color: #7e57c2;
-      color: #222;
-    }    
-    body.light #toggles button {
-      border-color: #444;
-      color: #444;
-    }
-    body.light #toggles button:hover {
-      background-color: #b39ddb;
-      color: #222;
-      border-color: #b39ddb;
-    }
-    body.light #toggles button.active {
-      background-color: #7e57c2;
-      border-color: #7e57c2;
-      color: #222;
-    }
+   #toggles {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
 
+/* Dark Mode (default) */
+#toggles button {
+  background-color: transparent;
+  border: 2px solid #4dabf7;  /* Electric blue border */
+  color: #cbd6e7;             /* Soft pastel blue text */
+  padding: 8px 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  min-width: 120px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  user-select: none;
+  background: #121212; /* Dark charcoal bg */
+}
+
+#toggles button:hover {
+  background-color: #1de9b6; /* Teal hover */
+  border-color: #1de9b6;
+  color: #121212;            /* Dark text on hover */
+}
+
+#toggles button.active {
+  background-color: #000000;  /* Pure black active background */
+  border-color: #0d47a1;     /* Darker blue border */
+  color: #a3c9f1;            /* Soft pastel blue text */
+}
+
+/* Light Mode Overrides */
+body.light #toggles button {
+  background-color: #fff;        /* White background */
+  border-color: #d35400;         /* Deep orange border */
+  color: #222222;                /* Dark gray text */
+}
+
+body.light #toggles button:hover {
+  background-color: #e67e22;     /* Burnt orange hover */
+  border-color: #e67e22;
+  color: #fff;                   /* White text on hover */
+}
+
+body.light #toggles button.active {
+  background-color: #e67e22;
+  border-color: #e67e22;
+  color: #fff;
+}
     /* Header */
     header {
       text-align: center;
