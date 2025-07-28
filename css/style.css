@@ -313,4 +313,8 @@
       .hamburger-menu {
         display: block;
       }
+      .ops-modal, .modal-content, #chatbot-container {
+        width: 90vw;
+        padding: 1.5rem;
+      }
     }
