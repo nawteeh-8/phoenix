@@ -4,5 +4,58 @@
   <a href="../fabs/chatbot.html" title="Chatbot"><i class="fa fa-comment"></i></a>
   <a href="../fabs/contactus.html" title="Contact Us"><i class="fa fa-envelope"></i></a>
   <a href="../fabs/joinus.html" title="Join Us"><i class="fa fa-user-plus"></i></a>
-  <a href="../fabs/mobile.html" title="Menu"><i class="fa fa-bars"></i></a>
 </div>
+<div id="mobileNav" class="mobile-nav">
+  <div class="nav-items">
+    <a href="../index.html" class="nav-btn" title="Home"><i class="fa fa-home"></i></a>
+    <div class="dropdown">
+      <button id="svcBtn" class="nav-btn" aria-expanded="false"><i class="fa fa-bars"></i></button>
+      <div class="dropdown-menu" id="svcMenu">
+        <a href="../mainnav/opera.html">Business Operations</a>
+        <a href="../mainnav/center.html">Contact Center</a>
+        <a href="../mainnav/it.html">IT Support</a>
+        <a href="../mainnav/pros.html">Professionals</a>
+      </div>
+    </div>
+    <button id="langBtn" class="nav-btn">ES</button>
+    <button id="themeBtn" class="nav-btn">Dark</button>
+    <a href="chatbot.html" class="nav-btn" title="Chatbot"><i class="fa fa-comment"></i></a>
+    <a href="joinus.html" class="nav-btn" title="Join Us"><i class="fa fa-user-plus"></i></a>
+    <a href="contactus.html" class="nav-btn" title="Contact Us"><i class="fa fa-envelope"></i></a>
+  </div>
+  <button id="toggleNav" class="nav-btn main" aria-label="Menu"><i class="fa fa-plus"></i></button>
+</div>
+<script>
+const mobileNav = document.getElementById('mobileNav');
+const toggleNav = document.getElementById('toggleNav');
+const langBtn = document.getElementById('langBtn');
+const themeBtn = document.getElementById('themeBtn');
+const svcBtn = document.getElementById('svcBtn');
+const svcMenu = document.getElementById('svcMenu');
+
+let lang='en';
+let dark=false;
+
+toggleNav.onclick = ()=>{
+  mobileNav.classList.toggle('open');
+  toggleNav.classList.toggle('open');
+};
+
+svcBtn.onclick = () => {
+  svcBtn.parentElement.classList.toggle('open');
+  const expanded = svcBtn.getAttribute('aria-expanded') === 'true';
+  svcBtn.setAttribute('aria-expanded', !expanded);
+};
+
+langBtn.onclick = () => {
+  lang = lang==='en'?'es':'en';
+  langBtn.textContent = lang==='en'?'ES':'EN';
+  document.documentElement.lang = lang;
+};
+
+themeBtn.onclick = () => {
+  dark = !dark;
+  document.body.classList.toggle('dark', dark);
+  themeBtn.textContent = dark?'Light':'Dark';
+};
+</script>
