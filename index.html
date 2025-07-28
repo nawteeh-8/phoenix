@@ -85,7 +85,7 @@
     .grid-container {
       width: min(75rem, 100%);
       margin-inline: auto;
-      margin-top: 2.8rem;
+      margin-top: 175px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
       gap: 1.5rem;
@@ -163,7 +163,6 @@
       min-width: 310px;
       max-width: 490px;
       width: 96vw;
-      margin-top: 5vh;
       background: #fff;
       color: #1a1930;
       border-radius: 2rem;
@@ -171,8 +170,8 @@
       padding: 2.1rem 2.2rem 1.3rem 2.2rem;
       position: absolute;
       left: 50%;
-      top: 12vh;
-      transform: translate(-50%, 0);
+      top: 50px;
+      transform: translate(-50%);
       transition: box-shadow .17s;
       cursor: default;
       z-index: 2222;
@@ -546,6 +545,9 @@
       root.innerHTML = '';
       root.appendChild(m);
       let modal = m.querySelector('.ops-modal');
+      modal.style.top = '50px';
+      modal.style.left = '50%';
+      modal.style.transform = 'translateX(-50%)';
       // Close on X, ESC, Cancel, or outside
       function close() { root.innerHTML = ''; }
       m.onclick = e => (e.target === m ? close() : 0);
@@ -569,7 +571,7 @@
           if (!isDown) return;
           elem.style.left = `${e.clientX-startX}px`;
           elem.style.top = `${e.clientY-startY}px`;
-          elem.style.transform = "none";
+          elem.style.transform = "translate(0, 0)";
         };
         document.onmouseup = function(){ isDown=false; elem.classList.remove("dragging"); document.onmousemove=null; document.onmouseup=null; };
         return false;
