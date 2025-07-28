@@ -18,7 +18,6 @@
       -moz-osx-font-smoothing: grayscale;
       transition: background 0.3s, color 0.3s;
     }
-
     /* Light Theme Styles */
     body.light {
       background: #f0f0f5;
@@ -79,15 +78,6 @@
     body.light nav a {
       color: #222;
     }
-    body.light #toggles button {
-      color: #222;
-      border-color: #222;
-    }
-    body.light #toggles button:hover {
-      background-color: #ddd;
-      color: #111;
-    }
-
     /* Navigation Bar */
     nav {
       display: flex;
@@ -112,60 +102,60 @@
       color: white;
       outline: none;
     }
- /* Toggles container */
-#toggles {
-  display: flex;
-  justify-content: flex-end;
-  gap: 16px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
+    /* Toggles container */
+    #toggles {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    /* Dark Mode (default) */
+    #toggles button {
+      background-color: transparent;
+      border: 2px solid #4dabf7;  /* Electric blue border */
+      color: #cbd6e7;             /* Soft pastel blue text */
+      padding: 8px 14px;
+      font-weight: 600;
+      border-radius: 20px;
+      cursor: pointer;
+      min-width: 120px;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      user-select: none;
+      background: #121212; /* Dark charcoal bg */
+    }
+    #toggles button:hover {
+      background-color: #1de9b6; /* Teal hover */
+      border-color: #1de9b6;
+      color: #121212;            /* Dark text on hover */
+    }
+    #toggles button.active {
+      background-color: #000000;  /* Pure black active background */
+      border-color: #0d47a1;     /* Darker blue border */
+      color: #a3c9f1;            /* Soft pastel blue text */
+    }
+    /* Light Mode Overrides */
+    body.light #toggles button {
+      background: linear-gradient(135deg, #f9d423, #ff4e50); /* warm orange-yellow gradient */
+      border: 2px solid transparent;
+      color: #222222;                /* Dark gray text */
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      transition: background-position 0.5s ease, color 0.3s, border-color 0.3s;
+    }
 
-/* Dark Mode (default) */
-#toggles button {
-  background-color: transparent;
-  border: 2px solid #4dabf7;  /* Electric blue border */
-  color: #cbd6e7;             /* Soft pastel blue text */
-  padding: 8px 14px;
-  font-weight: 600;
-  border-radius: 20px;
-  cursor: pointer;
-  min-width: 120px;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  user-select: none;
-  background: #121212; /* Dark charcoal bg */
-}
+    body.light #toggles button:hover {
+      background-position: 100% 50%;  /* shift gradient */
+      color: #fff;                   /* white text on hover */
+      border-color: #ff4e50;         /* bright orange border */
+    }
 
-#toggles button:hover {
-  background-color: #1de9b6; /* Teal hover */
-  border-color: #1de9b6;
-  color: #121212;            /* Dark text on hover */
-}
+    body.light #toggles button.active {
+      background: linear-gradient(135deg, #ff512f, #dd2476); /* deeper reddish-pink gradient */
+      border-color: #dd2476;
+      color: #fff;
+    }
 
-#toggles button.active {
-  background-color: #000000;  /* Pure black active background */
-  border-color: #0d47a1;     /* Darker blue border */
-  color: #a3c9f1;            /* Soft pastel blue text */
-}
-
-/* Light Mode Overrides */
-body.light #toggles button {
-  background-color: #fff;        /* White background */
-  border-color: #d35400;         /* Deep orange border */
-  color: #222222;                /* Dark gray text */
-}
-
-body.light #toggles button:hover {
-  background-color: #e67e22;     /* Burnt orange hover */
-  border-color: #e67e22;
-  color: #fff;                   /* White text on hover */
-}
-
-body.light #toggles button.active {
-  background-color: #e67e22;
-  border-color: #e67e22;
-  color: #fff;
-}
     /* Header */
     header {
       text-align: center;
@@ -202,7 +192,6 @@ body.light #toggles button.active {
     header a.cta-button:hover {
       box-shadow: 0 10px 25px rgba(255,102,0,0.8);
     }
-
     /* Main layout */
     main {
       display: flex;
@@ -211,7 +200,6 @@ body.light #toggles button.active {
       justify-content: center;
       margin-bottom: 60px;
     }
-
     /* Cards container */
     .info-cards {
       max-width: 500px;
@@ -306,7 +294,6 @@ body.light #toggles button.active {
     .metrics-values span {
       user-select: text;
     }
-
     /* Dark card stats bars */
     .stats-section {
       background: #222238;
@@ -349,7 +336,6 @@ body.light #toggles button.active {
       background: #667aff;
       width: 35%;
     }
-
     /* Form Section */
     section#form {
       max-width: 400px;
@@ -393,7 +379,6 @@ body.light #toggles button.active {
     section#form button:hover {
       background: linear-gradient(45deg, #e94e1b, #ff6600);
     }
-
     /* Responsive */
     @media (max-width: 900px) {
       main {
@@ -423,13 +408,11 @@ body.light #toggles button.active {
     <a href="it.html" data-en="IT Support" data-es="Soporte IT">IT Support</a>
     <a href="pros.html" data-en="Professionals" data-es="Profesionales">Professionals</a>
   </nav>
-
   <!-- Toggles for language and theme -->
   <div id="toggles">
     <button id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
     <button id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
   </div>
-
   <!-- Header -->
   <header>
     <h1 data-en="Streamline Your Business Operations" data-es="Optimice Sus Operaciones Empresariales">
@@ -443,7 +426,6 @@ body.light #toggles button.active {
       Get Started
     </a>
   </header>
-
   <main>
     <!-- Left Info Card -->
     <div class="info-cards">
@@ -469,7 +451,6 @@ body.light #toggles button.active {
         </li>
       </ul>
     </div>
-
     <!-- Right Metrics Card -->
     <div class="metrics-card" aria-label="Operations Metrics">
       <h3>Operations</h3>
@@ -481,7 +462,6 @@ body.light #toggles button.active {
         <span>Costs: <strong>$5M</strong></span>
         <span>Profit: <strong>$50M</strong></span>
       </div>
-
       <div class="stats-section" aria-label="Efficiency Metrics">
         <h4>Efficiency Metrics</h4>
         <div>
@@ -492,7 +472,6 @@ body.light #toggles button.active {
       </div>
     </div>
   </main>
-
   <!-- Contact Form -->
    <section id="form">
     <h2 data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
@@ -523,18 +502,15 @@ body.light #toggles button.active {
       </button>
     </form>
   </section>
-  
-  <script>
+    <script>
     (function() {
       const btnLang = document.getElementById('btn-lang');
       const btnTheme = document.getElementById('btn-theme');
       const html = document.documentElement;
       const body = document.body;
-
       // Default language and theme
       let currentLang = 'en';
       let isDark = true;
-
       function setLanguage(lang) {
         currentLang = lang;
         html.lang = lang;
@@ -562,12 +538,10 @@ body.light #toggles button.active {
         btnLang.textContent = lang.toUpperCase();
         btnLang.setAttribute('aria-pressed', lang === 'es');
       }
-
       function toggleLanguage() {
         const newLang = currentLang === 'en' ? 'es' : 'en';
         setLanguage(newLang);
       }
-
       function setTheme(darkMode) {
         isDark = darkMode;
         if (darkMode) {
@@ -580,14 +554,11 @@ body.light #toggles button.active {
           btnTheme.setAttribute('aria-pressed', 'true');
         }
       }
-
       function toggleTheme() {
         setTheme(!isDark);
       }
-
       btnLang.addEventListener('click', toggleLanguage);
       btnTheme.addEventListener('click', toggleTheme);
-
       // Initialize defaults
       setLanguage(currentLang);
       setTheme(isDark);
