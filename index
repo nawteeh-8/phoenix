@@ -230,41 +230,43 @@
       document.getElementById('card-'+id).onkeydown = e=>{if(e.key==="Enter"||e.key===" ")openModal(key);}
     });
     function openModal(key) {
-      let data = svc[key][lang].modal;
-      let m = document.createElement('div');
+      const data = svc[key][lang].modal;
+      const m = document.createElement('div');
       m.className = 'modal-backdrop';
       m.innerHTML = `
-        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" id="draggable-modal">
-          <button class="modal-x" aria-label="CERRAR" id="modal-x">X</button>
+        <div class="modal" role="document">
+          <button class="modal-close" aria-label="Close modal">&times;</button>
           <div class="modal-header">
-            <img class="modal-img" src="${data.img}" alt="${data.imgAlt}" />
-            <div><div class="modal-title">${data.title}</div></div>
+            <img src="${data.img}" alt="${data.imgAlt}" />
+            <div class="modal-title">${data.title}</div>
           </div>
-          <div class="modal-content-body">${data.content}</div>
-          <div class="modal-video">${data.video}</div>
-          <ul style="margin-bottom:1.2em; margin-left:1.3em;">
-            ${data.features.map(i => `<li>${i}</li>`).join("")}
-          </ul>
-          <div class="modal-actions">
-            <a class="modal-btn" href="${data.learn}" target="_blank">${lang==="en"?"Learn More":"Más Información"}</a>
-            <button class="modal-btn" onclick="alert('Integrate with chatbot')">${lang==="en"?"Ask Chattia":"Preguntar Chattia"}</button>
-            <button class="modal-btn cta" id="modal-contact-btn">${lang==="en"?"Contact Us":"Contáctanos"}</button>
-            <button class="modal-btn" id="cancel-btn">${lang==="en"?"Cancel":"Cancelar"}</button>
+          <div class="modal-body">
+            <p>${data.content}</p>
+            <div class="modal-video">${data.video}</div>
+            <ul>
+              ${data.features.map(i => `<li>${i}</li>`).join("")}
+            </ul>
+          </div>
+          <div class="modal-footer-bar">
+            <a class="footer-btn" href="${data.learn}" target="_blank" rel="noopener">${lang==='en'?'Learn More':'Más Información'}</a>
+            <button class="footer-btn" id="ask-chattia">${lang==='en'?'Ask Chattia':'Preguntar Chattia'}</button>
+            <button class="footer-btn" id="join-us">${lang==='en'?'Join Us':'Únete'}</button>
+            <button class="footer-btn cta" id="modal-contact-btn">${lang==='en'?'Contact Us':'Contáctanos'}</button>
+            <button class="footer-btn cancel" id="cancel-btn">${lang==='en'?'Cancel':'Cancelar'}</button>
           </div>
         </div>`;
-      let root = document.getElementById('modal-root');
+      const root = document.getElementById('modal-root');
       root.innerHTML = '';
       root.appendChild(m);
-      let modal = m.querySelector('.ops-modal');
-      centerModal(modal);
-      // Close on X, ESC, Cancel, or outside
+      const modal = m.querySelector('.modal');
       function close() { root.innerHTML = ''; }
-      m.onclick = e => (e.target === m ? close() : 0);
-      modal.querySelector('.modal-x').onclick = close;
+      m.onclick = e => { if (e.target === m) close(); };
+      modal.querySelector('.modal-close').onclick = close;
       modal.querySelector('#cancel-btn').onclick = close;
-      document.addEventListener('keydown', function esc(e) {if(e.key==="Escape"){close();document.removeEventListener('keydown',esc);}}, {once:true});
-      modal.querySelector('#modal-contact-btn').onclick = ()=>{openContactModal();close();}
-      makeDraggable(modal);
+      document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown', esc); } }, { once:true });
+      modal.querySelector('#modal-contact-btn').onclick = ()=>{ openContactModal(); close(); };
+      modal.querySelector('#ask-chattia').onclick = ()=>{ alert('Integrate with chatbot'); };
+      modal.querySelector('#join-us').onclick = ()=>{ alert('Join Us coming soon'); };
     }
     // --- MAKE DRAGGABLE (modal, header optional) ---
     function makeDraggable(elem, dragHandle) {
