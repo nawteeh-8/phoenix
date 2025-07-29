@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mobile Navigation</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
-<link rel="stylesheet" href="../css/min.css">
+<link rel="stylesheet" href="../css/style.css">
 <style>
 :root{--clr-primary:#00c4ff;--clr-accent:#ff3bdb;--clr-accent-dark:#e000be;}
 /* Copied from FABs in min.css and adapted for horizontal mobile nav */
