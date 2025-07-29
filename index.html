@@ -58,7 +58,7 @@
               "Performance metric dashboards & analytics",
               "Remote training & Lean operations"
             ],
-            learn: "business-operations.html"
+            learn: "mainnav/opera.html"
           }
         },
         es: {
@@ -78,7 +78,7 @@
               "Cuadros de métricas de rendimiento y análisis",
               "Capacitación remota y operaciones Lean"
             ],
-            learn: "business-operations.html"
+            learn: "mainnav/opera.html"
           }
         }
       },
@@ -100,7 +100,7 @@
               "Social media engagement & sentiment tracking",
               "Customer experience analytics & quality monitoring"
             ],
-            learn: "contactcenter.html"
+            learn: "mainnav/center.html"
           }
         },
         es: {
@@ -120,7 +120,7 @@
               "Interacción en redes sociales y seguimiento de sentimiento",
               "Análisis de experiencia del cliente y monitoreo de calidad"
             ],
-            learn: "contactcenter.html"
+            learn: "mainnav/center.html"
           }
         }
       },
@@ -142,7 +142,7 @@
               "Cloud infrastructure setup & maintenance",
               "NIST, CISA, OPS Core CyberSec compliance"
             ],
-            learn: "itsupport.html"
+            learn: "mainnav/it.html"
           }
         },
         es: {
@@ -162,7 +162,7 @@
               "Configuración y mantenimiento de infraestructura en la nube",
               "Cumplimiento con NIST, CISA y políticas OPS Core CyberSec"
             ],
-            learn: "itsupport.html"
+            learn: "mainnav/it.html"
           }
         }
       },
@@ -185,7 +185,7 @@
               "OPS-vetted talent with NDA, compliance and role-specific training",
               "Ask AI"
             ],
-            learn: "professionals.html"
+            learn: "mainnav/pros.html"
           }
         },
         es: {
@@ -206,7 +206,7 @@
               "Talento validado por OPS con NDA, capacitación en cumplimiento y capacitación específica para el rol",
               "Preguntar AI"
             ],
-            learn: "professionals.html"
+            learn: "mainnav/pros.html"
           }
         }
       }
@@ -240,18 +240,16 @@
             <img src="${data.img}" alt="${data.imgAlt}" />
             <div class="modal-title">${data.title}</div>
           </div>
-          <div class="modal-body">
-            <p>${data.content}</p>
-            <div class="modal-video">${data.video}</div>
-            <ul>
-              ${data.features.map(i => `<li>${i}</li>`).join("")}
-            </ul>
-          </div>
-          <div class="modal-footer-bar">
-            <a class="footer-btn" href="${data.learn}" target="_blank" rel="noopener">${lang==='en'?'Learn More':'Más Información'}</a>
-            <button class="footer-btn" id="ask-chattia">${lang==='en'?'Ask Chattia':'Preguntar Chattia'}</button>
-            <button class="footer-btn" id="join-us">${lang==='en'?'Join Us':'Únete'}</button>
-            <button class="footer-btn cta" id="modal-contact-btn">${lang==='en'?'Contact Us':'Contáctanos'}</button>
+          <div class="modal-content-body">${data.content}</div>
+          <div class="modal-video">${data.video}</div>
+          <ul style="margin-bottom:1.2em; margin-left:1.3em;">
+            ${data.features.map(i => `<li>${i}</li>`).join("")}
+          </ul>
+          <div class="modal-actions">
+            <a class="modal-btn" href="${data.learn}" target="_blank">${lang === "en" ? "Learn More" : "Más Información"}</a>
+            <button class="modal-btn" onclick="openChatbotModal()">${lang === "en" ? "Ask Chattia" : "Preguntar Chattia"}</button>
+            <button class="modal-btn cta" onclick="openContactModal()">${lang === "en" ? "Contact Us" : "Contáctanos"}</button>
+            <button class="modal-btn" onclick="openJoinModal()">${lang === "en" ? "Join Us" : "Únete a Nosotros"}</button>
             <button class="footer-btn cancel" id="cancel-btn">${lang==='en'?'Cancel':'Cancelar'}</button>
           </div>
         </div>`;
