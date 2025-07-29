@@ -266,8 +266,8 @@
       modal.querySelector('#cancel-btn').onclick = close;
       document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown', esc); } }, { once:true });
       modal.querySelector('#modal-contact-btn').onclick = ()=>{ openContactModal(); close(); };
-      modal.querySelector('#ask-chattia').onclick = ()=>{ alert('Integrate with chatbot'); };
-      modal.querySelector('#join-us').onclick = ()=>{ alert('Join Us coming soon'); };
+      modal.querySelector('#ask-chattia').onclick = ()=>{ openChatbotModal(); close(); };
+      modal.querySelector('#join-us').onclick = ()=>{ openJoinModal(); close(); };
     }
     // --- MAKE DRAGGABLE (modal, header optional) ---
     function makeDraggable(elem, dragHandle) {
