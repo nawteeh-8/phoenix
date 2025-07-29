@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ops Online Support</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Your existing styles here (optional, for brevity not repeating all) */
+
+    /* Modal footer styles */
+    .modal-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #000;
+      color: white;
+      padding: 10px 0 40px;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
+      transform: translateY(75%);
+      transition: transform 0.5s ease;
+      user-select: none;
+      font-size: 1rem;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      overflow: hidden;
+    }
+    .modal-footer:hover {
+      transform: translateY(0);
+    }
+    .footer-toggle {
+      width: 100%;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      cursor: default;
+      padding: 6px 0;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      user-select: none;
+      color: white;
+      position: relative;
+      background: transparent;
+    }
+    .footer-toggle::before {
+      content: "^ More Options";
+      display: inline-block;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+    .footer-options {
+      margin-top: 15px;
+      width: 90%;
+      display: flex;
+      justify-content: space-around;
+      gap: 15px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-footer:hover .footer-options {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .footer-option {
+      background: #222;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      flex: 1;
+      max-width: 140px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .footer-option:hover,
+    .footer-option:focus {
+      background-color: #444;
+      outline: none;
+    }
+
+    /* Modal base styles (minimal from your existing) */
+    .modal-backdrop {
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .ops-modal {
+      background: white;
+      border-radius: 12px;
+      width: 400px;
+      max-width: 90vw;
+      padding: 20px;
+      position: absolute;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .modal-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #222;
+    }
+    .modal-img {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .modal-content-body {
+      margin-bottom: 15px;
+      color: #333;
+      font-size: 1rem;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .modal-btn {
+      flex: 1;
+      padding: 10px;
+      background: #512da8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .modal-btn:hover {
+      background: #7e57c2;
+    }
+    .modal-x {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #555;
+      font-weight: 700;
+      user-select: none;
+    }
+    .modal-x:hover {
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="ops-nav" aria-label="OPS Navigation">
+    <span class="ops-logo">OPS</span>
+    <div class="nav-links">
+      <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+      <a href="mainnav/opera.html" data-en="Business Operations" data-es="Gestion">Business Operations</a>
+      <a href="mainnav/center.html" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
+      <a href="mainnav/it.html" data-en="IT Support" data-es="Soporte IT">IT Support</a>
+      <a href="mainnav/pros.html" data-en="Professionals" data-es="Profesionales">Professionals</a>
+    </div>
+    <div class="toggles">
+      <button class="toggle-btn" id="lang-toggle">ES</button>
+      <button class="toggle-btn" id="theme-toggle">Dark</button>
+    </div>
+    <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- CARDS GRID -->
+  <div class="grid-container">
+    <div class="card" id="card-ops"></div>
+    <div class="card" id="card-cc"></div>
+    <div class="card" id="card-it"></div>
+    <div class="card" id="card-pro"></div>
+  </div>
+
+  <div id="modal-root"></div>
+
+  <footer>
+    © 2025 OPS Online Support
+  </footer>
+
+  <script>
+    // SERVICES DATA (EN/ES) simplified here, add your full data as needed
+    const svc = {
+      ops: {
+        en: {
+          title: "BUSINESS OPERATIONS",
+          icon: '<i class="fa-thin fa-briefcase"></i>',
+          desc: "Streamline your processes, maximize efficiency, ensure compliance, and scale your business with precision.",
+          modal: {
+            title: "BUSINESS OPERATIONS",
+            img: "https://placehold.co/96x96?text=OPS",
+            imgAlt: "Business Operations",
+            content: "Detailed content about our Business Operations services. We help optimize your processes, boost efficiency, and drive growth through strategic operational support.",
+            video: "Video placeholder",
+            features: [
+              "Workflow digitization & automation",
+              "Logistics & inventory efficiency",
+              "Risk & compliance frameworks (NIST, ISO, CISA)",
+              "Performance metric dashboards & analytics",
+              "Remote training & Lean operations"
+            ],
+            learn: "business-operations.html"
+          }
+        }
+      }
+      // Add other services similarly...
+    };
+    let lang = "en";
+
+    function renderCards() {
+      Object.entries({ops:'ops',cc:'cc',it:'it',pro:'pro'}).forEach(([id, key]) => {
+        let c = svc[key]?.[lang];
+        if (!c) return;
+        document.getElementById('card-'+id).innerHTML = `
+          <div class="title">${c.title}</div>
+          <div class="icon">${c.icon}</div>
+          <div class="content"><p>${c.desc}</p></div>
+        `;
+      });
+    }
+    renderCards();
+
+    // --- CARD MODALS ---
+    Object.entries({ops:'ops',cc:'cc',it:'it',pro:'pro'}).forEach(([id,key])=>{
+      let card = document.getElementById('card-'+id);
+      if(!card) return;
+      card.onclick = ()=>openModal(key);
+      card.onkeydown = e=>{if(e.key==="Enter"||e.key===" ") openModal(key);}
+    });
+
+    function openModal(key) {
+      let data = svc[key]?.[lang]?.modal;
+      if(!data) return;
+
+      let root = document.getElementById('modal-root');
+      root.innerHTML = '';
+
+      // Modal backdrop
+      let m = document.createElement('div');
+      m.className = 'modal-backdrop';
+
+      m.innerHTML = `
+        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" id="draggable-modal">
+          <button class="modal-x" aria-label="Close modal" id="modal-x">×</button>
+          <div class="modal-header">
+            <img class="modal-img" src="${data.img}" alt="${data.imgAlt}" />
+            <div><div class="modal-title">${data.title}</div></div>
+          </div>
+          <div class="modal-content-body">${data.content}</div>
+          <div class="modal-video">${data.video}</div>
+          <ul style="margin-bottom:1.2em; margin-left:1.3em;">
+            ${data.features.map(i => `<li>${i}</li>`).join("")}
+          </ul>
+          <div class="modal-actions">
+            <a class="modal-btn" href="${data.learn}" target="_blank">${lang==="en"?"Learn More":"Más Información"}</a>
+            <button class="modal-btn" onclick="alert('Integrate with chatbot')">${lang==="en"?"Ask Chattia":"Preguntar Chattia"}</button>
+            <button class="modal-btn cta" id="modal-contact-btn">${lang==="en"?"Contact Us":"Contáctanos"}</button>
+            <button class="modal-btn" id="cancel-btn">${lang==="en"?"Cancel":"Cancelar"}</button>
+          </div>
+        </div>
+
+        <footer class="modal-footer" aria-label="Modal Footer Actions">
+          <div class="footer-toggle" aria-hidden="true"></div>
+          <div class="footer-options" aria-hidden="true">
+            <button class="footer-option" type="button" onclick="alert('Option 1 clicked')">Option 1</button>
+            <button class="footer-option" type="button" onclick="alert('Option 2 clicked')">Option 2</button>
+            <button class="footer-option" type="button" onclick="alert('Option 3 clicked')">Option 3</button>
+            <button class="footer-option" type="button" onclick="alert('Option 4 clicked')">Option 4</button>
+          </div>
+        </footer>
+      `;
+
+      root.appendChild(m);
+
+      let modal = m.querySelector('.ops-modal');
+      centerModal(modal);
+
+      function close() { root.innerHTML = ''; }
+      m.onclick = e => (e.target === m ? close() : 0);
+      modal.querySelector('.modal-x').onclick = close;
+      modal.querySelector('#cancel-btn').onclick = close;
+      document.addEventListener('keydown', function esc(e) {
+        if(e.key==="Escape") {
+          close();
+          document.removeEventListener('keydown', esc);
+        }
+      }, {once:true});
+      modal.querySelector('#modal-contact-btn').onclick = () => { alert('Contact form or action here'); close(); }
+
+      makeDraggable(modal);
+    }
+
+    // --- MAKE DRAGGABLE (modal, header optional) ---
+    function makeDraggable(elem, dragHandle) {
+      let isDown = false, startX=0, startY=0;
+      let header = dragHandle || elem;
+      header.style.cursor = "move";
+      header.onmousedown = function(e) {
+        isDown = true;
+        elem.classList.add("dragging");
+        startX = e.clientX - (parseInt(elem.style.left) || window.innerWidth / 2);
+        startY = e.clientY - (parseInt(elem.style.top) || window.innerHeight / 4);
+        document.onmousemove = function(e) {
+          if (!isDown) return;
+          elem.style.left = `${e.clientX - startX}px`;
+          elem.style.top = `${e.clientY - startY}px`;
+          elem.style.transform = "translate(0, 0)";
+        };
+        document.onmouseup = function() {
+          isDown = false;
+          elem.classList.remove("dragging");
+          document.onmousemove = null;
+          document.onmouseup = null;
+        };
+        return false;
+      };
+    }
+
+    function centerModal(modal) {
+      const left = (window.innerWidth - modal.offsetWidth) / 2;
+      const top = Math.max((window.innerHeight - modal.offsetHeight) / 2, 20);
+      modal.style.left = `${left}px`;
+      modal.style.top = `${top}px`;
+      modal.style.transform = 'none';
+    }
+  </script>
+
+  <script>
+    fetch('fabs/fabs.html')
+      .then(r => r.text())
+      .then(h => { document.body.insertAdjacentHTML('beforeend', h); })
+      .catch(err => console.error('FABs load error', err));
+
+    document.getElementById('hamburger-menu').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
