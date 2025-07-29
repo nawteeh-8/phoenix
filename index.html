@@ -2,364 +2,257 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ops Online Support</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OPS Modal - Footer Actions (Modern)</title>
   <style>
-    /* Your existing styles here (optional, for brevity not repeating all) */
-
-    /* Modal footer styles */
-    .modal-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #000;
-      color: white;
-      padding: 10px 0 40px;
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.8);
-      transform: translateY(75%);
-      transition: transform 0.5s ease;
-      user-select: none;
-      font-size: 1rem;
-      z-index: 1001;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      overflow: hidden;
-    }
-    .modal-footer:hover {
-      transform: translateY(0);
-    }
-    .footer-toggle {
-      width: 100%;
-      text-align: center;
-      font-size: 1.3rem;
-      font-weight: 700;
-      cursor: default;
-      padding: 6px 0;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      user-select: none;
-      color: white;
-      position: relative;
-      background: transparent;
-    }
-    .footer-toggle::before {
-      content: "^ More Options";
-      display: inline-block;
-      letter-spacing: 2px;
-      user-select: none;
-    }
-    .footer-options {
-      margin-top: 15px;
-      width: 90%;
-      display: flex;
-      justify-content: space-around;
-      gap: 15px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .modal-footer:hover .footer-options {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .footer-option {
-      background: #222;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      padding: 12px 20px;
-      cursor: pointer;
-      font-weight: 600;
-      flex: 1;
-      max-width: 140px;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-    .footer-option:hover,
-    .footer-option:focus {
-      background-color: #444;
-      outline: none;
-    }
-
-    /* Modal base styles (minimal from your existing) */
-    .modal-backdrop {
-      position: fixed;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.5);
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f6f6fa;
+      margin: 0;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
     }
-    .ops-modal {
-      background: white;
-      border-radius: 12px;
-      width: 400px;
-      max-width: 90vw;
-      padding: 20px;
-      position: absolute;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      user-select: none;
-    }
-    .modal-header {
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
       display: flex;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      width: 96vw;
+      max-width: 410px;
+      box-shadow: 0 10px 32px rgba(0,0,0,0.17);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      animation: popIn .18s cubic-bezier(.47,1.64,.41,.8);
+    }
+    @keyframes popIn {
+      0% {transform: scale(0.94);}
+      100% {transform: scale(1);}
+    }
+    .modal-header {
+      padding: 20px 24px 10px 24px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ececec;
+      gap: 12px;
+    }
+    .modal-header img {
+      width: 44px; height: 44px;
+      border-radius: 11px;
+      border: 1.5px solid #e6e6ea;
+      object-fit: cover;
+      background: #fafbfc;
     }
     .modal-title {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: #222;
+      font-size: 1.11rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #232340;
+      letter-spacing: 0.01em;
     }
-    .modal-img {
-      width: 64px;
-      height: 64px;
-      border-radius: 8px;
-      object-fit: cover;
+    .modal-close {
+      position: absolute;
+      right: 16px; top: 16px;
+      background: none;
+      border: none;
+      font-size: 1.45rem;
+      color: #767676;
+      cursor: pointer;
+      padding: 2px 8px;
+      border-radius: 50%;
+      transition: background 0.14s;
     }
-    .modal-content-body {
-      margin-bottom: 15px;
+    .modal-close:hover, .modal-close:focus {
+      background: #f3f3fa;
       color: #333;
-      font-size: 1rem;
+      outline: none;
     }
-    .modal-actions {
+    .modal-body {
+      padding: 16px 24px 0 24px;
+      color: #36334e;
+      font-size: 1rem;
+      flex-grow: 1;
+      overflow-y: auto;
+      min-height: 50px;
+    }
+    .modal-body ul {
+      padding-left: 1.4rem;
+      margin: 16px 0;
+    }
+    .modal-body ul li { margin-bottom: 7px; }
+    .modal-video {
+      background: #f3f0ff;
+      border-radius: 9px;
+      padding: 12px 0;
+      margin: 16px 0;
+      color: #a083ec;
+      text-align: center;
+      font-style: italic;
+      font-size: 0.98rem;
+      user-select: none;
+    }
+
+    /* Footer - Sticky at bottom, like the CodePen */
+    .modal-footer-bar {
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      padding: 16px 18px 12px 18px;
+      background: #fff;
+      border-top: 1px solid #ececec;
       display: flex;
       gap: 10px;
-      flex-wrap: wrap;
+      justify-content: stretch;
+      z-index: 10;
+      box-shadow: 0 1.5px 10px rgba(86,192,255,0.05);
     }
-    .modal-btn {
-      flex: 1;
-      padding: 10px;
-      background: #512da8;
-      color: white;
+    .footer-btn {
+      flex: 1 1 0;
+      padding: 13px 0;
+      border-radius: 8px;
       border: none;
-      border-radius: 6px;
+      background: #f3f5fa;
+      color: #232340;
+      font-size: 1.02rem;
       font-weight: 600;
       cursor: pointer;
-      text-align: center;
-      user-select: none;
-      transition: background 0.3s ease;
+      transition: all 0.19s;
+      outline: none;
       text-decoration: none;
+      margin: 0;
+      text-align: center;
+      box-shadow: 0 1.5px 6px rgba(90,80,255,0.04);
+      letter-spacing: 0.01em;
       display: inline-block;
     }
-    .modal-btn:hover {
-      background: #7e57c2;
+    .footer-btn:hover, .footer-btn:focus {
+      background: #ecebff;
+      color: #5533ff;
     }
-    .modal-x {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: transparent;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #555;
-      font-weight: 700;
-      user-select: none;
+    .footer-btn.cta {
+      background: linear-gradient(90deg, #56c0ff 0%, #ff6cdf 100%);
+      color: #fff;
+      box-shadow: 0 2px 12px 0 rgba(86,192,255,0.13);
     }
-    .modal-x:hover {
-      color: #222;
+    .footer-btn.cta:hover, .footer-btn.cta:focus {
+      background: linear-gradient(90deg, #3ba9e0 0%, #d740cc 100%);
+      color: #fff;
+    }
+    .footer-btn.cancel {
+      background: none;
+      color: #b4b4b7;
+      border: 1.5px solid #ececec;
+      font-weight: 500;
+    }
+    .footer-btn.cancel:hover, .footer-btn.cancel:focus {
+      background: #f9f9fa;
+      color: #232340;
+      border-color: #bbb;
+    }
+    @media (max-width: 500px) {
+      .modal-header, .modal-body, .modal-footer-bar {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .modal { max-width: 99vw;}
+      .footer-btn { font-size: 0.99rem; padding: 11px 0;}
+      .modal-footer-bar { gap: 7px; }
+    }
+    @media (max-width: 420px) {
+      .modal-footer-bar { flex-direction: column; gap: 8px; }
+      .footer-btn { min-width: 98px;}
     }
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <nav class="ops-nav" aria-label="OPS Navigation">
-    <span class="ops-logo">OPS</span>
-    <div class="nav-links">
-      <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-      <a href="mainnav/opera.html" data-en="Business Operations" data-es="Gestion">Business Operations</a>
-      <a href="mainnav/center.html" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
-      <a href="mainnav/it.html" data-en="IT Support" data-es="Soporte IT">IT Support</a>
-      <a href="mainnav/pros.html" data-en="Professionals" data-es="Profesionales">Professionals</a>
-    </div>
-    <div class="toggles">
-      <button class="toggle-btn" id="lang-toggle">ES</button>
-      <button class="toggle-btn" id="theme-toggle">Dark</button>
-    </div>
-    <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </nav>
 
-  <!-- CARDS GRID -->
-  <div class="grid-container">
-    <div class="card" id="card-ops"></div>
-    <div class="card" id="card-cc"></div>
-    <div class="card" id="card-it"></div>
-    <div class="card" id="card-pro"></div>
-  </div>
+<div id="modal-root"></div>
 
-  <div id="modal-root"></div>
+<script>
+  // Content Data
+  const data = {
+    title: "BUSINESS OPERATIONS",
+    img: "https://placehold.co/96x96?text=OPS",
+    imgAlt: "Business Operations",
+    content: `Detailed content about our Business Operations services. We help optimize your processes, boost efficiency, and drive growth through strategic operational support.`,
+    video: "Video placeholder",
+    features: [
+      "Workflow digitization & automation",
+      "Logistics & inventory efficiency",
+      "Risk & compliance frameworks (NIST, ISO, CISA)",
+      "Performance metric dashboards & analytics",
+      "Remote training & Lean operations"
+    ],
+    learn: "business-operations.html"
+  };
 
-  <footer>
-    © 2025 OPS Online Support
-  </footer>
-
-  <script>
-    // SERVICES DATA (EN/ES) simplified here, add your full data as needed
-    const svc = {
-      ops: {
-        en: {
-          title: "BUSINESS OPERATIONS",
-          icon: '<i class="fa-thin fa-briefcase"></i>',
-          desc: "Streamline your processes, maximize efficiency, ensure compliance, and scale your business with precision.",
-          modal: {
-            title: "BUSINESS OPERATIONS",
-            img: "https://placehold.co/96x96?text=OPS",
-            imgAlt: "Business Operations",
-            content: "Detailed content about our Business Operations services. We help optimize your processes, boost efficiency, and drive growth through strategic operational support.",
-            video: "Video placeholder",
-            features: [
-              "Workflow digitization & automation",
-              "Logistics & inventory efficiency",
-              "Risk & compliance frameworks (NIST, ISO, CISA)",
-              "Performance metric dashboards & analytics",
-              "Remote training & Lean operations"
-            ],
-            learn: "business-operations.html"
-          }
-        }
-      }
-      // Add other services similarly...
-    };
-    let lang = "en";
-
-    function renderCards() {
-      Object.entries({ops:'ops',cc:'cc',it:'it',pro:'pro'}).forEach(([id, key]) => {
-        let c = svc[key]?.[lang];
-        if (!c) return;
-        document.getElementById('card-'+id).innerHTML = `
-          <div class="title">${c.title}</div>
-          <div class="icon">${c.icon}</div>
-          <div class="content"><p>${c.desc}</p></div>
-        `;
-      });
-    }
-    renderCards();
-
-    // --- CARD MODALS ---
-    Object.entries({ops:'ops',cc:'cc',it:'it',pro:'pro'}).forEach(([id,key])=>{
-      let card = document.getElementById('card-'+id);
-      if(!card) return;
-      card.onclick = ()=>openModal(key);
-      card.onkeydown = e=>{if(e.key==="Enter"||e.key===" ") openModal(key);}
-    });
-
-    function openModal(key) {
-      let data = svc[key]?.[lang]?.modal;
-      if(!data) return;
-
-      let root = document.getElementById('modal-root');
-      root.innerHTML = '';
-
-      // Modal backdrop
-      let m = document.createElement('div');
-      m.className = 'modal-backdrop';
-
-      m.innerHTML = `
-        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" id="draggable-modal">
-          <button class="modal-x" aria-label="Close modal" id="modal-x">×</button>
+  function openModal() {
+    const root = document.getElementById('modal-root');
+    root.innerHTML = `
+      <div class="modal-backdrop" tabindex="-1" aria-modal="true" role="dialog">
+        <div class="modal" role="document">
+          <button class="modal-close" aria-label="Close modal">&times;</button>
           <div class="modal-header">
-            <img class="modal-img" src="${data.img}" alt="${data.imgAlt}" />
-            <div><div class="modal-title">${data.title}</div></div>
+            <img src="${data.img}" alt="${data.imgAlt}" />
+            <div class="modal-title">${data.title}</div>
           </div>
-          <div class="modal-content-body">${data.content}</div>
-          <div class="modal-video">${data.video}</div>
-          <ul style="margin-bottom:1.2em; margin-left:1.3em;">
-            ${data.features.map(i => `<li>${i}</li>`).join("")}
-          </ul>
-          <div class="modal-actions">
-            <a class="modal-btn" href="${data.learn}" target="_blank">${lang==="en"?"Learn More":"Más Información"}</a>
-            <button class="modal-btn" onclick="alert('Integrate with chatbot')">${lang==="en"?"Ask Chattia":"Preguntar Chattia"}</button>
-            <button class="modal-btn cta" id="modal-contact-btn">${lang==="en"?"Contact Us":"Contáctanos"}</button>
-            <button class="modal-btn" id="cancel-btn">${lang==="en"?"Cancel":"Cancelar"}</button>
+          <div class="modal-body">
+            <p>${data.content}</p>
+            <div class="modal-video">${data.video}</div>
+            <ul>
+              ${data.features.map(i => `<li>${i}</li>`).join("")}
+            </ul>
+          </div>
+          <div class="modal-footer-bar">
+            <a class="footer-btn" href="${data.learn}" target="_blank" rel="noopener">Learn More</a>
+            <button class="footer-btn" id="ask-chattia">Ask Chattia</button>
+            <button class="footer-btn" id="join-us">Join Us</button>
+            <button class="footer-btn cta" id="contact-btn">Contact Us</button>
+            <button class="footer-btn cancel" id="cancel-btn">Cancel</button>
           </div>
         </div>
+      </div>
+    `;
 
-        <footer class="modal-footer" aria-label="Modal Footer Actions">
-          <div class="footer-toggle" aria-hidden="true"></div>
-          <div class="footer-options" aria-hidden="true">
-            <button class="footer-option" type="button" onclick="alert('Option 1 clicked')">Option 1</button>
-            <button class="footer-option" type="button" onclick="alert('Option 2 clicked')">Option 2</button>
-            <button class="footer-option" type="button" onclick="alert('Option 3 clicked')">Option 3</button>
-            <button class="footer-option" type="button" onclick="alert('Option 4 clicked')">Option 4</button>
-          </div>
-        </footer>
-      `;
+    // Button event listeners
+    root.querySelector('.modal-close').onclick =
+      root.querySelector('#cancel-btn').onclick = closeModal;
+    root.querySelector('#contact-btn').onclick = () => {
+      alert('Contact form or action here');
+      closeModal();
+    };
+    root.querySelector('#ask-chattia').onclick = () => {
+      alert('Integrate with chatbot');
+    };
+    root.querySelector('#join-us').onclick = () => {
+      alert('Join Us coming soon');
+    };
+    root.querySelector('.modal-backdrop').onclick = (e) => {
+      if (e.target === root.querySelector('.modal-backdrop')) closeModal();
+    };
+    document.addEventListener('keydown', function esc(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', esc);
+      }
+    }, { once: true });
+  }
 
-      root.appendChild(m);
+  function closeModal() {
+    document.getElementById('modal-root').innerHTML = '';
+  }
 
-      let modal = m.querySelector('.ops-modal');
-      centerModal(modal);
-
-      function close() { root.innerHTML = ''; }
-      m.onclick = e => (e.target === m ? close() : 0);
-      modal.querySelector('.modal-x').onclick = close;
-      modal.querySelector('#cancel-btn').onclick = close;
-      document.addEventListener('keydown', function esc(e) {
-        if(e.key==="Escape") {
-          close();
-          document.removeEventListener('keydown', esc);
-        }
-      }, {once:true});
-      modal.querySelector('#modal-contact-btn').onclick = () => { alert('Contact form or action here'); close(); }
-
-      makeDraggable(modal);
-    }
-
-    // --- MAKE DRAGGABLE (modal, header optional) ---
-    function makeDraggable(elem, dragHandle) {
-      let isDown = false, startX=0, startY=0;
-      let header = dragHandle || elem;
-      header.style.cursor = "move";
-      header.onmousedown = function(e) {
-        isDown = true;
-        elem.classList.add("dragging");
-        startX = e.clientX - (parseInt(elem.style.left) || window.innerWidth / 2);
-        startY = e.clientY - (parseInt(elem.style.top) || window.innerHeight / 4);
-        document.onmousemove = function(e) {
-          if (!isDown) return;
-          elem.style.left = `${e.clientX - startX}px`;
-          elem.style.top = `${e.clientY - startY}px`;
-          elem.style.transform = "translate(0, 0)";
-        };
-        document.onmouseup = function() {
-          isDown = false;
-          elem.classList.remove("dragging");
-          document.onmousemove = null;
-          document.onmouseup = null;
-        };
-        return false;
-      };
-    }
-
-    function centerModal(modal) {
-      const left = (window.innerWidth - modal.offsetWidth) / 2;
-      const top = Math.max((window.innerHeight - modal.offsetHeight) / 2, 20);
-      modal.style.left = `${left}px`;
-      modal.style.top = `${top}px`;
-      modal.style.transform = 'none';
-    }
-  </script>
-
-  <script>
-    fetch('fabs/fabs.html')
-      .then(r => r.text())
-      .then(h => { document.body.insertAdjacentHTML('beforeend', h); })
-      .catch(err => console.error('FABs load error', err));
-
-    document.getElementById('hamburger-menu').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('active');
-    });
-  </script>
-
+  openModal();
+</script>
 </body>
 </html>
