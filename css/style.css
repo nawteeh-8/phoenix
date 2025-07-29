@@ -435,8 +435,9 @@
   background: #fff;
   border-top: 1px solid #ececec;
   display: flex;
-  gap: 10px;
-  justify-content: stretch;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
   z-index: 10;
   box-shadow: 0 1.5px 10px rgba(86,192,255,0.05);
 }
@@ -450,7 +451,8 @@
   color: #232340;
   font-size: 0.80rem;
   font-weight: 600;
-  min-width: 70px;
+  min-width: 60px;
+  max-width: 110px;
   cursor: pointer;
   transition: all 0.19s;
   outline: none;
