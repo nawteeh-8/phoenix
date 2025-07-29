@@ -41,7 +41,7 @@ if (themeBtn) {
 
 // --- CHATBOT MODAL ---
 function openChatbotModal() {
-  fetch('fabs/chatbot.html')
+  fetch('/fabs/chatbot.html')
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -62,7 +62,7 @@ function openChatbotModal() {
 
 // --- JOIN US MODAL ---
 function openJoinModal() {
-  fetch('fabs/joinus.html')
+  fetch('/fabs/joinus.html')
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');

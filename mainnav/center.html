@@ -482,7 +482,7 @@
     })();
   </script>
   <script>
-    fetch('../fabs/fabs.html')
+    fetch('/fabs/fabs.html')
       .then(r => r.text())
       .then(h => { document.body.insertAdjacentHTML('beforeend', h); })
       .catch(err => console.error('FABs load error', err));
