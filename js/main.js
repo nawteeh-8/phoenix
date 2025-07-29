@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- CONTACT MODAL ---
 function openContactModal() {
-  fetch('fabs/contactus.html')
+  fetch('/fabs/contactus.html')
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
