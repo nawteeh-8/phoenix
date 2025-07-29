@@ -40,9 +40,7 @@ function openContactModal() {
       root.innerHTML = '';
       root.appendChild(m);
       const modal = m.querySelector('.ops-modal');
-      modal.style.top = '50px';
-      modal.style.left = '50%';
-      modal.style.transform = 'translateX(-50%)';
+      centerModal(modal);
       function close() { root.innerHTML = ''; }
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
@@ -54,5 +52,13 @@ function openContactModal() {
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
     .catch(err => console.error('Contact modal load error', err));
+}
+
+function centerModal(modal) {
+  const left = (window.innerWidth - modal.offsetWidth) / 2;
+  const top = Math.max((window.innerHeight - modal.offsetHeight) / 2, 20);
+  modal.style.left = `${left}px`;
+  modal.style.top = `${top}px`;
+  modal.style.transform = 'none';
 }
 

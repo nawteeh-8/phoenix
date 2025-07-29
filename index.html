@@ -256,9 +256,7 @@
       root.innerHTML = '';
       root.appendChild(m);
       let modal = m.querySelector('.ops-modal');
-      modal.style.top = '50px';
-      modal.style.left = '50%';
-      modal.style.transform = 'translateX(-50%)';
+      centerModal(modal);
       // Close on X, ESC, Cancel, or outside
       function close() { root.innerHTML = ''; }
       m.onclick = e => (e.target === m ? close() : 0);
@@ -287,6 +285,14 @@
         document.onmouseup = function(){ isDown=false; elem.classList.remove("dragging"); document.onmousemove=null; document.onmouseup=null; };
         return false;
       };
+    }
+
+    function centerModal(modal) {
+      const left = (window.innerWidth - modal.offsetWidth) / 2;
+      const top = Math.max((window.innerHeight - modal.offsetHeight) / 2, 20);
+      modal.style.left = `${left}px`;
+      modal.style.top = `${top}px`;
+      modal.style.transform = 'none';
     }
   </script>
   <script>
