@@ -48,9 +48,10 @@ function openChatbotModal() {
       const body = doc.body.innerHTML;
       const m = document.createElement('div');
       m.id = 'chatbot-modal-backdrop';
-      m.innerHTML = `<div id="chatbot-container" class="ops-modal">${body}</div>`;
+      m.innerHTML = `<div id="chatbot-container" class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="title">${body}</div>`;
       document.body.appendChild(m);
       const modal = m.querySelector('.ops-modal');
+      modal.focus();
       function close() { document.body.removeChild(m); }
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('#chatbot-x').onclick = close;
@@ -70,7 +71,7 @@ function openJoinModal() {
       const m = document.createElement('div');
       m.className = 'modal-backdrop';
       m.innerHTML = `
-        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" id="join-modal">
+        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="joinus-title" id="join-modal">
           <button class="modal-x" aria-label="CERRAR">X</button>
           ${body}
         </div>`;
@@ -79,13 +80,22 @@ function openJoinModal() {
       root.appendChild(m);
       const modal = m.querySelector('.ops-modal');
       centerModal(modal);
+      modal.focus();
       function close() { root.innerHTML = ''; }
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
       const form = modal.querySelector('#joinForm');
       if (form) {
-        form.addEventListener('submit', e => { e.preventDefault(); alert('Join form submitted!'); form.reset(); });
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          if (!sanitizeForm(form)) {
+            alert('Suspicious content detected. Submission rejected.');
+            return;
+          }
+          alert('Join form submitted!');
+          form.reset();
+        });
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })

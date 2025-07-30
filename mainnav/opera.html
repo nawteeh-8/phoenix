@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title data-en="Business Operations Optimization | [Your Company]" data-es="Optimización de Operaciones Empresariales | [Su Empresa]">
+ <meta charset="UTF-8" />
+  <title data-en="Business Operations Optimization | Ops Online Support" data-es="Optimización de Operaciones Empresariales | Ops Online Support">
     Business Operations Optimization | Ops Online Support
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/style.css">
+<!-- Viewport for mobile-first layout -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Secure Content Security Policy (CSP) -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://www.gstatic.com https://www.google.com https://challenges.cloudflare.com;
+  style-src 'self' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  connect-src 'self' https://www.googleapis.com https://api.cloudflare.com;
+  img-src 'self' data:;
+  frame-src 'self' https://www.google.com https://challenges.cloudflare.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  manifest-src 'self';
+  worker-src 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;">
+<!-- HTTP Strict Transport Security (HSTS) - 2 years + include subdomains -->
+<meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+<!-- Prevent MIME type sniffing -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<!-- Prevent this page from being embedded in iframes from other origins -->
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<!-- Remove referrer info for outbound links (privacy) -->
+<meta name="referrer" content="no-referrer">
+  <link rel="stylesheet" href="../css/min.css">
   <style>
     /* Reset & base */
     body {
@@ -474,24 +499,24 @@
   </main>
   <!-- Contact Form -->
    <section id="form">
-    <h2 data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
-    <form>
+    <h2 id="opera-form-title" data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
+    <form aria-labelledby="opera-form-title">
       <input
-        type="text"
+        type="text" aria-label="Full Name"
         placeholder=""
         data-en="Full Name"
         data-es="Nombre Completo"
         required
       />
       <input
-        type="email"
+        type="email" aria-label="Business Email"
         placeholder=""
         data-en="Business Email"
         data-es="Correo Electrónico Empresarial"
         required
       />
       <input
-        type="text"
+        type="text" aria-label="Company"
         placeholder=""
         data-en="Company"
         data-es="Empresa"
@@ -510,7 +535,7 @@
       const body = document.body;
       // Default language and theme
       let currentLang = 'en';
-      let isDark = true;
+      let isDark = (localStorage.getItem('theme') || 'light') === 'dark';
       function setLanguage(lang) {
         currentLang = lang;
         html.lang = lang;
@@ -553,6 +578,7 @@
           btnTheme.textContent = 'Light Mode';
           btnTheme.setAttribute('aria-pressed', 'true');
         }
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
       }
       function toggleTheme() {
         setTheme(!isDark);
