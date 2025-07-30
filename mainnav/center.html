@@ -6,7 +6,7 @@
     Contact Center Solutions | Ops Online Support
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://pro.fontawesome.com; script-src 'self' 'unsafe-inline' https://pro.fontawesome.com; font-src https://pro.fontawesome.com">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://pro.fontawesome.com; script-src 'self' 'unsafe-inline' https://pro.fontawesome.com; font-src https://pro.fontawesome.com">
   <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -389,24 +389,24 @@
 
   <!-- Contact Form -->
   <section id="form">
-    <h2 data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
-    <form>
+    <h2 id="center-form-title" data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
+    <form aria-labelledby="center-form-title">
       <input
-        type="text"
+        type="text" aria-label="Full Name"
         placeholder=""
         data-en="Full Name"
         data-es="Nombre Completo"
         required
       />
       <input
-        type="email"
+        type="email" aria-label="Business Email"
         placeholder=""
         data-en="Business Email"
         data-es="Correo Electrónico Empresarial"
         required
       />
       <input
-        type="text"
+        type="text" aria-label="Company"
         placeholder=""
         data-en="Company"
         data-es="Empresa"
