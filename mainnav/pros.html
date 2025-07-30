@@ -478,9 +478,14 @@
       setTheme(isDark);
     })();
   </script>
+  <script>
+    fetch('/fabs/fabs-new.html')
+      .then(r => r.text())
+      .then(h => { document.body.insertAdjacentHTML('beforeend', h); })
+      .catch(err => console.error('FABs load error', err));
+  </script>
   <div id="modal-root"></div>
-  <script src="../js/load-fabs.js"></script>
-  <script src="../js/modals.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="/js/modals.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
