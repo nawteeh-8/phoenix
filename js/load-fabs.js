@@ -1,6 +1,5 @@
 (function() {
   // --- LOAD FABs ---
-
   fetch(window.location.pathname.includes('/mainnav/') ? '../fabs/fabs.html' : '/fabs/fabs.html')
     .then(r => {
       if (!r.ok) {
