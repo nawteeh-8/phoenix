@@ -6,7 +6,9 @@
     IT Support Services | Ops Online Support
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/style.css">
+  <meta name="description" content="Ops Online Support IT support services." />
+  <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="../css/min.css">
   <style>
     /* Reset & base */
     body {
@@ -319,24 +321,24 @@
   </section>
   <!-- Request Form -->
   <section id="form">
-    <h2 data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
-    <form>
+    <h2 id="it-form-title" data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
+    <form aria-labelledby="it-form-title">
       <input
-        type="text"
+        type="text" aria-label="Full Name"
         placeholder=""
         data-en="Full Name"
         data-es="Nombre Completo"
         required
       />
       <input
-        type="email"
+        type="email" aria-label="Business Email"
         placeholder=""
         data-en="Business Email"
         data-es="Correo Electrónico Empresarial"
         required
       />
       <input
-        type="text"
+        type="text" aria-label="Company"
         placeholder=""
         data-en="Company"
         data-es="Empresa"
