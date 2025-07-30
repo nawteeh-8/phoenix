@@ -7,7 +7,6 @@
   </title>
 <!-- Viewport for mobile-first layout -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <!-- Secure Content Security Policy (CSP) -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
@@ -23,22 +22,16 @@
   manifest-src 'self';
   worker-src 'self';
   frame-ancestors 'none';
-  upgrade-insecure-requests;
-">
-
+  upgrade-insecure-requests;">
 <!-- HTTP Strict Transport Security (HSTS) - 2 years + include subdomains -->
 <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
-
 <!-- Prevent MIME type sniffing -->
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
 <!-- Prevent this page from being embedded in iframes from other origins -->
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-
 <!-- Remove referrer info for outbound links (privacy) -->
 <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="../css/min.css">
-
   <style>
     /* Base & reset */
     body {
