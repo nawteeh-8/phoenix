@@ -298,15 +298,7 @@
       modal.style.transform = 'none';
     }
   </script>
-  <script>
-    fetch('/fabs/fabs.html')
-      .then(r => r.text())
-      .then(h => { document.body.insertAdjacentHTML('beforeend', h); })
-      .catch(err => console.error('FABs load error', err));
-    document.getElementById('hamburger-menu').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('active');
-    });
-  </script>
+  <script src="js/load-fabs.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/main.js"></script>
 </body>
