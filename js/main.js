@@ -13,17 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   langToggle && langToggle.addEventListener('click', () => {
-    lang = lang === 'en' ? 'es' : 'en';
-    if (langToggle) langToggle.textContent = lang === 'en' ? 'ES' : 'EN';
-    if (typeof renderCards === 'function') renderCards();
-    updateNav();
+    switchLanguage(lang === 'en' ? 'es' : 'en');
   });
-
-  function updateNav() {
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.textContent = a.dataset[lang];
-    });
-  }
 
   window.sanitizeForm = function(form) {
     const fields = form.querySelectorAll('input, textarea');
