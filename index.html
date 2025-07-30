@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ops Online Support: business operations, contact center, IT, and professional services." />
+  <meta name="robots" content="index, follow" />
   <title>Ops Online Support</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
   <link rel="stylesheet" href="css/style.css">
@@ -235,11 +237,11 @@
       const m = document.createElement('div');
       m.className = 'modal-backdrop';
       m.innerHTML = `
-        <div class="modal" role="document">
+        <div class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal-title-${key}">
           <button class="modal-close" aria-label="Close modal">&times;</button>
           <div class="modal-header">
             <img src="${data.img}" alt="${data.imgAlt}" />
-            <div class="modal-title">${data.title}</div>
+            <div class="modal-title" id="modal-title-${key}">${data.title}</div>
           </div>
           <div class="modal-body">
             <p>${data.content}</p>
@@ -260,6 +262,8 @@
       root.innerHTML = '';
       root.appendChild(m);
       const modal = m.querySelector('.modal');
+      centerModal(modal);
+      modal.focus();
       // Event handlers
       function close() { root.innerHTML = ''; }
       m.onclick = e => { if (e.target === m) close(); };
