@@ -212,7 +212,8 @@
       }
     };
     let lang = "en";
-    let theme = "light";
+    let theme = localStorage.getItem('theme') || "light";
+    document.body.classList.toggle('dark', theme === 'dark');
     function renderCards() {
       Object.entries({ops:'ops',cc:'cc',it:'it',pro:'pro'}).forEach(([id, key]) => {
         let c = svc[key][lang];
