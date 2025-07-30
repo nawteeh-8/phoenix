@@ -1,6 +1,7 @@
 (function() {
   // --- LOAD FABs ---
-  fetch(window.location.pathname.includes('/mainnav/') ? '../fabs/fabs.html' : '/fabs/fabs.html')
+  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  fetch(`${base}/fabs/fabs.html`)
     .then(r => {
       if (!r.ok) {
         throw new Error(`Failed to fetch FABs: ${r.status}`);
