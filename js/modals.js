@@ -5,7 +5,6 @@ const themeBtn = document.getElementById('themeBtn');
 const svcBtn = document.getElementById('svcBtn');
 const svcMenu = document.getElementById('svcMenu');
 
-let lang='en';
 let dark=false;
 
 if (toggleNav) {
@@ -39,9 +38,39 @@ if (themeBtn) {
   };
 }
 
+// --- CONTACT US MODAL ---
+function openContactModal() {
+  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  fetch(`${base}/fabs/contactus.html`)
+    .then(r => r.text())
+    .then(html => {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const body = doc.body.innerHTML;
+      const m = document.createElement('div');
+      m.className = 'modal-backdrop';
+      m.innerHTML = `
+        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="contact-title" id="contact-modal">
+          <button class="modal-x" aria-label="CERRAR">X</button>
+          ${body}
+        </div>`;
+      const root = document.getElementById('modal-root');
+      root.innerHTML = '';
+      root.appendChild(m);
+      const modal = m.querySelector('.ops-modal');
+      modal.focus();
+      function close() { root.innerHTML = ''; }
+      m.onclick = e => (e.target === m ? close() : 0);
+      modal.querySelector('.modal-x').onclick = close;
+      document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
+      if (typeof makeDraggable === 'function') makeDraggable(modal);
+    })
+    .catch(err => console.error('Contact modal load error', err));
+}
+
 // --- CHATBOT MODAL ---
 function openChatbotModal() {
-  fetch('/fabs/chatbot.html')
+  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  fetch(`${base}/fabs/chatbot.html`)
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -63,7 +92,8 @@ function openChatbotModal() {
 
 // --- JOIN US MODAL ---
 function openJoinModal() {
-  fetch('/fabs/joinus.html')
+  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  fetch(`${base}/fabs/joinus.html`)
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
