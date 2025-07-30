@@ -5,8 +5,11 @@
   <title data-en="Contact Center Solutions | Ops Online Support" data-es="Soluciones de Centro de Contacto | Ops Online Support">
     IT Support Services | Ops Online Support
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="
+<!-- Viewport for mobile-first layout -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Secure Content Security Policy (CSP) -->
+<meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://www.gstatic.com https://www.google.com https://challenges.cloudflare.com;
   style-src 'self' https://fonts.googleapis.com;
@@ -21,18 +24,18 @@
   worker-src 'self';
   frame-ancestors 'none';
   upgrade-insecure-requests;">
-  <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-  <link rel="stylesheet" href="../css/style.css">
-  <style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://pro.fontawesome.com; script-src 'self' 'unsafe-inline' https://pro.fontawesome.com; font-src https://pro.fontawesome.com">
-  <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+
+<!-- HTTP Strict Transport Security (HSTS) - 2 years + include subdomains -->
+<meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+
+<!-- Prevent MIME type sniffing -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<!-- Prevent this page from being embedded in iframes from other origins -->
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+
+<!-- Remove referrer info for outbound links (privacy) -->
+<meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="../css/min.css">
   <style>
     /* Reset & base */
