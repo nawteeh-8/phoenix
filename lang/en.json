@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "Home",
+    "ops": "Business Operations",
+    "cc": "Contact Center",
+    "it": "IT Support",
+    "pro": "Professionals"
+  },
+  "labels": {
+    "learnMore": "Learn More",
+    "ask": "Ask Chattia",
+    "join": "Join Us",
+    "contact": "Contact Us",
+    "cancel": "Cancel"
+  },
+  "svc": {
+    "ops": {
+      "title": "BUSINESS OPERATIONS",
+      "icon": "<i class=\"fa-thin fa-briefcase\"></i>",
+      "desc": "Streamline your processes, maximize efficiency, ensure compliance, and scale your business with precision.",
+      "modal": {
+        "title": "BUSINESS OPERATIONS",
+        "img": "https://placehold.co/96x96?text=OPS",
+        "imgAlt": "Business Operations",
+        "content": "Detailed content about our Business Operations services. We help optimize your processes, boost efficiency, and drive growth through strategic operational support. Key areas: process optimization, supply chain management, quality assurance.",
+        "video": "Video placeholder",
+        "features": [
+          "Workflow digitization & automation",
+          "Logistics & inventory efficiency",
+          "Risk & compliance frameworks (NIST, ISO, CISA)",
+          "Performance metric dashboards & analytics",
+          "Remote training & Lean operations"
+        ],
+        "learn": "mainnav/opera.html"
+      }
+    },
+    "cc": {
+      "title": "CONTACT CENTER",
+      "icon": "<i class=\"fa-thin fa-headset\"></i>",
+      "desc": "Enhance customer engagement with multilingual, multichannel support—24/7, data-driven, and empathetic.",
+      "modal": {
+        "title": "CONTACT CENTER",
+        "img": "https://placehold.co/96x96?text=CC",
+        "imgAlt": "Contact Center",
+        "content": "Explore our comprehensive Contact Center solutions to elevate customer satisfaction and engagement at every touchpoint. We offer inbound/outbound calls, multichannel support (email, chat, social), and advanced analytics.",
+        "video": "Video placeholder",
+        "features": [
+          "24/7 inbound/outbound call management",
+          "Multilingual chat/email support",
+          "CRM integration (e.g., HubSpot, Salesforce)",
+          "Social media engagement & sentiment tracking",
+          "Customer experience analytics & quality monitoring"
+        ],
+        "learn": "mainnav/center.html"
+      }
+    },
+    "it": {
+      "title": "IT SUPPORT",
+      "icon": "<i class=\"fa-thin fa-laptop-code\"></i>",
+      "desc": "Proactive, secure, real-time tech help, cloud management, and cyber defense for every business size.",
+      "modal": {
+        "title": "IT SUPPORT",
+        "img": "https://placehold.co/96x96?text=IT",
+        "imgAlt": "IT Support",
+        "content": "Our IT Support services deliver reliable, timely assistance to keep your systems running smoothly and securely: help desk, network monitoring, cybersecurity, and cloud infrastructure management.",
+        "video": "Video placeholder",
+        "features": [
+          "24/7 tech support & remote troubleshooting",
+          "Real-time network & system monitoring",
+          "Cybersecurity audits, patching, threat detection",
+          "Cloud infrastructure setup & maintenance",
+          "NIST, CISA, OPS Core CyberSec compliance"
+        ],
+        "learn": "mainnav/it.html"
+      }
+    },
+    "pro": {
+      "title": "PROFESSIONALS",
+      "icon": "<i class=\"fa-thin fa-user-tie\"></i>",
+      "desc": "OPS-vetted talent for IT, HR, projects, finance—contract or full-time, ready when you are.",
+      "modal": {
+        "title": "PROFESSIONALS",
+        "img": "https://placehold.co/96x96?text=PRO",
+        "imgAlt": "Professionals",
+        "content": "Access our network of highly qualified and experienced professionals for your project or long-term staffing. Experts in IT, project management, finance, HR. OPS-vetted, NDA, compliance trained.",
+        "video": "Video placeholder",
+        "features": [
+          "Remote IT professionals (SysAdmins, DevOps, Analysts)",
+          "Project managers & agile consultants",
+          "Finance and accounting professionals",
+          "HR and recruitment experts",
+          "OPS-vetted talent with NDA, compliance and role-specific training",
+          "Ask AI"
+        ],
+        "learn": "mainnav/pros.html"
+      }
+    }
+  }
+}
