@@ -87,7 +87,15 @@ function openJoinModal() {
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
       const form = modal.querySelector('#joinForm');
       if (form) {
-        form.addEventListener('submit', e => { e.preventDefault(); alert('Join form submitted!'); form.reset(); });
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          if (!sanitizeForm(form)) {
+            alert('Suspicious content detected. Submission rejected.');
+            return;
+          }
+          alert('Join form submitted!');
+          form.reset();
+        });
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
