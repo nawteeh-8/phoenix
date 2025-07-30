@@ -240,11 +240,11 @@
       const m = document.createElement('div');
       m.className = 'modal-backdrop';
       m.innerHTML = `
-        <div class="modal" role="document">
+        <div class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal-title-${key}">
           <button class="modal-close" aria-label="Close modal">&times;</button>
           <div class="modal-header">
             <img src="${data.img}" alt="${data.imgAlt}" />
-            <div class="modal-title">${data.title}</div>
+            <div class="modal-title" id="modal-title-${key}">${data.title}</div>
           </div>
           <div class="modal-body">
             <p>${data.content}</p>
@@ -265,6 +265,8 @@
       root.innerHTML = '';
       root.appendChild(m);
       const modal = m.querySelector('.modal');
+      centerModal(modal);
+      modal.focus();
       // Event handlers
       function close() { root.innerHTML = ''; }
       m.onclick = e => { if (e.target === m) close(); };

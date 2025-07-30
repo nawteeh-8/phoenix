@@ -48,7 +48,7 @@ function openContactModal() {
       const m = document.createElement('div');
       m.className = 'modal-backdrop';
       m.innerHTML = `
-        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" id="contact-modal">
+        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="contactus-title" id="contact-modal">
           <button class="modal-x" aria-label="CERRAR">X</button>
           ${body}
         </div>`;
@@ -57,6 +57,7 @@ function openContactModal() {
       root.appendChild(m);
       const modal = m.querySelector('.ops-modal');
       centerModal(modal);
+      modal.focus();
       function close() { root.innerHTML = ''; }
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
