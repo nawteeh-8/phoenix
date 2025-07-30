@@ -24,6 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
       a.textContent = a.dataset[lang];
     });
   }
+
+  window.sanitizeForm = function(form) {
+    const fields = form.querySelectorAll('input, textarea');
+    for (const field of fields) {
+      const val = field.value.trim();
+      if (/[<>]/.test(val) || /script/i.test(val)) {
+        return false;
+      }
+      field.value = val;
+    }
+    return true;
+  };
 });
 
 // --- CONTACT MODAL ---
@@ -51,7 +63,15 @@ function openContactModal() {
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
       const form = modal.querySelector('#contactForm');
       if (form) {
-        form.addEventListener('submit', e => { e.preventDefault(); alert('Contact form submitted!'); form.reset(); });
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          if (!sanitizeForm(form)) {
+            alert('Suspicious content detected. Submission rejected.');
+            return;
+          }
+          alert('Contact form submitted!');
+          form.reset();
+        });
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
