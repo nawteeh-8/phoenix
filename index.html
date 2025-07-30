@@ -17,11 +17,11 @@
   <nav class="ops-nav" aria-label="OPS Navigation">
     <span class="ops-logo">OPS</span>
     <div class="nav-links">
-    <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-    <a href="mainnav/opera.html" data-en="Business Operations" data-es="Gestion">Business Operations</a>
-    <a href="mainnav/center.html" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
-    <a href="mainnav/it.html" data-en="IT Support" data-es="Soporte IT">IT Support</a>
-    <a href="mainnav/pros.html" data-en="Professionals" data-es="Profesionales">Professionals</a>
+    <a href="index.html" class="nav-link" data-en="Home" data-es="Inicio">Home</a>
+    <a href="mainnav/opera.html" class="nav-link" data-en="Business Operations" data-es="Gestion">Business Operations</a>
+    <a href="mainnav/center.html" class="nav-link" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
+    <a href="mainnav/it.html" class="nav-link" data-en="IT Support" data-es="Soporte IT">IT Support</a>
+    <a href="mainnav/pros.html" class="nav-link" data-en="Professionals" data-es="Profesionales">Professionals</a>
     </div>
     <div class="toggles">
       <button class="toggle-btn" id="lang-toggle">ES</button>
@@ -265,7 +265,6 @@
       root.innerHTML = '';
       root.appendChild(m);
       const modal = m.querySelector('.modal');
-      centerModal(modal);
       modal.focus();
       // Event handlers
       function close() { root.innerHTML = ''; }
@@ -298,13 +297,6 @@
       };
     }
 
-    function centerModal(modal) {
-      const left = (window.innerWidth - modal.offsetWidth) / 2;
-      const top = Math.max((window.innerHeight - modal.offsetHeight) / 2, 20);
-      modal.style.left = `${left}px`;
-      modal.style.top = `${top}px`;
-      modal.style.transform = 'none';
-    }
   </script>
   <script src="js/load-fabs.js"></script>
   <script src="js/modals.js"></script>

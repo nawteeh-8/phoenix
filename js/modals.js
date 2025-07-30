@@ -79,7 +79,6 @@ function openJoinModal() {
       root.innerHTML = '';
       root.appendChild(m);
       const modal = m.querySelector('.ops-modal');
-      centerModal(modal);
       modal.focus();
       function close() { root.innerHTML = ''; }
       m.onclick = e => (e.target === m ? close() : 0);
