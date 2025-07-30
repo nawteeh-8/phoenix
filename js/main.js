@@ -1,17 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const themeToggle = document.getElementById('theme-toggle');
-  const langToggle = document.getElementById('lang-toggle');
+  const themeToggle = document.getElementById('theme-toggle') || document.getElementById('btn-theme');
+  const langToggle = document.getElementById('lang-toggle') || document.getElementById('btn-lang');
 
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-    themeToggle.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.body.classList.toggle('dark', savedTheme === 'dark');
+  if (themeToggle) themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+
+  themeToggle && themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeToggle.textContent = isDark ? 'Light' : 'Dark';
   });
 
-  langToggle.addEventListener('click', () => {
+  langToggle && langToggle.addEventListener('click', () => {
     lang = lang === 'en' ? 'es' : 'en';
-    langToggle.textContent = lang === 'en' ? 'ES' : 'EN';
-    renderCards();
+    if (langToggle) langToggle.textContent = lang === 'en' ? 'ES' : 'EN';
+    if (typeof renderCards === 'function') renderCards();
     updateNav();
   });
 

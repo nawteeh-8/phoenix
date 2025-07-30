@@ -393,7 +393,7 @@
 
       // Default states
       let currentLang = 'en';
-      let isDark = true;
+      let isDark = (localStorage.getItem('theme') || 'light') === 'dark';
 
       function setLanguage(lang) {
         currentLang = lang;
@@ -438,6 +438,7 @@
           btnTheme.textContent = 'Light Mode';
           btnTheme.setAttribute('aria-pressed', 'true');
         }
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
       }
 
       function toggleTheme() {
