@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Secure contact form to reach the OPS team." />
+<meta name="robots" content="index, follow" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://pro.fontawesome.com; script-src 'self' 'unsafe-inline' https://pro.fontawesome.com; font-src https://pro.fontawesome.com">
 <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="description" content="Contact Ops Online Support for assistance or inquiries">
+<meta name="robots" content="index, follow">
 <title>Contact Us - OPS • Chattia</title>
 <link rel="stylesheet" href="../css/style.css">
 <style>
@@ -167,6 +171,7 @@
       }
       alert('Contact form submitted!');
       contactForm.reset();
+      window.dispatchEvent(new CustomEvent('modal-close'));
     });
   });
   </script>
