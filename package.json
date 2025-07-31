@@ -1,0 +1,21 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "This static site contains HTML, CSS, and JavaScript assets for the OPS online support pages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nawteeh-8/phoenix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nawteeh-8/phoenix/issues"
+  },
+  "homepage": "https://github.com/nawteeh-8/phoenix#readme"
+}

@@ -224,16 +224,12 @@
     }
     .modal-x:focus, .close-modal:focus { outline: 2px solid var(--clr-accent); }
     /* --- CHATBOT (floating modal, draggable) --- */
-    #chatbot-modal-backdrop {
-      position: fixed;
-      z-index: 2900;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(44,26,73,0.28);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
     #chatbot-container {
+      position: fixed; /* Changed from absolute */
+      z-index: 2900;
+      left: 50%;
+      top: 12vh;
+      transform: translate(-50%, 0);
       min-width: 310px;
       max-width: 490px;
       width: 96vw;
@@ -308,6 +304,9 @@
       }
       .nav-links.active {
         display: flex;
+        background: var(--clr-glass);
+        backdrop-filter: blur(5px);
+        border-bottom: 1px solid #ffffff55;
       }
       .hamburger-menu {
         display: block;
