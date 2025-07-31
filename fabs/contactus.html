@@ -3,92 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://pro.fontawesome.com; script-src 'self' 'unsafe-inline' https://pro.fontawesome.com; font-src https://pro.fontawesome.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://pro.fontawesome.com; script-src 'self' https://pro.fontawesome.com; font-src https://pro.fontawesome.com">
 <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <title>Contact Us - OPS • Chattia</title>
 <link rel="stylesheet" href="../css/style.css">
-<style>
-  :root {
-    --clr-primary: #00c4ff;
-    --clr-accent: #ff3bdb;
-    --clr-accent-dark: #e000be;
-    --clr-bg: #fff;
-    --clr-tx: #333;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: var(--clr-bg);
-    color: var(--clr-tx);
-    margin: 0; padding: 1rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: var(--clr-primary);
-  }
-  form {
-    background: #f9f9fd;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-  }
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: 600;
-  }
-  input, select, textarea {
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    margin-top: 0.25rem;
-  }
-  textarea { resize: vertical; }
-  .form-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .form-cell {
-    flex: 1 1 48%;
-  }
-  @media (max-width: 600px) {
-    .form-cell {
-      flex: 1 1 100%;
-    }
-  }
-  .modal-footer {
-    margin-top: 2rem;
-    text-align: center;
-  }
-  button.submit-btn {
-    width: 120px;
-    height: 48px;
-    background: var(--clr-primary);
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 4px 8px #0004;
-    transition: background 0.3s;
-  }
-  button.submit-btn:hover {
-    background: var(--clr-accent-dark);
-  }
-</style>
+<link rel="stylesheet" href="../css/contactus.css">
 <title>Contact Us Form</title>
 </head>
 <body>
@@ -134,7 +56,7 @@
       </div>
     </div>
 
-    <div style="margin-top:1rem;">
+    <div class="mt-1">
       <label for="comments">Comments</label>
       <textarea id="comments" rows="4" placeholder="What service are you interested in?"></textarea>
     </div>
@@ -144,31 +66,6 @@
     </div>
   </form>
 
-  <script>
-  function sanitizeForm(form) {
-    const fields = form.querySelectorAll('input, textarea');
-    for (const field of fields) {
-      const val = field.value.trim();
-      if (/[<>]/.test(val) || /script/i.test(val)) {
-        return false;
-      }
-      field.value = val;
-    }
-    return true;
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', e => {
-      e.preventDefault();
-      if (!sanitizeForm(contactForm)) {
-        alert('Suspicious content detected. Submission rejected.');
-        return;
-      }
-      alert('Contact form submitted!');
-      contactForm.reset();
-    });
-  });
-  </script>
+  <script src="../js/contactus.js"></script>
 </body>
 </html>
