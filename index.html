@@ -8,11 +8,9 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <title>Ops Online Support</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/i18n.js" defer></script>
-  <script src="js/load-fabs.js" defer></script>
-  <script src="js/modals.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="css/mobile-nav.css">
 </head>
 <body>
   <!-- NAV -->
@@ -41,29 +39,6 @@
     <div class="card" id="card-pro" role="button" tabindex="0"></div>
   </div>
   <div id="modal-root"></div>
-
-  <!-- MOBILE NAV -->
-  <nav class="mobile-nav" aria-label="Mobile Navigation">
-    <div class="nav-items">
-      <a href="index.html" class="nav-btn" aria-label="Home">
-        <i class="fa-solid fa-house"></i>
-      </a>
-      <div class="dropdown">
-        <button class="nav-btn" id="svcBtn" aria-haspopup="true" aria-expanded="false" aria-label="Services">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-        <div class="dropdown-menu" id="svcMenu">
-          <a href="mainnav/opera.html" data-en="Business Operations" data-es="Gestion">Business Operations</a>
-          <a href="mainnav/center.html" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
-          <a href="mainnav/it.html" data-en="IT Support" data-es="Soporte IT">IT Support</a>
-          <a href="mainnav/pros.html" data-en="Professionals" data-es="Profesionales">Professionals</a>
-        </div>
-      </div>
-      <button class="nav-btn" id="mobile-contact-btn" aria-label="Contact Us">
-        <i class="fa-solid fa-envelope"></i>
-      </button>
-    </div>
-  </nav>
 
   <footer>
     © 2025 OPS Online Support
@@ -152,5 +127,10 @@
     }
 
   </script>
+  <script src="js/i18n.js"></script>
+  <script src="js/load-fabs.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/mobile-nav.js" defer></script>
 </body>
 </html>
