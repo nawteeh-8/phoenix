@@ -7,6 +7,8 @@
   </title>
 <!-- Viewport for mobile-first layout -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Professional services and consulting offerings from OPS." />
+<meta name="robots" content="index, follow" />
 <!-- Secure Content Security Policy (CSP) -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
@@ -31,6 +33,8 @@
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <!-- Remove referrer info for outbound links (privacy) -->
 <meta name="referrer" content="no-referrer">
+<meta name="description" content="Ops Online Support professional services offerings">
+<meta name="robots" content="index, follow">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/mobile-nav.css">
   <style>
@@ -315,20 +319,10 @@
       <a href="it.html" class="nav-link" data-en="IT Support" data-es="Soporte IT">IT Support</a>
       <a href="pros.html" class="nav-link" data-en="Professionals" data-es="Profesionales">Professionals</a>
     </div>
-    <div class="toggles">
-      <button class="toggle-btn" id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-      <button class="toggle-btn" id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
-    </div>
     <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
       <i class="fa-solid fa-bars"></i>
     </button>
   </nav>
-
-  <!-- Toggles for language and theme -->
-  <div id="toggles">
-    <button id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-    <button id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
-  </div>
 
   <!-- Header -->
   <header>
@@ -391,7 +385,7 @@
 
   <!-- Get Started Form -->
   <section id="form">
-    <h2 id="pros-form-title" data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
+    <h2 id="pros-form-title" data-en="Get Started Now" data-es="Comience Ahora">Get Started Now</h2>
     <form aria-labelledby="pros-form-title">
       <input
         type="text" aria-label="Full Name"
@@ -407,90 +401,17 @@
         data-es="Correo Electrónico Empresarial"
         required
       />
-      <input
-        type="text" aria-label="Company"
-        placeholder=""
-        data-en="Company"
-        data-es="Empresa"
-        required
-      />
-      <button type="submit" data-en="Request Quote" data-es="Solicitar Cotización">
-        Request Quote
+      <button type="submit" data-en="Book Session" data-es="Reservar Sesión">
+        Book Session
       </button>
     </form>
   </section>
+</main>
 
-  <script>
-    (function() {
-      const btnLang = document.getElementById('btn-lang');
-      const btnTheme = document.getElementById('btn-theme');
-      const html = document.documentElement;
-      const body = document.body;
-
-      // Default states
-      let currentLang = 'en';
-      let isDark = (localStorage.getItem('theme') || 'light') === 'dark';
-
-      function setLanguage(lang) {
-        currentLang = lang;
-        html.lang = lang;
-        // Update <title>
-        const titleTag = document.querySelector('title');
-        document.title = titleTag.getAttribute('data-' + lang);
-        // Update all translatable elements
-        document.querySelectorAll('[data-en]').forEach(el => {
-          const text = el.getAttribute('data-' + lang);
-          if (!text) return;
-          if (el.tagName.toLowerCase() === 'input') {
-            el.placeholder = text;
-          } else if (el.tagName.toLowerCase() === 'img') {
-            el.alt = text;
-          } else {
-            el.textContent = text;
-          }
-        });
-        // Update nav links separately for better screen reader experience
-        document.querySelectorAll('nav a').forEach(a => {
-          const text = a.getAttribute('data-' + lang);
-          if (text) a.textContent = text;
-        });
-        // Update toggle language button label and ARIA
-        btnLang.textContent = lang.toUpperCase();
-        btnLang.setAttribute('aria-pressed', lang === 'es');
-      }
-
-      function toggleLanguage() {
-        setLanguage(currentLang === 'en' ? 'es' : 'en');
-      }
-
-      function setTheme(darkMode) {
-        isDark = darkMode;
-        if (darkMode) {
-          body.classList.remove('light');
-          btnTheme.textContent = 'Dark Mode';
-          btnTheme.setAttribute('aria-pressed', 'false');
-        } else {
-          body.classList.add('light');
-          btnTheme.textContent = 'Light Mode';
-          btnTheme.setAttribute('aria-pressed', 'true');
-        }
-        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-      }
-
-      function toggleTheme() {
-        setTheme(!isDark);
-      }
-
-      btnLang.addEventListener('click', toggleLanguage);
-      btnTheme.addEventListener('click', toggleTheme);
-
-      // Initialize default
-      setLanguage(currentLang);
-      setTheme(isDark);
-    })();
-  </script>
+  <script src="../js/page-init.js"></script>
   <div id="modal-root"></div>
   <script src="../js/load-fabs.js"></script>
+  <script src="../js/drag.js"></script>
   <script src="../js/modals.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/page-init.js"></script>
