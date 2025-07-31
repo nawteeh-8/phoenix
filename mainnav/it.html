@@ -7,6 +7,8 @@
   </title>
 <!-- Viewport for mobile-first layout -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IT support services and troubleshooting resources from OPS." />
+<meta name="robots" content="index, follow" />
 <!-- Secure Content Security Policy (CSP) -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
@@ -31,6 +33,8 @@
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <!-- Remove referrer info for outbound links (privacy) -->
 <meta name="referrer" content="no-referrer">
+<meta name="description" content="Ops Online Support IT support services">
+<meta name="robots" content="index, follow">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/mobile-nav.css">
   <style>
@@ -318,11 +322,6 @@
       <i class="fa-solid fa-bars"></i>
     </button>
   </nav>
-  <!-- Toggles for language and theme -->
-  <div id="toggles">
-    <button id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-    <button id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
-  </div>
   <!-- Header -->
   <header>
     <h1 data-en="Keep Your Systems Secure and Stable" data-es="Mantenga Sus Sistemas Seguros y Estables">
@@ -383,64 +382,10 @@
       </button>
     </form>
   </section>
-  <script>
-    (function() {
-      const btnLang = document.getElementById('btn-lang');
-      const btnTheme = document.getElementById('btn-theme');
-      const html = document.documentElement;
-      const body = document.body;
-      let currentLang = 'en';
-      let isDark = (localStorage.getItem('theme') || 'light') === 'dark';
-      function setLanguage(lang) {
-        currentLang = lang;
-        html.lang = lang;
-        const titleTag = document.querySelector('title');
-        document.title = titleTag.getAttribute('data-' + lang);
-        document.querySelectorAll('[data-en]').forEach(el => {
-          const text = el.getAttribute('data-' + lang);
-          if (!text) return;
-          if (el.tagName.toLowerCase() === 'input') {
-            el.placeholder = text;
-          } else if (el.tagName.toLowerCase() === 'img') {
-            el.alt = text;
-          } else {
-            el.textContent = text;
-          }
-        });
-        document.querySelectorAll('nav a').forEach(a => {
-          const text = a.getAttribute('data-' + lang);
-          if (text) a.textContent = text;
-        });
-        btnLang.textContent = lang.toUpperCase();
-        btnLang.setAttribute('aria-pressed', lang === 'es');
-      }
-      function toggleLanguage() {
-        setLanguage(currentLang === 'en' ? 'es' : 'en');
-      }
-      function setTheme(darkMode) {
-        isDark = darkMode;
-        if (darkMode) {
-          body.classList.remove('light');
-          btnTheme.textContent = 'Dark Mode';
-          btnTheme.setAttribute('aria-pressed', 'false');
-        } else {
-          body.classList.add('light');
-          btnTheme.textContent = 'Light Mode';
-          btnTheme.setAttribute('aria-pressed', 'true');
-        }
-        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-      }
-      function toggleTheme() {
-        setTheme(!isDark);
-      }
-      btnLang.addEventListener('click', toggleLanguage);
-      btnTheme.addEventListener('click', toggleTheme);
-      setLanguage(currentLang);
-      setTheme(isDark);
-    })();
-  </script>
+  <script src="../js/page-init.js"></script>
   <div id="modal-root"></div>
   <script src="../js/load-fabs.js"></script>
+  <script src="../js/drag.js"></script>
   <script src="../js/modals.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/page-init.js"></script>
