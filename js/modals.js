@@ -7,6 +7,11 @@ const svcMenu = document.getElementById('svcMenu');
 
 let dark=false;
 
+function getBasePath() {
+  const depth = window.location.pathname.split('/').length - 2;
+  return depth > 0 ? '../'.repeat(depth) : '.';
+}
+
 if (toggleNav) {
   toggleNav.onclick = ()=>{
     mobileNav.classList.toggle('open');
@@ -40,7 +45,7 @@ if (themeBtn) {
 
 // --- CONTACT US MODAL ---
 function openContactModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = getBasePath();
   fetch(`${base}/fabs/contactus.html`)
     .then(r => r.text())
     .then(html => {
@@ -62,6 +67,18 @@ function openContactModal() {
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
+      const form = modal.querySelector('#contactForm');
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          if (!sanitizeForm(form)) {
+            alert('Suspicious content detected. Submission rejected.');
+            return;
+          }
+          alert('Contact form submitted!');
+          form.reset();
+        });
+      }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
     .catch(err => console.error('Contact modal load error', err));
@@ -69,7 +86,7 @@ function openContactModal() {
 
 // --- CHATBOT MODAL ---
 function openChatbotModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = getBasePath();
   fetch(`${base}/fabs/chatbot.html`)
     .then(r => r.text())
     .then(html => {
@@ -92,7 +109,7 @@ function openChatbotModal() {
 
 // --- JOIN US MODAL ---
 function openJoinModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = getBasePath();
   fetch(`${base}/fabs/joinus.html`)
     .then(r => r.text())
     .then(html => {
