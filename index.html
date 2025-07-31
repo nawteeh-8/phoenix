@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="description" content="OPS Online Support home page providing access to business operations, contact center, IT support, and professional services." />
+  <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OPS Online Support home page with interactive cards that link to operations, contact center, IT and professional service resources." />
+  <meta name="robots" content="index, follow" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://placehold.co;">
   <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="description" content="Ops Online Support central hub for business operations and IT services">
+  <meta name="robots" content="index, follow">
   <title>Ops Online Support</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
@@ -31,6 +37,7 @@
       <i class="fa-solid fa-bars"></i>
     </button>
   </nav>
+<main class="page-content">
   <!-- CARDS GRID -->
   <div class="grid-container">
     <div class="card" id="card-ops" role="button" tabindex="0"></div>
@@ -39,6 +46,7 @@
     <div class="card" id="card-pro" role="button" tabindex="0"></div>
   </div>
   <div id="modal-root"></div>
+</main>
 
   <footer>
     © 2025 OPS Online Support
@@ -106,42 +114,11 @@
       modal.querySelector('#ask-chattia').onclick = ()=>{ openChatbotModal(); close(); };
       modal.querySelector('#join-us').onclick = ()=>{ openJoinModal(); close(); };
     }
-    function makeDraggable(elem, dragHandle) {
-      let isDown = false, startX = 0, startY = 0;
-      let header = dragHandle || elem;
-      header.style.cursor = 'move';
-      header.onmousedown = function(e) {
-        isDown = true;
-        elem.classList.add('dragging');
-        function toPixels(val, total, def) {
-          if (!val) return def;
-          if (String(val).includes('%')) return total * parseFloat(val) / 100;
-          const num = parseFloat(val);
-          return isNaN(num) ? def : num;
-        }
-        const leftPx = toPixels(elem.style.left, window.innerWidth, window.innerWidth/2);
-        const topPx = toPixels(elem.style.top, window.innerHeight, window.innerHeight/4);
-        startX = e.clientX - leftPx;
-        startY = e.clientY - topPx;
-        document.onmousemove = function(e) {
-          if (!isDown) return;
-          elem.style.left = `${e.clientX - startX}px`;
-          elem.style.top = `${e.clientY - startY}px`;
-          elem.style.transform = 'translate(0, 0)';
-        };
-        document.onmouseup = function() {
-          isDown = false;
-          elem.classList.remove('dragging');
-          document.onmousemove = null;
-          document.onmouseup = null;
-        };
-        return false;
-      };
-    }
 
   </script>
   <script src="js/i18n.js"></script>
   <script src="js/load-fabs.js"></script>
+  <script src="js/drag.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/main.js"></script>
   <script src="js/mobile-nav.js" defer></script>
