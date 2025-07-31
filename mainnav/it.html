@@ -311,8 +311,8 @@
       <a href="pros.html" class="nav-link" data-en="Professionals" data-es="Profesionales">Professionals</a>
     </div>
     <div class="toggles">
-      <button class="toggle-btn" id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-      <button class="toggle-btn" id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
+      <button class="toggle-btn lang-toggle" id="nav-btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
+      <button class="toggle-btn theme-toggle" id="nav-btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
     </div>
     <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
       <i class="fa-solid fa-bars"></i>
@@ -320,8 +320,8 @@
   </nav>
   <!-- Toggles for language and theme -->
   <div id="toggles">
-    <button id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-    <button id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
+    <button class="lang-toggle" id="page-btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
+    <button class="theme-toggle" id="page-btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
   </div>
   <!-- Header -->
   <header>
@@ -385,8 +385,8 @@
   </section>
   <script>
     (function() {
-      const btnLang = document.getElementById('btn-lang');
-      const btnTheme = document.getElementById('btn-theme');
+      const langButtons = document.querySelectorAll('.lang-toggle');
+      const themeButtons = document.querySelectorAll('.theme-toggle');
       const html = document.documentElement;
       const body = document.body;
       let currentLang = 'en';
@@ -411,8 +411,10 @@
           const text = a.getAttribute('data-' + lang);
           if (text) a.textContent = text;
         });
-        btnLang.textContent = lang.toUpperCase();
-        btnLang.setAttribute('aria-pressed', lang === 'es');
+        langButtons.forEach(btn => {
+          btn.textContent = lang.toUpperCase();
+          btn.setAttribute('aria-pressed', lang === 'es');
+        });
       }
       function toggleLanguage() {
         setLanguage(currentLang === 'en' ? 'es' : 'en');
@@ -421,20 +423,24 @@
         isDark = darkMode;
         if (darkMode) {
           body.classList.remove('light');
-          btnTheme.textContent = 'Dark Mode';
-          btnTheme.setAttribute('aria-pressed', 'false');
+          themeButtons.forEach(btn => {
+            btn.textContent = 'Dark Mode';
+            btn.setAttribute('aria-pressed', 'false');
+          });
         } else {
           body.classList.add('light');
-          btnTheme.textContent = 'Light Mode';
-          btnTheme.setAttribute('aria-pressed', 'true');
+          themeButtons.forEach(btn => {
+            btn.textContent = 'Light Mode';
+            btn.setAttribute('aria-pressed', 'true');
+          });
         }
         localStorage.setItem('theme', darkMode ? 'dark' : 'light');
       }
       function toggleTheme() {
         setTheme(!isDark);
       }
-      btnLang.addEventListener('click', toggleLanguage);
-      btnTheme.addEventListener('click', toggleTheme);
+      langButtons.forEach(btn => btn.addEventListener('click', toggleLanguage));
+      themeButtons.forEach(btn => btn.addEventListener('click', toggleTheme));
       setLanguage(currentLang);
       setTheme(isDark);
     })();
