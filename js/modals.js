@@ -40,7 +40,7 @@ if (themeBtn) {
 
 // --- CONTACT US MODAL ---
 function openContactModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = location.pathname.includes('/mainnav/') || location.pathname.includes('/fabs/') ? '..' : '.';
   fetch(`${base}/fabs/contactus.html`)
     .then(r => r.text())
     .then(html => {
@@ -59,9 +59,25 @@ function openContactModal() {
       const modal = m.querySelector('.ops-modal');
       modal.focus();
       function close() { root.innerHTML = ''; }
+      const handleClose = () => { close(); };
+      window.addEventListener('modal-close', handleClose, { once: true });
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
+
+      const form = modal.querySelector('#contactForm');
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          if (typeof sanitizeForm === 'function' && !sanitizeForm(form)) {
+            alert('Suspicious content detected. Submission rejected.');
+            return;
+          }
+          alert('Contact form submitted!');
+          form.reset();
+        });
+      }
+
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
     .catch(err => console.error('Contact modal load error', err));
@@ -69,7 +85,7 @@ function openContactModal() {
 
 // --- CHATBOT MODAL ---
 function openChatbotModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = location.pathname.includes('/mainnav/') || location.pathname.includes('/fabs/') ? '..' : '.';
   fetch(`${base}/fabs/chatbot.html`)
     .then(r => r.text())
     .then(html => {
@@ -92,7 +108,7 @@ function openChatbotModal() {
 
 // --- JOIN US MODAL ---
 function openJoinModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = location.pathname.includes('/mainnav/') || location.pathname.includes('/fabs/') ? '..' : '.';
   fetch(`${base}/fabs/joinus.html`)
     .then(r => r.text())
     .then(html => {
@@ -111,6 +127,8 @@ function openJoinModal() {
       const modal = m.querySelector('.ops-modal');
       modal.focus();
       function close() { root.innerHTML = ''; }
+      const handleClose = () => { close(); };
+      window.addEventListener('modal-close', handleClose, { once: true });
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
@@ -124,6 +142,7 @@ function openJoinModal() {
           }
           alert('Join form submitted!');
           form.reset();
+          close();
         });
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);

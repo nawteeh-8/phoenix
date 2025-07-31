@@ -375,6 +375,7 @@
         const inputsContainer = section.querySelector('.inputs');
         inputsContainer.innerHTML = '';
       });
+      window.dispatchEvent(new CustomEvent('modal-close'));
     });
   });
 </script>

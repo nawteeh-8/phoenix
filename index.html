@@ -33,6 +33,7 @@
       <i class="fa-solid fa-bars"></i>
     </button>
   </nav>
+<main class="page-content">
   <!-- CARDS GRID -->
   <div class="grid-container">
     <div class="card" id="card-ops" role="button" tabindex="0"></div>
@@ -41,6 +42,7 @@
     <div class="card" id="card-pro" role="button" tabindex="0"></div>
   </div>
   <div id="modal-root"></div>
+</main>
 
   <footer>
     © 2025 OPS Online Support
@@ -108,42 +110,11 @@
       modal.querySelector('#ask-chattia').onclick = ()=>{ openChatbotModal(); close(); };
       modal.querySelector('#join-us').onclick = ()=>{ openJoinModal(); close(); };
     }
-    function makeDraggable(elem, dragHandle) {
-      let isDown = false, startX = 0, startY = 0;
-      let header = dragHandle || elem;
-      header.style.cursor = 'move';
-      header.onmousedown = function(e) {
-        isDown = true;
-        elem.classList.add('dragging');
-        function toPixels(val, total, def) {
-          if (!val) return def;
-          if (String(val).includes('%')) return total * parseFloat(val) / 100;
-          const num = parseFloat(val);
-          return isNaN(num) ? def : num;
-        }
-        const leftPx = toPixels(elem.style.left, window.innerWidth, window.innerWidth/2);
-        const topPx = toPixels(elem.style.top, window.innerHeight, window.innerHeight/4);
-        startX = e.clientX - leftPx;
-        startY = e.clientY - topPx;
-        document.onmousemove = function(e) {
-          if (!isDown) return;
-          elem.style.left = `${e.clientX - startX}px`;
-          elem.style.top = `${e.clientY - startY}px`;
-          elem.style.transform = 'translate(0, 0)';
-        };
-        document.onmouseup = function() {
-          isDown = false;
-          elem.classList.remove('dragging');
-          document.onmousemove = null;
-          document.onmouseup = null;
-        };
-        return false;
-      };
-    }
 
   </script>
   <script src="js/i18n.js"></script>
   <script src="js/load-fabs.js"></script>
+  <script src="js/drag.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/main.js"></script>
   <script src="js/mobile-nav.js" defer></script>
