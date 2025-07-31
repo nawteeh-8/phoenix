@@ -387,29 +387,36 @@
 
   <!-- Get Started Form -->
   <section id="form">
-    <h2 id="pros-form-title" data-en="Get Started Now" data-es="Comience Ahora">Get Started Now</h2>
-    <form aria-labelledby="pros-form-title">
+    <h2 id="pros-form-title" data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
+    <!-- Form submission handled via JavaScript -->
+    <form aria-labelledby="pros-form-title" action="#">
       <input
         type="text" aria-label="Full Name"
-        placeholder=""
+        placeholder="Full Name"
         data-en="Full Name"
         data-es="Nombre Completo"
         required
       />
       <input
         type="email" aria-label="Business Email"
-        placeholder=""
+        placeholder="Business Email"
         data-en="Business Email"
         data-es="Correo Electrónico Empresarial"
         required
       />
-      <button type="submit" data-en="Book Session" data-es="Reservar Sesión">
-        Book Session
+      <input
+        type="text" aria-label="Company"
+        placeholder="Company"
+        data-en="Company"
+        data-es="Empresa"
+        required
+      />
+      <button type="submit" data-en="Request Quote" data-es="Solicitar Cotización">
+        Request Quote
       </button>
     </form>
   </section>
 </main>
-
   <script src="../js/page-init.js"></script>
   <div id="modal-root"></div>
   <script src="../js/load-fabs.js"></script>

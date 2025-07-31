@@ -508,25 +508,33 @@
       </div>
     </div>
   <!-- Contact Form -->
-  <section id="form">
-    <h2 id="opera-form-title" data-en="Book Your Free Audit" data-es="Reserve Su Auditoría Gratis">Book Your Free Audit</h2>
-    <form aria-labelledby="opera-form-title">
+   <section id="form">
+    <h2 id="opera-form-title" data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
+    <!-- Form submission handled via JavaScript -->
+    <form aria-labelledby="opera-form-title" action="#">
       <input
-        type="text" aria-label="Your Name"
-        placeholder=""
-        data-en="Your Name"
-        data-es="Su Nombre"
+        type="text" aria-label="Full Name"
+        placeholder="Full Name"
+        data-en="Full Name"
+        data-es="Nombre Completo"
         required
       />
       <input
-        type="email" aria-label="Your Email"
-        placeholder=""
-        data-en="Your Email"
-        data-es="Su Correo Electrónico"
+        type="email" aria-label="Business Email"
+        placeholder="Business Email"
+        data-en="Business Email"
+        data-es="Correo Electrónico Empresarial"
         required
       />
-      <button type="submit" data-en="Schedule Now" data-es="Programar Ahora">
-        Schedule Now
+      <input
+        type="text" aria-label="Company"
+        placeholder="Company"
+        data-en="Company"
+        data-es="Empresa"
+        required
+      />
+      <button type="submit" data-en="Request Quote" data-es="Solicitar Cotización">
+        Request Quote
       </button>
     </form>
   </section>
