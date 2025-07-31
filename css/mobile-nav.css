@@ -1,0 +1,240 @@
+:root {
+    --clr-primary: #00c4ff;
+    --clr-accent: #ff3bdb;
+    --clr-accent-dark: #e000be;
+    --squircle: 12px;
+  }
+
+  /* Mobile nav container */
+  #mobileNav {
+    position: fixed;
+    bottom: 25px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 1000;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    width: auto;
+    background: transparent;
+  }
+  #mobileNav.open {
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 4px 8px;
+    background: white;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Nav items container */
+  .nav-items {
+    display: none;
+    gap: 6px;
+  }
+  #mobileNav.open .nav-items {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  /* Nav buttons base - rectangular */
+  .nav-btn {
+    font-size: 0.85rem; /* small text for text buttons */
+    color: black;
+    background: white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    width: 80%;
+    height: 36px;
+    min-width: 36px;
+    padding: 0 5px;
+    border-radius: var(--squircle);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+
+  /* Larger icons */
+  .nav-btn i {
+    font-size: 1.5rem; /* increased from 0.6rem */
+    line-height: 1;
+  }
+
+  /* Smaller fonts for buttons with text only (like ES, Dark) */
+  #langBtn, #themeBtn {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 0 6px;
+    width: auto;
+    min-width: auto;
+  }
+
+  .nav-btn:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+  }
+
+  /* Main toggle button */
+  .nav-btn.main {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: calc(var(--squircle) * 1.5);
+    background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+    color: #14387e;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.02),
+      0 4px 16px rgba(0,0,0,0.02),
+      0 4px 24px rgba(0,0,0,0.02);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    min-width: auto;
+    width: auto;
+    height: 36px;
+  }
+  #mobileNav.open .nav-btn.main {
+    color: #14387e;
+  }
+  .nav-btn.main.open {
+    transform: rotate(135deg);
+    transition: transform 0.3s ease;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-menu {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f9f9f9;
+    color: #222;
+    border-radius: 6px;
+    padding: 6px 8px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    user-select: none;
+    width: 160px;
+    white-space: nowrap;
+  }
+  .dropdown-menu a {
+    color: #222;
+    text-decoration: none;
+    padding: 4px 6px;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .dropdown-menu a:hover {
+    background: #eee;
+    color: #000;
+  }
+  .dropdown.open .dropdown-menu {
+    display: flex;
+  }
+
+  /* Sketch button */
+  .sketch-button {
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    border: none;
+    font-family: inherit;
+    font-weight: 500;
+    position: relative;
+    border-radius: calc(var(--squircle) * 1.5);
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #14387e;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.02),
+      0 4px 16px rgba(0,0,0,0.02),
+      0 4px 24px rgba(0,0,0,0.02);
+    background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+  .nav-btn.main.open,
+  #mobileNav.open .sketch-button {
+    color: black;
+  }
+  .sketch-button.start svg {
+    animation: stroke 1s linear;
+  }
+
+  /* Animated stroke effect container */
+  .lines {
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: hard-light;
+    pointer-events: none;
+    z-index: 1;
+    transform: scaleX(0.92) scaleY(0.95) translateZ(0);
+  }
+  .lines > div {
+    position: absolute;
+    inset: 0;
+  }
+  .lines > div:last-child {
+    transform: rotate(180deg);
+  }
+  .lines svg {
+    display: block;
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    fill: none;
+    stroke-width: 1;
+    stroke-dasharray: 2 10;
+    stroke-dashoffset: 14;
+    opacity: 0;
+    stroke: #c9e9ff;
+    width: 100%;
+    height: 100%;
+  }
+  .lines svg:nth-child(1) { stroke: #f8fcff; }
+  .lines svg:nth-child(2) {
+    stroke-width: 6px;
+    filter: blur(20px);
+  }
+  .lines svg:nth-child(3) {
+    stroke-width: 5px;
+    filter: blur(6px);
+  }
+  .lines svg:nth-child(4) {
+    stroke-width: 10px;
+    filter: blur(56px);
+  }
+
+  @keyframes stroke {
+    30%, 55% {
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 4;
+      opacity: 0;
+    }
+  }
+
+@media (min-width: 769px) {
+  #mobileNav {
+    display: none;
+  }
+}
