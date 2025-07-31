@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="OPS Online Support home page with interactive cards that link to operations, contact center, IT and professional service resources." />
+  <meta name="description" content="OPS Online Support home page providing access to business operations, contact center, IT support, and professional services." />
   <meta name="robots" content="index, follow" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://placehold.co;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data: https://placehold.co;">
   <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="description" content="Ops Online Support central hub for business operations and IT services">
+  <meta name="robots" content="index, follow">
   <title>Ops Online Support</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
@@ -47,74 +49,10 @@
   <footer>
     © 2025 OPS Online Support
   </footer>
-  <script>
-    let svc = {};
-    function renderCards() {
-      ['ops','cc','it','pro'].forEach(key => {
-        const c = svc[key];
-        const el = document.getElementById('card-'+key);
-        if (el && c) {
-          el.innerHTML = `
-            <div class="title">${c.title}</div>
-            <div class="icon">${c.icon}</div>
-            <div class="content"><p>${c.desc}</p></div>
-          `;
-        }
-      });
-    }
-    ['ops','cc','it','pro'].forEach(key => {
-      const card = document.getElementById('card-'+key);
-      if (card) {
-        card.onclick = () => openModal(key);
-        card.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') openModal(key); };
-      }
-    });
-    function openModal(key) {
-      const data = svc[key].modal;
-      const labels = translations[lang].labels;
-      const m = document.createElement('div');
-      m.className = 'modal-backdrop';
-      m.innerHTML = `
-        <div class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal-title-${key}">
-          <button class="modal-close" aria-label="Close modal">&times;</button>
-          <div class="modal-header">
-            <img src="${data.img}" alt="${data.imgAlt}" />
-            <div class="modal-title" id="modal-title-${key}">${data.title}</div>
-          </div>
-          <div class="modal-body">
-            <p>${data.content}</p>
-            <div class="modal-video">${data.video}</div>
-            <ul>
-              ${data.features.map(i => `<li>${i}</li>`).join('')}
-            </ul>
-          </div>
-          <div class="modal-footer-bar">
-            <a class="footer-btn" href="${data.learn}" target="_blank" rel="noopener">${labels.learnMore}</a>
-            <button class="footer-btn" id="ask-chattia">${labels.ask}</button>
-            <button class="footer-btn" id="join-us">${labels.join}</button>
-            <button class="footer-btn cta" id="modal-contact-btn">${labels.contact}</button>
-            <button class="footer-btn cancel" id="cancel-btn">${labels.cancel}</button>
-          </div>
-        </div>`;
-      const root = document.getElementById('modal-root');
-      root.innerHTML = '';
-      root.appendChild(m);
-      const modal = m.querySelector('.modal');
-      modal.focus();
-      function close() { root.innerHTML = ''; }
-      m.onclick = e => { if (e.target === m) close(); };
-      modal.querySelector('.modal-close').onclick = close;
-      modal.querySelector('#cancel-btn').onclick = close;
-      document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown', esc); } }, { once:true });
-      modal.querySelector('#modal-contact-btn').onclick = ()=>{ openContactModal(); close(); };
-      modal.querySelector('#ask-chattia').onclick = ()=>{ openChatbotModal(); close(); };
-      modal.querySelector('#join-us').onclick = ()=>{ openJoinModal(); close(); };
-    }
-
-  </script>
+  <script src="js/homepage.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/load-fabs.js"></script>
-  <script src="js/drag.js"></script>
+  <script src="js/form-utils.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/joinus.js"></script>
   <script src="js/main.js"></script>

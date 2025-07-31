@@ -16,17 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     switchLanguage(lang === 'en' ? 'es' : 'en');
   });
 
-  window.sanitizeForm = function(form) {
-    const fields = form.querySelectorAll('input, textarea');
-    for (const field of fields) {
-      const val = field.value.trim();
-      if (/[<>]/.test(val) || /script/i.test(val)) {
-        return false;
-      }
-      field.value = val;
-    }
-    return true;
-  };
   // --- MOBILE NAV ---
   const svcBtn = document.getElementById('svcBtn');
   const mobileContactBtn = document.getElementById('mobile-contact-btn');
@@ -54,4 +43,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-

@@ -1,0 +1,79 @@
+  :root {
+    --clr-primary: #00c4ff;
+    --clr-accent: #ff3bdb;
+    --clr-accent-dark: #e000be;
+    --clr-bg: #fff;
+    --clr-tx: #333;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--clr-bg);
+    color: var(--clr-tx);
+    margin: 0; padding: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--clr-primary);
+  }
+  form {
+    background: #f9f9fd;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+  }
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+  textarea { resize: vertical; }
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .form-cell {
+    flex: 1 1 48%;
+  }
+  @media (max-width: 600px) {
+    .form-cell {
+      flex: 1 1 100%;
+    }
+  }
+  .modal-footer {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  button.submit-btn {
+    width: 120px;
+    height: 48px;
+    background: var(--clr-primary);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px #0004;
+    transition: background 0.3s;
+  }
+  button.submit-btn:hover {
+    background: var(--clr-accent-dark);
+  }
+</style>
+.mt-1{margin-top:1rem;}

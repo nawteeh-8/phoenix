@@ -1,0 +1,282 @@
+    /* Base & reset */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 20px;
+      color: #fff;
+      background: linear-gradient(135deg, #1a237e, #512da8);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light {
+      background: #f9f9fb;
+      color: #222;
+    }
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      user-select: none;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #d3d3ff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #673ab7;
+      color: white;
+      outline: none;
+    }
+    body.light nav a {
+      color: #444;
+    }
+    body.light nav a:hover,
+    body.light nav a:focus {
+      background-color: #b39ddb;
+      color: #222;
+    }
+
+    /* Toggles container */
+    #toggles {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    /* Dark Mode (default) */
+    #toggles button {
+      background-color: transparent;
+      border: 2px solid #4dabf7;  /* Electric blue border */
+      color: #cbd6e7;             /* Soft pastel blue text */
+      padding: 8px 14px;
+      font-weight: 600;
+      border-radius: 20px;
+      cursor: pointer;
+      min-width: 120px;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      user-select: none;
+      background: #121212; /* Dark charcoal bg */
+    }
+    #toggles button:hover {
+      background-color: #1de9b6; /* Teal hover */
+      border-color: #1de9b6;
+      color: #121212;            /* Dark text on hover */
+    }
+    #toggles button.active {
+      background-color: #000000;  /* Pure black active background */
+      border-color: #0d47a1;     /* Darker blue border */
+      color: #a3c9f1;            /* Soft pastel blue text */
+    }
+
+    /* Light Mode Overrides */
+    body.light #toggles button {
+      background: linear-gradient(135deg, #f9d423, #ff4e50); /* warm orange-yellow gradient */
+      border: 2px solid transparent;
+      color: #222222;                /* Dark gray text */
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      transition: background-position 0.5s ease, color 0.3s, border-color 0.3s;
+    }
+    body.light #toggles button:hover {
+      background-position: 100% 50%;  /* shift gradient */
+      color: #fff;                   /* white text on hover */
+      border-color: #ff4e50;         /* bright orange border */
+    }
+    body.light #toggles button.active {
+      background: linear-gradient(135deg, #ff512f, #dd2476); /* deeper reddish-pink gradient */
+      border-color: #dd2476;
+      color: #fff;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+      font-weight: 500;
+      line-height: 1.4;
+      transition: opacity 0.3s;
+    }
+    header a.cta-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #ab47bc, #7e57c2);
+      padding: 16px 38px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.15rem;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(171, 71, 188, 0.6);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+      user-select: none;
+    }
+    header a.cta-button:hover {
+      box-shadow: 0 14px 40px rgba(171, 71, 188, 0.9);
+      background: linear-gradient(45deg, #8e24aa, #5e35b1);
+    }
+    body.light header a.cta-button {
+      background: linear-gradient(45deg, #9c27b0, #ba68c8);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(156, 39, 176, 0.5);
+    }
+    body.light header a.cta-button:hover {
+      box-shadow: 0 14px 40px rgba(156, 39, 176, 0.8);
+      background: linear-gradient(45deg, #7b1fa2, #9575cd);
+    }
+
+    /* Sections */
+    section {
+      max-width: 720px;
+      margin: 0 auto 40px;
+    }
+    section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    section p,
+    section ul,
+    section blockquote {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+    section ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+    section ul li {
+      margin-bottom: 10px;
+    }
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #7e57c2;
+      padding-left: 15px;
+      color: #ddd;
+    }
+    blockquote strong {
+      font-weight: 700;
+      display: block;
+      margin-top: 10px;
+      color: #eee;
+    }
+    body.light blockquote {
+      color: #555;
+      border-left-color: #ba68c8;
+    }
+    body.light blockquote strong {
+      color: #444;
+    }
+
+    /* Form */
+    section#form {
+      max-width: 480px;
+      margin: 0 auto 60px;
+      background: rgba(255 255 255 / 0.1);
+      padding: 30px 30px 40px;
+      border-radius: 14px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light section#form {
+      background: #fff;
+      color: #222;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.05);
+    }
+    section#form h2 {
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    section#form form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    section#form input {
+      padding: 14px 16px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light section#form input {
+      border: 1px solid #ccc;
+      background: #f5f5f7;
+      color: #222;
+    }
+    section#form button {
+      padding: 14px 0;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: white;
+      background: #5e35b1;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    section#form button:hover {
+      background: #4527a0;
+    }
+    body.light section#form button {
+      background: #7e57c2;
+      color: white;
+    }
+    body.light section#form button:hover {
+      background: #5e35b1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      nav {
+        gap: 15px;
+      }
+      #toggles {
+        justify-content: center;
+      }
+      section, section#form {
+        padding: 0 15px;
+        max-width: 100%;
+      }
+    }
+  </style>
+.opacity-85{opacity:0.85;}
+.mt-8{margin-top:8px;}
+.mt-15{margin-top:15px;}
+.mt-12{margin-top:12px;}
+.mb-12{margin-bottom:12px;}
+.mb-24{margin-bottom:24px;}
+.inline-block{display:inline-block;}
+.cta-purple{background:linear-gradient(45deg,#4527a0,#311b92);}
+.cta-blue{background:linear-gradient(45deg,#1565c0,#0d47a1);}
+.cta-green{background:linear-gradient(45deg,#00695c,#004d40);}
+.fw-500{font-weight:500;}
