@@ -177,9 +177,9 @@
       box-shadow: 0 6px 60px #5e24bb25, 0 0 0 2px #fff1;
       padding: 2.1rem 2.2rem 1.3rem 2.2rem;
       position: absolute;
-      left: 0;
-      top: 0;
-      transform: none;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       transition: box-shadow .17s;
       cursor: default;
       z-index: 2222;
