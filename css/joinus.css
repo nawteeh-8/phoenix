@@ -123,5 +123,4 @@
   button.submit-btn:hover {
     background: var(--clr-accent-dark);
   }
-</style>
-.hidden{display:none;}
+  .hidden{display:none;}
