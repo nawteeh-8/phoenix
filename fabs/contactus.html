@@ -167,6 +167,7 @@
       }
       alert('Contact form submitted!');
       contactForm.reset();
+      window.dispatchEvent(new CustomEvent('modal-close'));
     });
   });
   </script>
