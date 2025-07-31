@@ -59,6 +59,8 @@ function openContactModal() {
       const modal = m.querySelector('.ops-modal');
       modal.focus();
       function close() { root.innerHTML = ''; }
+      const handleClose = () => { close(); };
+      window.addEventListener('modal-close', handleClose, { once: true });
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
@@ -111,6 +113,8 @@ function openJoinModal() {
       const modal = m.querySelector('.ops-modal');
       modal.focus();
       function close() { root.innerHTML = ''; }
+      const handleClose = () => { close(); };
+      window.addEventListener('modal-close', handleClose, { once: true });
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
@@ -124,6 +128,7 @@ function openJoinModal() {
           }
           alert('Join form submitted!');
           form.reset();
+          close();
         });
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
