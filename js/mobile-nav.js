@@ -1,6 +1,11 @@
-const mobileNav = document.getElementById('mobileNav');
+function initMobileNav() {
+  const mobileNav = document.getElementById('mobileNav');
   const toggleNav = document.getElementById('toggleNav');
   const svcBtn = document.getElementById('svcBtn');
+
+  if (!mobileNav || !toggleNav || !svcBtn) {
+    return;
+  }
 
   toggleNav.addEventListener('click', () => {
     const isOpen = mobileNav.classList.toggle('open');
@@ -15,10 +20,9 @@ const mobileNav = document.getElementById('mobileNav');
     svcBtn.setAttribute('aria-expanded', !expanded);
   });
 
-  // Close menu when clicking a nav item (except dropdown toggle)
   document.querySelectorAll('.nav-items a, .nav-items button:not(#svcBtn)').forEach(el => {
     el.addEventListener('click', () => {
-      if(mobileNav.classList.contains('open')) {
+      if (mobileNav.classList.contains('open')) {
         mobileNav.classList.remove('open');
         toggleNav.classList.remove('open');
         toggleNav.setAttribute('aria-expanded', false);
@@ -26,34 +30,33 @@ const mobileNav = document.getElementById('mobileNav');
     });
   });
 
-  // Sketch button animated SVG lines
   function createSVG(width, height, radius) {
-    const svgNS = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(svgNS, "svg");
-    const rect = document.createElementNS(svgNS, "rect");
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    const rect = document.createElementNS(svgNS, 'rect');
 
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-    rect.setAttribute("x", "0");
-    rect.setAttribute("y", "0");
-    rect.setAttribute("width", "100%");
-    rect.setAttribute("height", "100%");
-    rect.setAttribute("rx", radius);
-    rect.setAttribute("ry", radius);
-    rect.setAttribute("pathLength", "10");
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    rect.setAttribute('x', '0');
+    rect.setAttribute('y', '0');
+    rect.setAttribute('width', '100%');
+    rect.setAttribute('height', '100%');
+    rect.setAttribute('rx', radius);
+    rect.setAttribute('ry', radius);
+    rect.setAttribute('pathLength', '10');
 
     svg.appendChild(rect);
     return svg;
   }
 
-  document.querySelectorAll(".sketch-button").forEach(button => {
+  document.querySelectorAll('.sketch-button').forEach(button => {
     const style = getComputedStyle(button);
     const radius = parseInt(style.borderRadius, 10) || 0;
 
-    const lines = document.createElement("div");
-    lines.className = "lines";
+    const lines = document.createElement('div');
+    lines.className = 'lines';
 
-    const groupTop = document.createElement("div");
-    const groupBottom = document.createElement("div");
+    const groupTop = document.createElement('div');
+    const groupBottom = document.createElement('div');
 
     const svg = createSVG(button.offsetWidth, button.offsetHeight, radius);
 
@@ -72,6 +75,9 @@ const mobileNav = document.getElementById('mobileNav');
 
     button.appendChild(lines);
 
-    button.addEventListener("pointerenter", () => button.classList.add("start"));
-    svg.addEventListener("animationend", () => button.classList.remove("start"));
+    button.addEventListener('pointerenter', () => button.classList.add('start'));
+    svg.addEventListener('animationend', () => button.classList.remove('start'));
   });
+}
+
+window.initMobileNav = initMobileNav;
