@@ -342,6 +342,12 @@
       #chat-log::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Opera */
       }
+  .page-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
     }
 
 @media (max-width: 480px) {
