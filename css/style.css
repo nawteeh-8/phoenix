@@ -246,8 +246,10 @@
       max-width: 490px;
       width: 96vw;
       height: 510px;
-      left: 50%; top: 12vh;
-      transform: translate(-50%, 0);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       overflow: hidden;
       display: flex;
       flex-direction: column;
