@@ -32,6 +32,7 @@
 <!-- Remove referrer info for outbound links (privacy) -->
 <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/mobile-nav.css">
   <style>
     /* Reset & base */
     body {
@@ -300,12 +301,22 @@
 </head>
 <body>
   <!-- Navigation Menu -->
-  <nav>
-    <a href="../index.html" data-en="Home" data-es="Inicio">Home</a>
-    <a href="opera.html" data-en="Business Operations" data-es="Gestion">Business Operations</a>
-    <a href="center.html" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
-    <a href="it.html" data-en="IT Support" data-es="Soporte IT">IT Support</a>
-    <a href="pros.html" data-en="Professionals" data-es="Profesionales">Professionals</a>
+  <nav class="ops-nav" aria-label="OPS Navigation">
+    <span class="ops-logo">OPS</span>
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link" data-en="Home" data-es="Inicio">Home</a>
+      <a href="opera.html" class="nav-link" data-en="Business Operations" data-es="Gestion">Business Operations</a>
+      <a href="center.html" class="nav-link" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
+      <a href="it.html" class="nav-link" data-en="IT Support" data-es="Soporte IT">IT Support</a>
+      <a href="pros.html" class="nav-link" data-en="Professionals" data-es="Profesionales">Professionals</a>
+    </div>
+    <div class="toggles">
+      <button class="toggle-btn" id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
+      <button class="toggle-btn" id="btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
+    </div>
+    <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </nav>
   <!-- Toggles for language and theme -->
   <div id="toggles">
