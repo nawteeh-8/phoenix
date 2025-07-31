@@ -11,6 +11,9 @@
     .then(h => {
       if (h.trim()) {
         document.body.insertAdjacentHTML('beforeend', h);
+        if (typeof window.initMobileNav === 'function') {
+          window.initMobileNav();
+        }
       } else {
         console.warn('FABs HTML content is empty.');
       }
