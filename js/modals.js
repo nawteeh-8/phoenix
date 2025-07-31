@@ -40,7 +40,7 @@ if (themeBtn) {
 
 // --- CONTACT US MODAL ---
 function openContactModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = location.pathname.includes('/mainnav/') || location.pathname.includes('/fabs/') ? '..' : '.';
   fetch(`${base}/fabs/contactus.html`)
     .then(r => r.text())
     .then(html => {
@@ -69,7 +69,7 @@ function openContactModal() {
 
 // --- CHATBOT MODAL ---
 function openChatbotModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = location.pathname.includes('/mainnav/') || location.pathname.includes('/fabs/') ? '..' : '.';
   fetch(`${base}/fabs/chatbot.html`)
     .then(r => r.text())
     .then(html => {
@@ -92,7 +92,7 @@ function openChatbotModal() {
 
 // --- JOIN US MODAL ---
 function openJoinModal() {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const base = location.pathname.includes('/mainnav/') || location.pathname.includes('/fabs/') ? '..' : '.';
   fetch(`${base}/fabs/joinus.html`)
     .then(r => r.text())
     .then(html => {
