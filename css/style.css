@@ -169,8 +169,9 @@
     }
     .ops-modal, .modal-content, #chatbot-container {
       min-width: 310px;
-      max-width: 490px;
-      width: 96vw;
+      max-width: none;
+      width: 80vw;
+      height: 80vh;
       background: #fff;
       color: #1a1930;
       border-radius: 2rem;
@@ -192,7 +193,12 @@
     .modal-header { display: flex; gap: 1.3em; align-items: center; margin-bottom: 1em; }
     .modal-header img.modal-img { width: 72px; height: 72px; object-fit: cover; border-radius: 1.2em; border: 2px solid #f5e0ff; }
     .modal-title { font-size: 1.16em; font-weight: 700; text-transform: uppercase; }
-    .modal-content-body { margin-bottom: 1.1em; font-size: 1.05em; max-height: 50vh; overflow-y: auto; }
+    .modal-content-body {
+      margin-bottom: 1.1em;
+      font-size: 1.05em;
+      max-height: none;
+      overflow: visible;
+    }
     .modal-video { background: #f7f4fb; color: #ab8adc; border-radius: 1em; margin-bottom: 1em; padding: 1em; text-align: center; }
     body.dark .modal-video { background: #18162a; color: #ffe7fe; }
     .modal-actions {
@@ -243,17 +249,15 @@
     }
     #chatbot-container {
       min-width: 310px;
-      max-width: 490px;
-      width: 96vw;
-      height: 510px;
-      left: 50%; top: 12vh;
-      transform: translate(-50%, 0);
+      max-width: none;
+      width: 80vw;
+      height: 80vh;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-    }
-    @media (max-width: 700px) {
-      #chatbot-container { width: 92vw; height: 66vh; min-width: 200px; }
     }
     #chatbot-header {
       display: flex; justify-content: space-between; align-items: center; gap:.5rem;
@@ -321,8 +325,6 @@
 
       /* Modal changes */
       .ops-modal, .modal-content, #chatbot-container, .modal {
-        width: 80vw;
-        max-height: 80vh;
         padding: 1.2rem;
         font-size: 0.9rem; /* Adjust base font size for modals on mobile */
       }
@@ -331,14 +333,12 @@
         font-size: 1.1rem;
       }
 
-      .modal-body, .modal-content-body, #chat-log {
+      #chat-log {
         overflow-y: auto;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
       }
 
-      .modal-body::-webkit-scrollbar,
-      .modal-content-body::-webkit-scrollbar,
       #chat-log::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Opera */
       }
@@ -431,7 +431,7 @@
   color: #36334e;
   font-size: 1rem;
   flex-grow: 1;
-  overflow-y: auto;
+  overflow: visible;
   min-height: 50px;
 }
 
