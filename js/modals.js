@@ -98,6 +98,25 @@ function openChatbotModal() {
       m.id = 'chatbot-modal-backdrop';
       m.innerHTML = `<div id="chatbot-container" class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="title">${body}</div>`;
       document.body.appendChild(m);
+
+      // --- dynamically load assets if missing ---
+      const cssHref = `${base}/css/chatbot.css`;
+      if (!document.querySelector(`link[href$="chatbot.css"]`)) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = cssHref;
+        document.head.appendChild(link);
+      }
+
+      const jsSrc = `${base}/js/chatbot.js`;
+      const loadScript = () => {
+        if (!document.querySelector(`script[src$="chatbot.js"]`)) {
+          const s = document.createElement('script');
+          s.src = jsSrc;
+          document.body.appendChild(s);
+        }
+      };
+
       const modal = m.querySelector('.ops-modal');
       modal.focus();
       function close() { document.body.removeChild(m); }
@@ -105,6 +124,9 @@ function openChatbotModal() {
       modal.querySelector('#chatbot-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
       if (typeof makeDraggable === 'function') makeDraggable(modal, modal.querySelector('#chatbot-header'));
+
+      // script must load after DOM elements exist
+      loadScript();
     })
     .catch(err => console.error('Chatbot modal load error', err));
 }
