@@ -69,7 +69,8 @@ body.dark{--clr-bg:var(--clr-bg-dark);--clr-tx:var(--clr-tx-dark)}
   <div id="chat-log" aria-live="polite"></div>
 
   <div id="chatbot-form-container">
-    <form id="chatbot-input-row" autocomplete="off">
+    <!-- Form submission handled via JavaScript -->
+    <form id="chatbot-input-row" autocomplete="off" action="#">
       <input id="chatbot-input" type="text" placeholder="Type your message..." required maxlength="256"
              data-en-ph="Type your message..." data-es-ph="Escriba su mensaje...">
       <button id="chatbot-send" type="submit" disabled aria-label="Send">

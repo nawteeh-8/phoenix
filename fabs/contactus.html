@@ -93,7 +93,8 @@
 </head>
 <body>
   <h1 id="contactus-title">Contact Us</h1>
-  <form aria-label="Contact form" id="contactForm" autocomplete="off">
+  <!-- Form submission handled via JavaScript -->
+  <form aria-label="Contact form" id="contactForm" autocomplete="off" action="#">
     <div class="form-row">
       <div class="form-cell">
         <label for="name">Name</label>
@@ -112,14 +113,14 @@
       </div>
       <div class="form-cell">
         <label for="preferredDate">Preferred Date</label>
-        <input id="preferredDate" type="date" required />
+        <input id="preferredDate" type="date" required placeholder="Select a date" />
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-cell">
         <label for="preferredTime">Preferred Time</label>
-        <input id="preferredTime" type="time" required />
+        <input id="preferredTime" type="time" required placeholder="Select a time" />
       </div>
       <div class="form-cell">
         <label for="interest">What are you interested about?</label>
