@@ -45,12 +45,14 @@ function openContactModal() {
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
+      const styles = Array.from(doc.head.querySelectorAll('style')).map(s => s.outerHTML).join('');
       const body = doc.body.innerHTML;
       const m = document.createElement('div');
       m.className = 'modal-backdrop';
       m.innerHTML = `
         <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="contact-title" id="contact-modal">
           <button class="modal-x" aria-label="CERRAR">X</button>
+          ${styles}
           ${body}
         </div>`;
       const root = document.getElementById('modal-root');
@@ -74,10 +76,11 @@ function openChatbotModal() {
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
+      const styles = Array.from(doc.head.querySelectorAll('style')).map(s => s.outerHTML).join('');
       const body = doc.body.innerHTML;
       const m = document.createElement('div');
       m.id = 'chatbot-modal-backdrop';
-      m.innerHTML = `<div id="chatbot-container" class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="title">${body}</div>`;
+      m.innerHTML = `<div id="chatbot-container" class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="title">${styles}${body}</div>`;
       document.body.appendChild(m);
       const modal = m.querySelector('.ops-modal');
       modal.focus();
@@ -97,12 +100,14 @@ function openJoinModal() {
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
+      const styles = Array.from(doc.head.querySelectorAll('style')).map(s => s.outerHTML).join('');
       const body = doc.body.innerHTML;
       const m = document.createElement('div');
       m.className = 'modal-backdrop';
       m.innerHTML = `
         <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="joinus-title" id="join-modal">
           <button class="modal-x" aria-label="CERRAR">X</button>
+          ${styles}
           ${body}
         </div>`;
       const root = document.getElementById('modal-root');
