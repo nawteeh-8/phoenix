@@ -109,6 +109,7 @@ function openContactModal() {
           }
           alert('Contact form submitted!');
           form.reset();
+          window.dispatchEvent(new Event('modal-close'));
         });
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
