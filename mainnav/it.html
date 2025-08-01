@@ -10,11 +10,12 @@
 <!-- Viewport for mobile-first layout -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Secure Content Security Policy (CSP) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://www.gstatic.com https://www.google.com https://challenges.cloudflare.com;
-  style-src 'self' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
   connect-src 'self' https://www.googleapis.com https://api.cloudflare.com;
   img-src 'self' data:;
   frame-src 'self' https://www.google.com https://challenges.cloudflare.com;
@@ -50,7 +51,7 @@
     </div>
     <div class="toggles">
       <button class="toggle-btn lang-toggle" id="nav-btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-      <button class="toggle-btn theme-toggle" id="nav-btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
+      <button class="toggle-btn theme-toggle" id="nav-btn-theme" aria-label="Toggle theme" aria-pressed="false">Dark</button>
     </div>
     <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
       <i class="fa-solid fa-bars"></i>
@@ -59,7 +60,7 @@
   <!-- Toggles for language and theme -->
   <div id="toggles">
     <button class="lang-toggle" id="page-btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-    <button class="theme-toggle" id="page-btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
+    <button class="theme-toggle" id="page-btn-theme" aria-label="Toggle theme" aria-pressed="false">Dark</button>
   </div>
   <!-- Header -->
   <header>
