@@ -65,7 +65,22 @@ function openContactModal() {
       root.appendChild(m);
       const modal = m.querySelector('.ops-modal');
       modal.focus();
-      function close() { root.innerHTML = ''; }
+
+      const addedLinks = [];
+      ['style.css', 'contactus.css'].forEach(file => {
+        if (!document.querySelector(`link[href$="${file}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = `${base}/css/${file}`;
+          document.head.appendChild(link);
+          addedLinks.push(link);
+        }
+      });
+
+      function close() {
+        root.innerHTML = '';
+        addedLinks.forEach(l => l.remove());
+      }
       const handleClose = () => { close(); };
       window.addEventListener('modal-close', handleClose, { once: true });
       m.onclick = e => (e.target === m ? close() : 0);
