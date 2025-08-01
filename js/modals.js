@@ -8,8 +8,8 @@ const svcMenu = document.getElementById('svcMenu');
 let dark=false;
 
 function getBasePath() {
-  const depth = window.location.pathname.split('/').length - 2;
-  return depth > 0 ? '../'.repeat(depth) : '.';
+  const url = new URL('.', document.baseURI || window.location.href);
+  return url.pathname.replace(/\/$/, '');
 }
 
 if (toggleNav) {
@@ -98,7 +98,10 @@ function openContactModal() {
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
-    .catch(err => console.error('Contact modal load error', err));
+    .catch(err => {
+      console.error('Contact modal load error', err);
+      alert('Unable to load contact form. Please try again later.');
+    });
 }
 
 // --- CHATBOT MODAL ---
