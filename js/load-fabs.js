@@ -17,7 +17,7 @@
   fetch(`${base}/fabs/mobile-nav.html`)
     .then(r => {
       if (!r.ok) {
-        throw new Error(`Failed to fetch FABs: ${r.status}`);
+        throw new Error(`Failed to fetch mobile nav: ${r.status}`);
       }
       return r.text();
     })
@@ -28,6 +28,21 @@
           window.initMobileNav();
         }
       } else {
+        console.warn('Mobile nav HTML content is empty.');
+      }
+      return fetch(`${base}/fabs/fabs-new.html`);
+    })
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`Failed to fetch FABs: ${r.status}`);
+      }
+      return r.text();
+    })
+    .then(h => {
+      if (h.trim()) {
+        document.body.insertAdjacentHTML('beforeend', h);
+        initBigScreenFabs();
+      } else {
         console.warn('FABs HTML content is empty.');
       }
     })
@@ -35,7 +50,7 @@
 
   // --- BIG SCREEN FABs ---
   function initBigScreenFabs() {
-    const fabContainer = document.querySelector('.fab-container');
+    const fabContainer = document.querySelector('.fab-container, #fab-container');
     if (fabContainer) {
       // FABs are displayed or hidden via CSS based on screen size.
       // No special JS logic needed for initialization at this moment.
