@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const sanitize = window.sanitizeForm;
-
   contactForm.addEventListener('submit', e => {
     e.preventDefault();
     if (typeof sanitize === 'function' && !sanitize(contactForm)) {
