@@ -12,9 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.textContent = isDark ? 'Light' : 'Dark';
   });
 
-  langToggle && langToggle.addEventListener('click', () => {
-    switchLanguage(lang === 'en' ? 'es' : 'en');
-  });
+  if (langToggle) {
+    let currentLang = typeof lang !== 'undefined' ? lang : 'en';
+    langToggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
+    langToggle.setAttribute('aria-pressed', currentLang === 'es');
+
+    langToggle.addEventListener('click', () => {
+      const targetLang = currentLang === 'en' ? 'es' : 'en';
+
+      if (typeof switchLanguage === 'function') {
+        switchLanguage(targetLang);
+        currentLang = typeof lang !== 'undefined' ? lang : targetLang;
+      } else {
+        currentLang = targetLang;
+        langToggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
+        langToggle.setAttribute('aria-pressed', currentLang === 'es');
+      }
+    });
+  }
 
   // --- MOBILE NAV ---
   const svcBtn = document.getElementById('svcBtn');
