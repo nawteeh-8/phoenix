@@ -14,7 +14,7 @@ body{margin:0;display:flex;align-items:center;justify-content:center;height:100v
 body.dark{--clr-bg:var(--clr-bg-dark);--clr-tx:var(--clr-tx-dark)}
 
 /* ---------- CHATBOT ---------- */
-#chatbot-container{width:300px;height:540px;background:#251541;border:2px solid var(--clr-accent);
+#chatbot-container{background:#251541;border:2px solid var(--clr-accent);
   border-radius:18px;box-shadow:0 8px 32px #0006;display:flex;flex-direction:column;overflow:hidden}
 #chatbot-header{display:flex;justify-content:space-between;align-items:center;gap:.5rem;
   background:linear-gradient(135deg,var(--clr-primary) 0%,var(--clr-accent) 100%);
@@ -35,4 +35,6 @@ body.dark{--clr-bg:var(--clr-bg-dark);--clr-tx:var(--clr-tx-dark)}
 #chatbot-send:disabled{background:#555;cursor:not-allowed}
 .human-check{color:#ddd;font-size:.85rem;display:flex;align-items:center;margin-top:.3rem}
 .human-check input{margin-right:.4rem}
-@media(max-width:480px){#chatbot-container{height:75vh;width:90%}}
+
+@media (min-width:769px){#chatbot-container{width:300px;height:540px}}
+@media (max-width:768px){#chatbot-container{width:90%;height:75vh}}
