@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8" />
-  <meta name="description" content="Information on professional services offered by OPS Online Support covering specialized expertise and training." />
+  <meta name="description" content="Book OPS professional services for expert guidance and rapid transformation." />
   <meta name="robots" content="index, follow" />
   <title data-en="Professional Services | Ops Online Support" data-es="Servicios Profesionales | Ops Online Support">
     Professional Services | Ops Online Support
   </title>
 <!-- Viewport for mobile-first layout -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Consultants drive transformation, business continuity and revenue analytics. Book a strategy call to see how OPS experts deliver results fast.">
 <!-- Secure Content Security Policy (CSP) -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://www.gstatic.com https://www.google.com https://challenges.cloudflare.com;
-  style-src 'self' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
   connect-src 'self' https://www.googleapis.com https://api.cloudflare.com;
   img-src 'self' data:;
   frame-src 'self' https://www.google.com https://challenges.cloudflare.com;
@@ -36,6 +35,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="Ops Online Support professional services offerings">
 <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/mobile-nav.css">
   <link rel="stylesheet" href="../css/pros.css">
@@ -49,7 +49,11 @@
       <a href="opera.html" class="nav-link" data-en="Business Operations" data-es="Gestion">Business Operations</a>
       <a href="center.html" class="nav-link" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
       <a href="it.html" class="nav-link" data-en="IT Support" data-es="Soporte IT">IT Support</a>
-      <a href="pros.html" class="nav-link" data-en="Professionals" data-es="Profesionales">Professionals</a>
+    <a href="pros.html" class="nav-link" data-en="Professionals" data-es="Profesionales">Professionals</a>
+    </div>
+    <div class="toggles">
+      <button class="toggle-btn" id="btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
+      <button class="toggle-btn" id="btn-theme" aria-label="Toggle theme" aria-pressed="false">Dark</button>
     </div>
     <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
       <i class="fa-solid fa-bars"></i>

@@ -100,7 +100,6 @@ function openChatbotModal() {
       m.id = 'chatbot-modal-backdrop';
       m.innerHTML = `<div id="chatbot-container" class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="title">${body}</div>`;
       document.body.appendChild(m);
-
       const modal = m.querySelector('.ops-modal');
       modal.focus();
 
@@ -129,6 +128,9 @@ function openChatbotModal() {
       modal.querySelector('#chatbot-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
       if (typeof makeDraggable === 'function') makeDraggable(modal, modal.querySelector('#chatbot-header'));
+
+      // script must load after DOM elements exist
+      loadScript();
     })
     .catch(err => console.error('Chatbot modal load error', err));
 }
@@ -136,6 +138,15 @@ function openChatbotModal() {
 // --- JOIN US MODAL ---
 function openJoinModal() {
   const base = getBasePath();
+
+  // Ensure Join Us styles are loaded once
+  if (!document.querySelector('link[href$="joinus.css"]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `${base}/css/joinus.css`;
+    document.head.appendChild(link);
+  }
+
   fetch(`${base}/fabs/joinus.html`)
     .then(r => r.text())
     .then(html => {

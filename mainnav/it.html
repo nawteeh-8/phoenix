@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8" />
-  <meta name="description" content="Details on IT support services including help desk, cybersecurity and cloud solutions from OPS Online Support." />
+  <meta name="description" content="Discover 24/7 IT support from OPS, including help desk, cybersecurity and cloud management." />
   <meta name="robots" content="index, follow" />
   <title data-en="IT Support Services | Ops Online Support" data-es="Servicios de Soporte TI | Ops Online Support">
     IT Support Services | Ops Online Support
   </title>
 <!-- Viewport for mobile-first layout -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Reliable help desk, cybersecurity and cloud management keep your infrastructure running smoothly. OPS delivers 24/7 support with compliance built in.">
 <!-- Secure Content Security Policy (CSP) -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://www.gstatic.com https://www.google.com https://challenges.cloudflare.com;
-  style-src 'self' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
+  style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
   connect-src 'self' https://www.googleapis.com https://api.cloudflare.com;
   img-src 'self' data:;
   frame-src 'self' https://www.google.com https://challenges.cloudflare.com;
@@ -36,6 +35,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="Ops Online Support IT support services">
 <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/mobile-nav.css">
   <link rel="stylesheet" href="../css/it.css">
@@ -53,7 +53,7 @@
     </div>
     <div class="toggles">
       <button class="toggle-btn lang-toggle" id="nav-btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-      <button class="toggle-btn theme-toggle" id="nav-btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
+      <button class="toggle-btn theme-toggle" id="nav-btn-theme" aria-label="Toggle theme" aria-pressed="false">Dark</button>
     </div>
     <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
       <i class="fa-solid fa-bars"></i>
@@ -62,7 +62,7 @@
   <!-- Toggles for language and theme -->
   <div id="toggles">
     <button class="lang-toggle" id="page-btn-lang" aria-label="Toggle language" aria-pressed="false">EN</button>
-    <button class="theme-toggle" id="page-btn-theme" aria-label="Toggle dark/light theme" aria-pressed="false">Dark Mode</button>
+    <button class="theme-toggle" id="page-btn-theme" aria-label="Toggle theme" aria-pressed="false">Dark</button>
   </div>
   <!-- Header -->
   <header>
