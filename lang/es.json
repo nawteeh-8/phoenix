@@ -95,5 +95,125 @@
         "learn": "mainnav/pros.html"
       }
     }
+  },
+  "form": {
+    "contactTitle": "Vea Lo Que Podemos Hacer por Usted",
+    "fullName": "Nombre Completo",
+    "businessEmail": "Correo Electrónico Empresarial",
+    "company": "Empresa",
+    "requestQuote": "Solicitar Cotización"
+  },
+  "chatbot": {
+    "title": "Chatbot OPS AI",
+    "placeholder": "Escriba su mensaje...",
+    "human": "Soy humano"
+  },
+  "opera": {
+    "title": "Optimización de Operaciones Empresariales | Ops Online Support",
+    "hero": {
+      "heading": "Optimice Sus Operaciones Empresariales",
+      "desc": "Aumentamos la eficiencia, el cumplimiento y la precisión de sus flujos de trabajo operativos.",
+      "cta": "Comenzar"
+    },
+    "card": {
+      "title": "Optimice Sus Operaciones Empresariales",
+      "desc": "Procesos optimizados, mejoras de rendimiento y crecimiento escalable, entregados con experiencia.",
+      "list": [
+        "Estandarice flujos de trabajo para la excelencia operativa",
+        "Identifique y elimine ineficiencias de procesos",
+        "Asegure el cumplimiento normativo en su organización",
+        "Escale su negocio de manera eficiente y segura"
+      ]
+    }
+  },
+
+  "center": {
+    "title": "Soluciones de Centro de Contacto | Ops Online Support",
+    "hero": {
+      "heading": "¿Necesita un Centro de Contacto Más Inteligente y Escalable?",
+      "desc": "Brinde soporte más rápido y multilingüe las 24 horas. OPS construye y opera su centro de contacto con agentes capacitados, información en tiempo real y cumplimiento total.",
+      "cta": "Agendar mi Evaluación CX Gratis",
+      "tagline": "Sin costo. Sin complicaciones. Solo información procesable."
+    },
+    "walk": {
+      "title": "Obtendrá:",
+      "items": [
+        "Una revisión de desempeño de su configuración actual de soporte",
+        "Recomendaciones para estrategia omnicanal",
+        "Pronósticos de mejoras en CX y puntos de referencia de ROI"
+      ],
+      "tagline": "Con la confianza de equipos de comercio electrónico, fintech y SaaS en todo el mundo"
+    },
+    "more": {
+      "title": "Centro de Contacto",
+      "subtitle": "Aumente la satisfacción y el compromiso del cliente",
+      "desc": "Mejore su experiencia de soporte en cada punto de contacto con administración de llamadas entrantes y salientes 24/7, soluciones multicanal y análisis avanzados.",
+      "list": [
+        "Atención telefónica 24/7 en canales entrantes y salientes",
+        "Soporte multilingüe por correo, chat y redes sociales",
+        "Integración completa con plataformas CRM líderes",
+        "Análisis detallado para monitoreo de satisfacción"
+      ]
+    },
+    "cta": {
+      "title": "¿Listo para mejorar su centro de contacto?",
+      "desc": "Le ayudamos a brindar experiencias de cliente excepcionales elevando cada punto de contacto con nuestros servicios multilingües y multicanal.",
+      "demo": "▶ Agendar una Demo CX",
+      "demoDesc": "Vea cómo nuestros agentes multilingües y el seguimiento de sentimientos funcionan en tiempo real.",
+      "tools": "⚙ Explorar Herramientas de Centro de Contacto",
+      "toolsDesc": "Desde integración CRM hasta soporte por chat, descubra todas nuestras capacidades.",
+      "launch": "🚀 Lanzar Soporte en 48 Horas",
+      "launchDesc": "Implemente cobertura multicanal con configuración mínima"
+    }
+  },
+
+  "it": {
+    "title": "Servicios de Soporte TI | Ops Online Support",
+    "hero": {
+      "heading": "Mantenga Sus Sistemas Seguros y Estables",
+      "desc": "Servicio confiable de mesa de ayuda, ciberseguridad y servicios en la nube para mantener su infraestructura TI funcionando sin problemas."
+    },
+    "tiers": {
+      "title": "Nuestros Niveles de Soporte TI",
+      "list": [
+        "Soporte técnico y monitoreo de sistemas 24/7",
+        "Auditorías de ciberseguridad, parches y detección de amenazas",
+        "Gestión de infraestructura en la nube",
+        "Cumplimiento NIST, CISA, OPS Core CyberSec"
+      ]
+    },
+    "story": {
+      "title": "Historia del Cliente",
+      "quote": "“Pasamos de 6 tickets de soporte por día a 1 — y la moral de nuestro equipo se disparó. La mejor decisión de este año.”",
+      "author": "– CTO de Startup FinTech"
+    }
+  },
+
+  "pros": {
+    "title": "Servicios Profesionales | Ops Online Support",
+    "hero": {
+      "heading": "Desbloquee Conocimientos. Obtenga Resultados.",
+      "desc": "Nuestros consultores aportan décadas de experiencia a sus mayores desafíos empresariales.",
+      "cta": "Reserve Llamada de Estrategia Gratis"
+    },
+    "special": {
+      "title": "Nos Especializamos En:",
+      "list": [
+        "Transformación digital y gestión del cambio",
+        "Continuidad del negocio y planificación de riesgos",
+        "Operaciones de ingresos y analítica"
+      ]
+    },
+    "impact": {
+      "title": "Impacto Real",
+      "quote": "“Su equipo no solo aconsejó, sino que ejecutó. Alcanzamos el 120% de nuestra meta de ingresos en dos trimestres.”",
+      "author": "– CEO, SaaS B2B",
+      "imgAlt": "Logotipos de clientes"
+    },
+    "offer": {
+      "title": "Oferta por Tiempo Limitado",
+      "desc": "Reserve antes del 31 de julio y obtenga una sesión de estrategia de operaciones gratuita de 90 minutos (normalmente $650).",
+      "note": "Solo quedan 6 sesiones este mes."
+    }
   }
 }
