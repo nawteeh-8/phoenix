@@ -11,21 +11,56 @@
     link.crossOrigin = 'anonymous';
     document.head.appendChild(link);
   }
+  // --- LOAD FABs ---
+  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  // Load mobile and desktop FABs sequentially
+  fetch(`${base}/fabs/mobile-nav.html`)
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`Failed to fetch FABs: ${r.status}`);
+      }
+      return r.text();
+    })
+    .then(h => {
+      if (h.trim()) {
+        document.body.insertAdjacentHTML('beforeend', h);
+        if (typeof window.initMobileNav === 'function') {
+          window.initMobileNav();
+        }
+      } else {
+        console.warn('FABs HTML content is empty.');
+      }
+      return fetch(`${base}/fabs/fabs-new.html`);
+    })
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`Failed to fetch desktop FABs: ${r.status}`);
+      }
+      return r.text();
+    })
+    .then(h => {
+      if (h.trim()) {
+        document.body.insertAdjacentHTML('beforeend', h);
+        initBigScreenFabs();
+      } else {
+        console.warn('Desktop FABs HTML content is empty.');
+      }
+    })
+    .catch(err => console.error('FABs load error:', err));
 
+  // --- BIG SCREEN FABs ---
   function initBigScreenFabs() {
-    const fabContainer = document.querySelector('.fab-container');
+    const fabContainer = document.querySelector('#fab-container');
     if (fabContainer) {
       // FABs are displayed or hidden via CSS based on screen size.
       // No special JS logic needed for initialization at this moment.
     }
   }
-
   function appendToBody(html) {
     if (html && html.trim()) {
       document.body.insertAdjacentHTML('beforeend', html);
     }
   }
-
   if (window.location.protocol === 'file:') {
     const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
   <div class="nav-items">
