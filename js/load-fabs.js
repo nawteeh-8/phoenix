@@ -1,4 +1,4 @@
-(function() {
+(function () {
   // --- ENSURE FONTAWESOME STYLESHEET ---
   const faHref = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
   const faIntegrity = 'sha512-bNDdB2S/bRMyCV2wAPOQgpdnH3UX0DpD+s/COM24kTx5cDIeEJD7BqXc9EjoP6KDAdAm8YGtS+wGGyRyvCb4TQ==';
@@ -11,7 +11,7 @@
     link.crossOrigin = 'anonymous';
     document.head.appendChild(link);
   }
-  // --- LOAD FABs ---
+
   const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
 
   function appendToBody(html) {
@@ -24,8 +24,55 @@
     const fabContainer = document.querySelector('#fab-container');
     if (fabContainer) {
       // FABs are displayed or hidden via CSS based on screen size.
-      // No special JS logic needed for initialization at this moment.
     }
+  }
+
+  let fabsHTMLCache = null;
+  function fetchFabsHTML() {
+    if (fabsHTMLCache) {
+      return Promise.resolve(fabsHTMLCache);
+    }
+    return fetch(`${base}/fabs/fabs-new.html`)
+      .then((r) => {
+        if (!r.ok) {
+          throw new Error(`fabs-new.html ${r.status} ${r.statusText}`);
+        }
+        return r.text();
+      })
+      .then((html) => {
+        fabsHTMLCache = html;
+        return html;
+      });
+  }
+
+  function insertFabs() {
+    return fetchFabsHTML()
+      .then((html) => {
+        if (!document.querySelector('#fab-container')) {
+          appendToBody(html);
+          initBigScreenFabs();
+        }
+      })
+      .catch((err) => console.error('FABs load error:', err));
+  }
+
+  function loadMobileNav() {
+    return fetch(`${base}/fabs/mobile-nav.html`)
+      .then((r) => {
+        if (!r.ok) {
+          throw new Error(`mobile-nav.html ${r.status} ${r.statusText}`);
+        }
+        return r.text();
+      })
+      .then((html) => {
+        if (html.trim()) {
+          appendToBody(html);
+          if (typeof window.initMobileNav === 'function') {
+            window.initMobileNav();
+          }
+        }
+      })
+      .catch((err) => console.error('mobile-nav fetch error:', err));
   }
 
   if (window.location.protocol === 'file:') {
@@ -63,30 +110,8 @@
     }
     initBigScreenFabs();
   } else {
-    fetch(`${base}/fabs/mobile-nav.html`)
-      .then(r => {
-        if (!r.ok) {
-          throw new Error(`mobile-nav.html ${r.status} ${r.statusText}`);
-        }
-        return r.text();
-      })
-      .then(h => {
-        appendToBody(h);
-        if (h.trim() && typeof window.initMobileNav === 'function') {
-          window.initMobileNav();
-        }
-        return fetch(`${base}/fabs/fabs-new.html`);
-      })
-      .then(r => {
-        if (!r.ok) {
-          throw new Error(`fabs-new.html ${r.status} ${r.statusText}`);
-        }
-        return r.text();
-      })
-      .then(h => {
-        appendToBody(h);
-        initBigScreenFabs();
-      })
-      .catch(err => console.error('FABs load error:', err));
+    loadMobileNav().then(insertFabs);
+    insertFabs();
   }
 })();
+
