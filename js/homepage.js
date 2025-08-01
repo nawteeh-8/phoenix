@@ -22,10 +22,13 @@ function renderCards() {
 function openModal(key) {
   const data = svc[key].modal;
   const labels = translations[lang].labels;
-  const m = document.createElement('div');
-  m.className = 'modal-backdrop';
-  m.innerHTML = `
-    <div class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal-title-${key}">
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.setAttribute('tabindex', '-1');
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', `modal-title-${key}`);
+  modal.innerHTML = `
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-header">
         <img src="${data.img}" alt="${data.imgAlt}" />
@@ -44,18 +47,15 @@ function openModal(key) {
         <button class="footer-btn" id="join-us">${labels.join}</button>
         <button class="footer-btn cta" id="modal-contact-btn">${labels.contact}</button>
         <button class="footer-btn cancel" id="cancel-btn">${labels.cancel}</button>
-      </div>
-    </div>`;
-  const root = document.getElementById('modal-root');
+      </div>`;
+  const root = document.getElementById('modal-root') || document.body;
   root.innerHTML = '';
-  root.appendChild(m);
-  const modal = m.querySelector('.modal');
+  root.appendChild(modal);
   modal.focus();
-  function close() { root.innerHTML = ''; }
-  m.onclick = e => { if (e.target === m) close(); };
-  modal.querySelector('.modal-close').onclick = close;
+  let detach;
+  function close() { root.innerHTML = ''; if (detach) detach(); }
+  detach = attachModalClose(modal, close);
   modal.querySelector('#cancel-btn').onclick = close;
-  document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown', esc); } }, { once:true });
   modal.querySelector('#modal-contact-btn').onclick = ()=>{ openContactModal(); close(); };
   modal.querySelector('#ask-chattia').onclick = ()=>{ openChatbotModal(); close(); };
   modal.querySelector('#join-us').onclick = ()=>{ openJoinModal(); close(); };
