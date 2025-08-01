@@ -94,27 +94,37 @@
   if (window.location.protocol === 'file:') {
     const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
   <div class="nav-items">
+<<<<<<< HEAD
+    <a href="${base}/contact.html?ref=mobile" class="nav-btn" title="Contact Us" aria-label="Contact Us"><i class="fa-solid fa-envelope"></i></a>
+    <a href="${base}/join.html?ref=mobile" class="nav-btn" title="Join Us" aria-label="Join Us"><i class="fa-solid fa-user-plus"></i></a>
+    <a href="${base}/chatbot.html?ref=mobile" class="nav-btn" title="Chatbot" aria-label="Chatbot"><i class="fa-solid fa-comment"></i></a>
+=======
     <button id="mobile-contact" class="nav-btn" title="Contact Us" aria-label="Contact Us"><i class="fa-solid fa-envelope"></i></button>
     <button id="mobile-join" class="nav-btn" title="Join Us" aria-label="Join Us"><i class="fa-solid fa-user-plus"></i></button>
     <button id="mobile-chatbot" class="nav-btn" title="Chatbot" aria-label="Chatbot"><i class="fa-solid fa-comment"></i></button>
+>>>>>>> main
     <button id="lang-toggle" class="nav-btn" aria-label="Toggle language">ES</button>
     <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">Dark</button>
     <div class="dropdown">
       <button id="svcBtn" class="nav-btn" aria-expanded="false" aria-haspopup="true" aria-controls="svcMenu" aria-label="Toggle services menu"><i class="fa-solid fa-bars"></i></button>
       <div class="dropdown-menu" id="svcMenu" role="menu" aria-label="Services menu">
-        <a href="../mainnav/opera.html" role="menuitem">Ops</a>
-        <a href="../mainnav/center.html" role="menuitem">Center</a>
-        <a href="../mainnav/it.html" role="menuitem">IT</a>
-        <a href="../mainnav/pros.html" role="menuitem">Pros</a>
+        <a href="${base}/mainnav/opera.html" role="menuitem">Ops</a>
+        <a href="${base}/mainnav/center.html" role="menuitem">Center</a>
+        <a href="${base}/mainnav/it.html" role="menuitem">IT</a>
+        <a href="${base}/mainnav/pros.html" role="menuitem">Pros</a>
       </div>
     </div>
-    <a href="../index.html" class="nav-btn" title="Home" aria-label="Home"><i class="fa-solid fa-home"></i></a>
+    <a href="${base}/index.html" class="nav-btn" title="Home" aria-label="Home"><i class="fa-solid fa-home"></i></a>
   </div>
   <button id="toggleNav" class="nav-btn main sketch-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </div>`;
+<<<<<<< HEAD
+    const fabsHTML = `<!-- Floating Action Buttons snippet -->\n<div id="fab-container">\n  <a href="${base}/chatbot.html?src=fab" title="Chatbot"><i class="fa-solid fa-comment"></i></a>\n  <a href="${base}/contact.html?src=fab" title="Contact Us"><i class="fa-solid fa-envelope"></i></a>\n  <a href="${base}/join.html?src=fab" title="Join Us"><i class="fa-solid fa-user-plus"></i></a>\n</div>`;
+=======
     const fabsHTML = `<!-- Floating Action Buttons snippet -->\n<div id="fab-container">\n  <button id="fab-chatbot" title="Chatbot"><i class="fa-solid fa-comment"></i></button>\n  <button id="fab-contact" title="Contact Us"><i class="fa-solid fa-envelope"></i></button>\n  <button id="fab-join" title="Join Us"><i class="fa-solid fa-user-plus"></i></button>\n</div>`;
+>>>>>>> main
     appendToBody(mobileNavHTML);
     appendToBody(fabsHTML);
     if (typeof window.initMobileNav === 'function') {
@@ -128,4 +138,3 @@
     Promise.allSettled([fabPromise, navPromise]).then(attachFabListeners);
   }
 })();
-

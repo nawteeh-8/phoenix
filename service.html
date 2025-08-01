@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="Detailed information about OPS Online Support services." />
+<meta name="robots" content="index, follow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; script-src 'self'; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https://placehold.co;">
+<meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<title>Service Details - OPS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RXf+QSDCUqpphKAa+WAc3XQ8fE5H1aO/8e2wY+8Q1n8yVwDh1RZTf1TDN8E+u1n7eU5KyY7X2Qo+hqeZZn+UAQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mobile-nav.css">
+<link rel="stylesheet" href="css/center.css">
+<link rel="stylesheet" href="css/service.css">
+</head>
+<body>
+<nav class="ops-nav" aria-label="OPS Navigation">
+  <span class="ops-logo">OPS</span>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+    <a href="mainnav/opera.html" class="nav-link" data-i18n="nav.ops">Business Operations</a>
+    <a href="mainnav/center.html" class="nav-link" data-i18n="nav.cc">Contact Center</a>
+    <a href="mainnav/it.html" class="nav-link" data-i18n="nav.it">IT Support</a>
+    <a href="mainnav/pros.html" class="nav-link" data-i18n="nav.pro">Professionals</a>
+  </div>
+  <div class="toggles">
+    <button class="toggle-btn" id="lang-toggle" aria-label="Toggle language" aria-pressed="false">EN</button>
+    <button class="toggle-btn" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">Dark</button>
+    <span id="lang-status" class="visually-hidden" aria-live="polite"></span>
+  </div>
+  <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</nav>
+<main class="page-content">
+  <div class="service-container">
+    <div class="service-header">
+      <img id="service-img" alt="" />
+      <h1 id="service-title"></h1>
+    </div>
+    <p id="service-content"></p>
+    <div id="service-video"></div>
+    <ul id="service-features"></ul>
+    <div class="service-actions">
+      <a id="learn-more" target="_blank" rel="noopener">Learn More</a>
+      <a id="chatbot-btn">Ask Chattia</a>
+      <a id="join-btn">Join Us</a>
+      <a id="contact-btn">Contact Us</a>
+    </div>
+  </div>
+</main>
+<footer>© 2025 OPS Online Support</footer>
+<script src="js/i18n.js" defer></script>
+<script src="js/service.js" defer></script>
+<script src="js/load-fabs.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/mobile-nav.js" defer></script>
+</body>
+</html>

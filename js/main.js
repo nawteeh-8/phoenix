@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- MOBILE NAV ---
   const svcBtn = document.getElementById('svcBtn');
-  const mobileContactBtn = document.getElementById('mobile-contact-btn');
 
   if (svcBtn) {
     svcBtn.addEventListener('click', (e) => {
@@ -42,10 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdown.classList.toggle('open');
       e.stopPropagation();
     });
-  }
-
-  if (mobileContactBtn) {
-    mobileContactBtn.addEventListener('click', openContactModal);
   }
 
   // Close dropdown if clicking outside
