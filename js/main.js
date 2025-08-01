@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const themeToggle = document.getElementById('theme-toggle') || document.getElementById('btn-theme');
-  const langToggle = document.getElementById('lang-toggle') || document.getElementById('btn-lang');
-
+  const langToggle = document.getElementById('lang-toggle');
   const savedTheme = localStorage.getItem('theme') || 'light';
   document.body.classList.toggle('dark', savedTheme === 'dark');
   if (themeToggle) themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-
   themeToggle && themeToggle.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -16,10 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLang = typeof lang !== 'undefined' ? lang : 'en';
     langToggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
     langToggle.setAttribute('aria-pressed', currentLang === 'es');
-
     langToggle.addEventListener('click', () => {
       const targetLang = currentLang === 'en' ? 'es' : 'en';
-
       if (typeof switchLanguage === 'function') {
         switchLanguage(targetLang);
         currentLang = typeof lang !== 'undefined' ? lang : targetLang;
