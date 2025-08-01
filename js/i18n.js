@@ -1,10 +1,16 @@
 var lang = 'en';
 var translations = {};
+const fallbackLang = { svc: {} };
 function loadTranslations(l) {
   let base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
   return fetch(base + '/lang/' + l + '.json')
     .then(r => r.json())
-    .then(data => { translations[l] = data; return data; });
+    .then(data => { translations[l] = data; return data; })
+    .catch(err => {
+      console.error('Error loading translations for', l, err);
+      translations[l] = fallbackLang;
+      return translations[l];
+    });
 }
 function applyTranslations() {
   const data = translations[lang];
@@ -27,7 +33,13 @@ function switchLanguage(l) {
     toggle.textContent = l === 'en' ? 'ES' : 'EN';
     toggle.setAttribute('aria-pressed', l === 'es');
   }
-  (translations[l] ? Promise.resolve() : loadTranslations(l)).then(applyTranslations);
+  (translations[l] ? Promise.resolve() : loadTranslations(l))
+    .then(applyTranslations)
+    .catch(err => {
+      console.error('Error switching language to', l, err);
+      translations[l] = fallbackLang;
+      applyTranslations();
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
