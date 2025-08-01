@@ -36,15 +36,9 @@
 
   function setTheme(darkMode) {
     isDark = darkMode;
-    if (darkMode) {
-      body.classList.remove('light');
-      btnTheme.textContent = 'Dark Mode';
-      btnTheme.setAttribute('aria-pressed', 'false');
-    } else {
-      body.classList.add('light');
-      btnTheme.textContent = 'Light Mode';
-      btnTheme.setAttribute('aria-pressed', 'true');
-    }
+    body.classList.toggle('dark', darkMode);
+    btnTheme.textContent = darkMode ? 'Light' : 'Dark';
+    btnTheme.setAttribute('aria-pressed', darkMode);
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }
 
