@@ -50,6 +50,8 @@ function openContactModal() {
     .then(r => r.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
+      const scriptNodes = [...doc.querySelectorAll('script')];
+      scriptNodes.forEach(s => s.remove());
       const body = doc.body.innerHTML;
       const m = document.createElement('div');
       m.className = 'modal-backdrop';
@@ -69,6 +71,19 @@ function openContactModal() {
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
+
+      // append and execute scripts from fetched HTML
+      scriptNodes.forEach(s => {
+        const src = s.getAttribute('src');
+        const newScript = document.createElement('script');
+        if (src) {
+          newScript.src = src;
+        } else {
+          newScript.textContent = s.textContent;
+        }
+        modal.appendChild(newScript);
+      });
+
       const form = modal.querySelector('#contactForm');
       if (form) {
         form.addEventListener('submit', e => {
