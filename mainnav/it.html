@@ -4,9 +4,7 @@
    <meta charset="UTF-8" />
   <meta name="description" content="Ops Online Support IT support services deliver reliable help desk, cybersecurity, and cloud management with 24/7 compliance.">
   <meta name="robots" content="index, follow" />
-  <title data-en="IT Support Services | Ops Online Support" data-es="Servicios de Soporte TI | Ops Online Support">
-    IT Support Services | Ops Online Support
-  </title>
+  <title data-i18n="it.title">IT Support Services | Ops Online Support</title>
 <!-- Viewport for mobile-first layout -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Secure Content Security Policy (CSP) -->
@@ -43,11 +41,11 @@
   <nav class="ops-nav" aria-label="OPS Navigation">
     <span class="ops-logo">OPS</span>
     <div class="nav-links">
-      <a href="../index.html" class="nav-link" data-en="Home" data-es="Inicio">Home</a>
-      <a href="opera.html" class="nav-link" data-en="Business Operations" data-es="Gestion">Business Operations</a>
-      <a href="center.html" class="nav-link" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a>
-      <a href="it.html" class="nav-link" data-en="IT Support" data-es="Soporte IT">IT Support</a>
-      <a href="pros.html" class="nav-link" data-en="Professionals" data-es="Profesionales">Professionals</a>
+      <a href="../index.html" class="nav-link" data-i18n="nav.home">Home</a>
+      <a href="opera.html" class="nav-link" data-i18n="nav.ops">Business Operations</a>
+      <a href="center.html" class="nav-link" data-i18n="nav.cc">Contact Center</a>
+      <a href="it.html" class="nav-link" data-i18n="nav.it">IT Support</a>
+      <a href="pros.html" class="nav-link" data-i18n="nav.pro">Professionals</a>
     </div>
     <div class="toggles">
       <button class="toggle-btn" id="lang-toggle" aria-label="Toggle language" aria-pressed="false">EN</button>
@@ -60,63 +58,53 @@
   </nav>
   <!-- Header -->
   <header>
-    <h1 data-en="Keep Your Systems Secure and Stable" data-es="Mantenga Sus Sistemas Seguros y Estables">
-      Keep Your Systems Secure and Stable
-    </h1>
-    <p data-en="Dependable help desk, cybersecurity, and cloud services to keep your IT infrastructure running smoothly."
-       data-es="Servicio confiable de mesa de ayuda, ciberseguridad y servicios en la nube para mantener su infraestructura TI funcionando sin problemas.">
-      Dependable help desk, cybersecurity, and cloud services to keep your IT infrastructure running smoothly.
-    </p>
-    <a href="#form" class="cta-button" class="cta-purple2" data-en="Learn More" data-es="Aprenda Más">Learn More</a>
+    <h1 data-i18n="it.hero.heading">Keep Your Systems Secure and Stable</h1>
+    <p data-i18n="it.hero.desc">Dependable help desk, cybersecurity, and cloud services to keep your IT infrastructure running smoothly.</p>
+    <a href="#form" class="cta-button" class="cta-purple2" data-i18n="labels.learnMore">Learn More</a>
   </header>
   <!-- Sections -->
   <section>
-    <h2 data-en="Our IT Support Tiers" data-es="Nuestros Niveles de Soporte TI">Our IT Support Tiers</h2>
+    <h2 data-i18n="it.tiers.title">Our IT Support Tiers</h2>
     <ul>
-      <li data-en="24/7 tech support & system monitoring" data-es="Soporte técnico y monitoreo de sistemas 24/7">24/7 tech support & system monitoring</li>
-      <li data-en="Cybersecurity audits, patching, threat detection" data-es="Auditorías de ciberseguridad, parches y detección de amenazas">Cybersecurity audits, patching, threat detection</li>
-      <li data-en="Cloud infrastructure management" data-es="Gestión de infraestructura en la nube">Cloud infrastructure management</li>
-      <li data-en="NIST, CISA, OPS Core CyberSec compliance" data-es="Cumplimiento NIST, CISA, OPS Core CyberSec">NIST, CISA, OPS Core CyberSec compliance</li>
+      <li data-i18n="it.tiers.list.0">24/7 tech support & system monitoring</li>
+      <li data-i18n="it.tiers.list.1">Cybersecurity audits, patching, threat detection</li>
+      <li data-i18n="it.tiers.list.2">Cloud infrastructure management</li>
+      <li data-i18n="it.tiers.list.3">NIST, CISA, OPS Core CyberSec compliance</li>
     </ul>
   </section>
   <!-- Client Story -->
   <section class="section-box">
-    <h2 data-en="Client Story" data-es="Historia del Cliente">Client Story</h2>
-    <blockquote data-en="“We went from 6 support tickets per day to 1 — and our team morale shot up. Best decision this year.”" data-es="“Pasamos de 6 tickets de soporte por día a 1 — y la moral de nuestro equipo se disparó. La mejor decisión de este año.”">
+    <h2 data-i18n="it.story.title">Client Story</h2>
+    <blockquote data-i18n="it.story.quote">
       “We went from 6 support tickets per day to 1 — and our team morale shot up. Best decision this year.”
       <br />
-      <strong data-en="– CTO, FinTech Startup" data-es="– CTO de Startup FinTech">– CTO, FinTech Startup</strong>
+      <strong data-i18n="it.story.author">– CTO, FinTech Startup</strong>
     </blockquote>
   </section>
   <!-- Request Form -->
   <section id="form">
-    <h2 id="it-form-title" data-en="See What We Can Do for You" data-es="Vea Lo Que Podemos Hacer por Usted">See What We Can Do for You</h2>
+    <h2 id="it-form-title" data-i18n="form.contactTitle">See What We Can Do for You</h2>
     <!-- Form submission handled via JavaScript -->
     <form aria-labelledby="it-form-title" action="#">
       <input
         type="text" aria-label="Full Name"
         placeholder="Full Name"
-        data-en="Full Name"
-        data-es="Nombre Completo"
+        data-i18n-ph="form.fullName"
         required
       />
       <input
         type="email" aria-label="Business Email"
         placeholder="Business Email"
-        data-en="Business Email"
-        data-es="Correo Electrónico Empresarial"
+        data-i18n-ph="form.businessEmail"
         required
       />
       <input
         type="text" aria-label="Company"
         placeholder="Company"
-        data-en="Company"
-        data-es="Empresa"
+        data-i18n-ph="form.company"
         required
       />
-      <button type="submit" data-en="Request Quote" data-es="Solicitar Cotización">
-        Request Quote
-      </button>
+      <button type="submit" data-i18n="form.requestQuote">Request Quote</button>
     </form>
   </section>
   <div id="modal-root"></div>

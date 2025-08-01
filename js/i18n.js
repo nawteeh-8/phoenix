@@ -28,7 +28,8 @@ function sanitizeHTML(html) {
   return template.innerHTML;
 }
 function loadTranslations(l) {
-  let base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const path = window.location.pathname;
+  let base = (path.includes('/mainnav/') || path.includes('/fabs/')) ? '..' : '.';
   return fetch(base + '/lang/' + l + '.json')
     .then(r => r.json())
     .then(data => { translations[l] = data; return data; })
@@ -56,6 +57,18 @@ function applyTranslations() {
     } else if (text) {
       el.textContent = text;
     }
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph').split('.');
+    let text = data;
+    key.forEach(k => { if (text) text = text[k]; });
+    if (text) el.setAttribute('placeholder', text);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const key = el.getAttribute('data-i18n-alt').split('.');
+    let text = data;
+    key.forEach(k => { if (text) text = text[k]; });
+    if (text) el.setAttribute('alt', text);
   });
   if (typeof renderCards === 'function') renderCards();
 }
