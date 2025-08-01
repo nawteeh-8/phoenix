@@ -1,9 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
   const langToggle = document.getElementById('lang-toggle');
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.body.classList.toggle('dark', savedTheme === 'dark');
+  if (themeToggle) themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+  themeToggle && themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeToggle.textContent = isDark ? 'Light' : 'Dark';
+  });
 
-  if (langToggle && typeof switchLanguage === 'function') {
+  if (langToggle) {
+    let currentLang = typeof lang !== 'undefined' ? lang : 'en';
+    langToggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
+    langToggle.setAttribute('aria-pressed', currentLang === 'es');
     langToggle.addEventListener('click', () => {
-      switchLanguage(lang === 'en' ? 'es' : 'en');
+      const targetLang = currentLang === 'en' ? 'es' : 'en';
+      if (typeof switchLanguage === 'function') {
+        switchLanguage(targetLang);
+        currentLang = typeof lang !== 'undefined' ? lang : targetLang;
+      } else {
+        currentLang = targetLang;
+        langToggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
+        langToggle.setAttribute('aria-pressed', currentLang === 'es');
+      }
     });
   }
 
