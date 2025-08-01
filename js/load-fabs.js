@@ -27,6 +27,22 @@
     }
   }
 
+  function addClick(selector, handler) {
+    const el = document.querySelector(selector);
+    if (el && typeof handler === 'function') {
+      el.addEventListener('click', handler);
+    }
+  }
+
+  function attachFabListeners() {
+    addClick('#fab-chatbot', window.openChatbotModal);
+    addClick('#fab-contact', window.openContactModal);
+    addClick('#fab-join', window.openJoinModal);
+    addClick('#mobile-chatbot', window.openChatbotModal);
+    addClick('#mobile-contact', window.openContactModal);
+    addClick('#mobile-join', window.openJoinModal);
+  }
+
   let fabsHTMLCache = null;
   function fetchFabsHTML() {
     if (fabsHTMLCache) {
@@ -78,9 +94,9 @@
   if (window.location.protocol === 'file:') {
     const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
   <div class="nav-items">
-    <button onclick="openContactModal()" class="nav-btn" title="Contact Us" aria-label="Contact Us"><i class="fa-solid fa-envelope"></i></button>
-    <button onclick="openJoinModal()" class="nav-btn" title="Join Us" aria-label="Join Us"><i class="fa-solid fa-user-plus"></i></button>
-    <button onclick="openChatbotModal()" class="nav-btn" title="Chatbot" aria-label="Chatbot"><i class="fa-solid fa-comment"></i></button>
+    <button id="mobile-contact" class="nav-btn" title="Contact Us" aria-label="Contact Us"><i class="fa-solid fa-envelope"></i></button>
+    <button id="mobile-join" class="nav-btn" title="Join Us" aria-label="Join Us"><i class="fa-solid fa-user-plus"></i></button>
+    <button id="mobile-chatbot" class="nav-btn" title="Chatbot" aria-label="Chatbot"><i class="fa-solid fa-comment"></i></button>
     <button id="lang-toggle" class="nav-btn" aria-label="Toggle language">ES</button>
     <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">Dark</button>
     <div class="dropdown">
@@ -98,16 +114,18 @@
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </div>`;
-    const fabsHTML = `<!-- Floating Action Buttons snippet -->\n<div id="fab-container">\n  <button onclick="openChatbotModal()" title="Chatbot"><i class="fa-solid fa-comment"></i></button>\n  <button onclick="openContactModal()" title="Contact Us"><i class="fa-solid fa-envelope"></i></button>\n  <button onclick="openJoinModal()" title="Join Us"><i class="fa-solid fa-user-plus"></i></button>\n</div>`;
+    const fabsHTML = `<!-- Floating Action Buttons snippet -->\n<div id="fab-container">\n  <button id="fab-chatbot" title="Chatbot"><i class="fa-solid fa-comment"></i></button>\n  <button id="fab-contact" title="Contact Us"><i class="fa-solid fa-envelope"></i></button>\n  <button id="fab-join" title="Join Us"><i class="fa-solid fa-user-plus"></i></button>\n</div>`;
     appendToBody(mobileNavHTML);
     appendToBody(fabsHTML);
-   if (typeof window.initMobileNav === 'function') {
+    if (typeof window.initMobileNav === 'function') {
       window.initMobileNav();
     }
     initBigScreenFabs();
+    attachFabListeners();
   } else {
-    loadMobileNav().then(insertFabs);
-    insertFabs();
+    const fabPromise = insertFabs();
+    const navPromise = loadMobileNav();
+    Promise.allSettled([fabPromise, navPromise]).then(attachFabListeners);
   }
 })();
 
