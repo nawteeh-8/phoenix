@@ -98,7 +98,21 @@ function openContactModal() {
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
-    .catch(err => console.error('Contact modal load error', err));
+    .catch(err => {
+      console.error('Contact modal load error', err);
+      const root = document.getElementById('modal-root');
+      const message = 'Unable to load contact form. Please try again or email us at support@example.com.';
+      if (root) {
+        root.innerHTML = '';
+        const msg = document.createElement('div');
+        msg.setAttribute('role', 'alert');
+        msg.className = 'modal-error';
+        msg.textContent = message;
+        root.appendChild(msg);
+      } else {
+        alert(message);
+      }
+    });
 }
 
 // --- CHATBOT MODAL ---
