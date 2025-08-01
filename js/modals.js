@@ -112,6 +112,15 @@ function openChatbotModal() {
 // --- JOIN US MODAL ---
 function openJoinModal() {
   const base = getBasePath();
+
+  // Ensure Join Us styles are loaded once
+  if (!document.querySelector('link[href$="joinus.css"]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `${base}/css/joinus.css`;
+    document.head.appendChild(link);
+  }
+
   fetch(`${base}/fabs/joinus.html`)
     .then(r => r.text())
     .then(html => {
