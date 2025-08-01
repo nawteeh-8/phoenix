@@ -1,8 +1,35 @@
 var lang = 'en';
 var translations = {};
 const fallbackLang = { svc: {} };
+
+function sanitizeHTML(html) {
+  const template = document.createElement('template');
+  template.innerHTML = html;
+  const allowedTags = ['i', 'b', 'em', 'strong', 'br', 'a', 'span'];
+  const allowedAttributes = {
+    'i': ['class'],
+    'span': ['class'],
+    'a': ['href', 'title', 'target', 'rel']
+  };
+  const nodes = template.content.querySelectorAll('*');
+  nodes.forEach(node => {
+    const tag = node.nodeName.toLowerCase();
+    if (!allowedTags.includes(tag)) {
+      node.replaceWith(...node.childNodes);
+    } else {
+      [...node.attributes].forEach(attr => {
+        const allowed = allowedAttributes[tag] || [];
+        if (!allowed.includes(attr.name.toLowerCase())) {
+          node.removeAttribute(attr.name);
+        }
+      });
+    }
+  });
+  return template.innerHTML;
+}
 function loadTranslations(l) {
-  let base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+  const path = window.location.pathname;
+  let base = (path.includes('/mainnav/') || path.includes('/fabs/')) ? '..' : '.';
   return fetch(base + '/lang/' + l + '.json')
     .then(r => r.json())
     .then(data => { translations[l] = data; return data; })
@@ -21,7 +48,27 @@ function applyTranslations() {
     const key = el.getAttribute('data-i18n').split('.');
     let text = data;
     key.forEach(k => { if (text) text = text[k]; });
-    if (text) el.innerHTML = text;
+    if (typeof text === 'string') {
+      if (/<[a-z][\s\S]*>/i.test(text)) {
+        el.innerHTML = sanitizeHTML(text);
+      } else {
+        el.textContent = text;
+      }
+    } else if (text) {
+      el.textContent = text;
+    }
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph').split('.');
+    let text = data;
+    key.forEach(k => { if (text) text = text[k]; });
+    if (text) el.setAttribute('placeholder', text);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const key = el.getAttribute('data-i18n-alt').split('.');
+    let text = data;
+    key.forEach(k => { if (text) text = text[k]; });
+    if (text) el.setAttribute('alt', text);
   });
   if (typeof renderCards === 'function') renderCards();
 }
@@ -32,7 +79,10 @@ function switchLanguage(l) {
   if (toggle) {
     toggle.textContent = l === 'en' ? 'ES' : 'EN';
     toggle.setAttribute('aria-pressed', l === 'es');
+    toggle.setAttribute('aria-label', l === 'en' ? 'Switch to Spanish' : 'Switch to English');
   }
+  const status = document.getElementById('lang-status');
+  if (status) status.textContent = l === 'en' ? 'English selected' : 'Spanish selected';
   (translations[l] ? Promise.resolve() : loadTranslations(l))
     .then(applyTranslations)
     .catch(err => {
