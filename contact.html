@@ -12,12 +12,32 @@
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <title>Contact Us - OPS</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bNDdB2S/bRMyCV2wAPOQgpdnH3UX0DpD+s/COM24kTx5cDIeEJD7BqXc9EjoP6KDAdAm8YGtS+wGGyRyvCb4TQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/contactus.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mobile-nav.css">
+<link rel="stylesheet" href="css/center.css">
+<link rel="stylesheet" href="css/contactus.css">
 </head>
 <body>
+<nav class="ops-nav" aria-label="OPS Navigation">
+  <span class="ops-logo">OPS</span>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+    <a href="mainnav/opera.html" class="nav-link" data-i18n="nav.ops">Business Operations</a>
+    <a href="mainnav/center.html" class="nav-link" data-i18n="nav.cc">Contact Center</a>
+    <a href="mainnav/it.html" class="nav-link" data-i18n="nav.it">IT Support</a>
+    <a href="mainnav/pros.html" class="nav-link" data-i18n="nav.pro">Professionals</a>
+  </div>
+  <div class="toggles">
+    <button class="toggle-btn" id="lang-toggle" aria-label="Toggle language" aria-pressed="false">EN</button>
+    <button class="toggle-btn" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">Dark</button>
+    <span id="lang-status" class="visually-hidden" aria-live="polite"></span>
+  </div>
+  <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</nav>
+<main class="page-content">
   <h1 id="contactus-title">Contact Us</h1>
-  <!-- Form submission handled via JavaScript -->
   <form aria-label="Contact form" id="contactForm" autocomplete="off" action="#">
     <div class="form-row">
       <div class="form-cell">
@@ -29,7 +49,6 @@
         <input id="email" type="email" required placeholder="Enter your email" />
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-cell">
         <label for="contactNumber">Contact Number</label>
@@ -40,7 +59,6 @@
         <input id="preferredDate" type="date" required placeholder="Select a date" />
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-cell">
         <label for="preferredTime">Preferred Time</label>
@@ -58,7 +76,6 @@
         </select>
       </div>
     </div>
-
     <div class="mt-1">
       <label for="comments">Comments</label>
       <textarea id="comments" rows="4" placeholder="What service are you interested in?"></textarea>
@@ -67,7 +84,13 @@
       <button type="submit" class="submit-btn">Send</button>
     </div>
   </form>
-  <script src="../js/form-utils.js"></script>
-  <script src="../js/contactus.js"></script>
+</main>
+<footer>© 2025 OPS Online Support</footer>
+<script src="js/form-utils.js" defer></script>
+<script src="js/contactus.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/load-fabs.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/mobile-nav.js" defer></script>
 </body>
 </html>

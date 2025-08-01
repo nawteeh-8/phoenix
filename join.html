@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="description" content="Join OPS Online Support&#39;s community and team through this registration form." />
+<meta name="description" content="Join OPS Online Support's community and team through this registration form." />
 <meta name="robots" content="index, follow" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; script-src 'self'; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https://placehold.co;">
@@ -13,12 +12,32 @@
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <title>Join Us - OPS • Chattia</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bNDdB2S/bRMyCV2wAPOQgpdnH3UX0DpD+s/COM24kTx5cDIeEJD7BqXc9EjoP6KDAdAm8YGtS+wGGyRyvCb4TQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/joinus.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mobile-nav.css">
+<link rel="stylesheet" href="css/center.css">
+<link rel="stylesheet" href="css/joinus.css">
 </head>
 <body>
+<nav class="ops-nav" aria-label="OPS Navigation">
+  <span class="ops-logo">OPS</span>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+    <a href="mainnav/opera.html" class="nav-link" data-i18n="nav.ops">Business Operations</a>
+    <a href="mainnav/center.html" class="nav-link" data-i18n="nav.cc">Contact Center</a>
+    <a href="mainnav/it.html" class="nav-link" data-i18n="nav.it">IT Support</a>
+    <a href="mainnav/pros.html" class="nav-link" data-i18n="nav.pro">Professionals</a>
+  </div>
+  <div class="toggles">
+    <button class="toggle-btn" id="lang-toggle" aria-label="Toggle language" aria-pressed="false">EN</button>
+    <button class="toggle-btn" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">Dark</button>
+    <span id="lang-status" class="visually-hidden" aria-live="polite"></span>
+  </div>
+  <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</nav>
+<main class="page-content">
   <h1 id="joinus-title">Join Us</h1>
-  <!-- Form submission handled via JavaScript -->
   <form aria-label="Join us form" id="joinForm" autocomplete="off" novalidate action="#">
     <div class="form-pairs">
       <div>
@@ -35,8 +54,6 @@
       </div>
       <div></div>
     </div>
-
-    <!-- Dynamic Sections -->
     <div class="form-section" data-section="Skills">
       <div class="section-header">
         <h2>Skills</h2>
@@ -49,7 +66,6 @@
       <button type="button" class="accept-btn">Accept</button>
       <button type="button" class="edit-btn hidden">Edit</button>
     </div>
-
     <div class="form-section" data-section="Education">
       <div class="section-header">
         <h2>Education</h2>
@@ -62,7 +78,6 @@
       <button type="button" class="accept-btn">Accept</button>
       <button type="button" class="edit-btn hidden">Edit</button>
     </div>
-
     <div class="form-section" data-section="Certification">
       <div class="section-header">
         <h2>Certification</h2>
@@ -75,7 +90,6 @@
       <button type="button" class="accept-btn">Accept</button>
       <button type="button" class="edit-btn hidden">Edit</button>
     </div>
-
     <div class="form-section" data-section="Hobbies">
       <div class="section-header">
         <h2>Hobbies</h2>
@@ -88,7 +102,6 @@
       <button type="button" class="accept-btn">Accept</button>
       <button type="button" class="edit-btn hidden">Edit</button>
     </div>
-
     <div class="form-section">
       <h2>What are you interested about?</h2>
       <select id="jn-interest" required>
@@ -99,31 +112,32 @@
         <option>Professionals</option>
       </select>
     </div>
-
     <div class="form-section">
       <h2>Continued Education</h2>
       <div class="inputs"></div>
       <button type="button" class="circle-btn add" title="Add field">+</button>
     </div>
-
     <div class="form-section">
       <h2>Experience</h2>
       <div class="inputs"></div>
       <button type="button" class="circle-btn add" title="Add field">+</button>
     </div>
-
     <div>
       <label for="about">Tell us about yourself</label>
       <textarea id="about" rows="4" placeholder="Tell us about yourself..."></textarea>
     </div>
-
     <div class="modal-footer">
       <button type="submit" class="submit-btn">Submit</button>
     </div>
   </form>
-
-<script src="../js/form-utils.js"></script>
-<script src="../js/joinus.js"></script>
+</main>
+<footer>© 2025 OPS Online Support</footer>
+<script src="js/form-utils.js" defer></script>
+<script src="js/joinus.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/load-fabs.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/mobile-nav.js" defer></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     initJoinForm(document);
