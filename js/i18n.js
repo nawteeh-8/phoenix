@@ -32,7 +32,10 @@ function switchLanguage(l) {
   if (toggle) {
     toggle.textContent = l === 'en' ? 'ES' : 'EN';
     toggle.setAttribute('aria-pressed', l === 'es');
+    toggle.setAttribute('aria-label', l === 'en' ? 'Switch to Spanish' : 'Switch to English');
   }
+  const status = document.getElementById('lang-status');
+  if (status) status.textContent = l === 'en' ? 'English selected' : 'Spanish selected';
   (translations[l] ? Promise.resolve() : loadTranslations(l))
     .then(applyTranslations)
     .catch(err => {
