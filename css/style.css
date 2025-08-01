@@ -170,15 +170,6 @@
     }
     body.dark .card .icon > i { filter: drop-shadow(0 0 2px #00c4ff55); }
     /* --- MODAL BASE --- */
-    .modal-backdrop {
-      position: fixed;
-      z-index: 1999;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(44,26,73,0.31);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
     .ops-modal, .modal-content, #chatbot-container {
       min-width: 310px;
       max-width: none;
@@ -392,7 +383,11 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2222;
   animation: popIn .18s cubic-bezier(.47,1.64,.41,.8);
 }
 

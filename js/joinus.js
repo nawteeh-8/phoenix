@@ -103,6 +103,7 @@ function initJoinForm(root) {
       const inputsContainer = section.querySelector('.inputs');
       inputsContainer.innerHTML = '';
     });
+    window.dispatchEvent(new Event('modal-close'));
   });
 }
 

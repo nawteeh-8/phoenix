@@ -12,6 +12,28 @@ function getBasePath() {
   return url.pathname.replace(/\/$/, '');
 }
 
+function attachModalClose(modal, close) {
+  function handleClick(e) {
+    if (!modal.contains(e.target)) {
+      close();
+    }
+  }
+  function handleKey(e) {
+    if (e.key === 'Escape') {
+      close();
+    }
+  }
+  const btn = modal.querySelector('.modal-x, #chatbot-x, .modal-close');
+  if (btn) btn.addEventListener('click', close);
+  document.addEventListener('click', handleClick);
+  document.addEventListener('keydown', handleKey);
+  return () => {
+    document.removeEventListener('click', handleClick);
+    document.removeEventListener('keydown', handleKey);
+    if (btn) btn.removeEventListener('click', close);
+  };
+}
+
 if (toggleNav) {
   toggleNav.onclick = ()=>{
     mobileNav.classList.toggle('open');
@@ -53,17 +75,17 @@ function openContactModal() {
       const scriptNodes = [...doc.querySelectorAll('script')];
       scriptNodes.forEach(s => s.remove());
       const body = doc.body.innerHTML;
-      const m = document.createElement('div');
-      m.className = 'modal-backdrop';
-      m.innerHTML = `
-        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="contact-title" id="contact-modal">
-          <button class="modal-x" aria-label="CERRAR">X</button>
-          ${body}
-        </div>`;
-      const root = document.getElementById('modal-root');
+      const modal = document.createElement('div');
+      modal.className = 'ops-modal';
+      modal.setAttribute('tabindex', '-1');
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'contact-title');
+      modal.id = 'contact-modal';
+      modal.innerHTML = `<button class="modal-x" aria-label="CERRAR">X</button>${body}`;
+      const root = document.getElementById('modal-root') || document.body;
       root.innerHTML = '';
-      root.appendChild(m);
-      const modal = m.querySelector('.ops-modal');
+      root.appendChild(modal);
       modal.focus();
 
       const addedLinks = [];
@@ -77,15 +99,14 @@ function openContactModal() {
         }
       });
 
+      let detach;
       function close() {
         root.innerHTML = '';
         addedLinks.forEach(l => l.remove());
+        if (detach) detach();
       }
-      const handleClose = () => { close(); };
-      window.addEventListener('modal-close', handleClose, { once: true });
-      m.onclick = e => (e.target === m ? close() : 0);
-      modal.querySelector('.modal-x').onclick = close;
-      document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
+      window.addEventListener('modal-close', close, { once: true });
+      detach = attachModalClose(modal, close);
 
       // append and execute scripts from fetched HTML
       scriptNodes.forEach(s => {
@@ -109,6 +130,7 @@ function openContactModal() {
           }
           alert('Contact form submitted!');
           form.reset();
+          window.dispatchEvent(new Event('modal-close'));
         });
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
@@ -140,11 +162,15 @@ function openChatbotModal() {
       const body = doc.body.innerHTML;
       const scriptNodes = [...doc.querySelectorAll('script')];
 
-      const m = document.createElement('div');
-      m.id = 'chatbot-modal-backdrop';
-      m.innerHTML = `<div id="chatbot-container" class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="title">${body}</div>`;
-      document.body.appendChild(m);
-      const modal = m.querySelector('.ops-modal');
+      const modal = document.createElement('div');
+      modal.id = 'chatbot-container';
+      modal.className = 'ops-modal';
+      modal.setAttribute('tabindex', '-1');
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'title');
+      modal.innerHTML = body;
+      document.body.appendChild(modal);
       modal.focus();
 
       // track scripts added so we can remove them on close
@@ -164,13 +190,13 @@ function openChatbotModal() {
         }
       });
 
+      let detach;
       function close() {
         addedScripts.forEach(el => el.remove());
-        document.body.removeChild(m);
+        document.body.removeChild(modal);
+        if (detach) detach();
       }
-      m.onclick = e => (e.target === m ? close() : 0);
-      modal.querySelector('#chatbot-x').onclick = close;
-      document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
+      detach = attachModalClose(modal, close);
       if (typeof makeDraggable === 'function') makeDraggable(modal, modal.querySelector('#chatbot-header'));
 
       // scripts from chatbot.html are appended above and execute automatically
@@ -207,23 +233,24 @@ function openJoinModal() {
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const body = doc.body.innerHTML;
-      const m = document.createElement('div');
-      m.className = 'modal-backdrop';
-      m.innerHTML = `
-        <div class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="joinus-title" id="join-modal">
-          <button class="modal-x" aria-label="CERRAR">X</button>
-          ${body}
-        </div>`;
+      const modal = document.createElement('div');
+      modal.className = 'ops-modal';
+      modal.setAttribute('tabindex', '-1');
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'joinus-title');
+      modal.id = 'join-modal';
+      modal.innerHTML = `<button class="modal-x" aria-label="CERRAR">X</button>${body}`;
       root.innerHTML = '';
-      root.appendChild(m);
-      const modal = m.querySelector('.ops-modal');
+      root.appendChild(modal);
       modal.focus();
-      function close() { root.innerHTML = ''; }
-      const handleClose = () => { close(); };
-      window.addEventListener('modal-close', handleClose, { once: true });
-      m.onclick = e => (e.target === m ? close() : 0);
-      modal.querySelector('.modal-x').onclick = close;
-      document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
+      let detach;
+      function close() {
+        root.innerHTML = '';
+        if (detach) detach();
+      }
+      window.addEventListener('modal-close', close, { once: true });
+      detach = attachModalClose(modal, close);
 
       function init() {
         if (typeof initJoinForm === 'function') initJoinForm(modal);
