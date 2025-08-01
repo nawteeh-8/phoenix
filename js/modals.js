@@ -8,8 +8,8 @@ const svcMenu = document.getElementById('svcMenu');
 let dark=false;
 
 function getBasePath() {
-  const depth = window.location.pathname.split('/').length - 2;
-  return depth > 0 ? '../'.repeat(depth) : '.';
+  const url = new URL('.', document.baseURI || window.location.href);
+  return url.pathname.replace(/\/$/, '');
 }
 
 if (toggleNav) {
@@ -98,7 +98,10 @@ function openContactModal() {
       }
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
-    .catch(err => console.error('Contact modal load error', err));
+    .catch(err => {
+      console.error('Contact modal load error', err);
+      alert('Unable to load contact form. Please try again later.');
+    });
 }
 
 // --- CHATBOT MODAL ---
@@ -153,6 +156,13 @@ function openChatbotModal() {
 function openJoinModal() {
   const base = getBasePath();
 
+  const root = document.getElementById('modal-root');
+  if (!root) {
+    console.error('Join modal root element (#modal-root) not found');
+    alert('Unable to open Join modal.');
+    return;
+  }
+
   // Ensure Join Us styles are loaded once
   if (!document.querySelector('link[href$="joinus.css"]')) {
     const link = document.createElement('link');
@@ -162,7 +172,12 @@ function openJoinModal() {
   }
 
   fetch(`${base}/fabs/joinus.html`)
-    .then(r => r.text())
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`Failed to load Join Us modal: ${r.status} ${r.statusText}`);
+      }
+      return r.text();
+    })
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const body = doc.body.innerHTML;
@@ -173,7 +188,6 @@ function openJoinModal() {
           <button class="modal-x" aria-label="CERRAR">X</button>
           ${body}
         </div>`;
-      const root = document.getElementById('modal-root');
       root.innerHTML = '';
       root.appendChild(m);
       const modal = m.querySelector('.ops-modal');
@@ -200,5 +214,8 @@ function openJoinModal() {
 
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
-    .catch(err => console.error('Join modal load error', err));
+    .catch(err => {
+      console.error('Join modal load error', err);
+      alert('Unable to load Join Us modal.');
+    });
 }
