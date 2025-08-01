@@ -1,4 +1,4 @@
-(function() {
+(function () {
   // --- ENSURE FONTAWESOME STYLESHEET ---
   const faHref = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
   const faIntegrity = 'sha512-bNDdB2S/bRMyCV2wAPOQgpdnH3UX0DpD+s/COM24kTx5cDIeEJD7BqXc9EjoP6KDAdAm8YGtS+wGGyRyvCb4TQ==';
@@ -11,89 +11,70 @@
     link.crossOrigin = 'anonymous';
     document.head.appendChild(link);
   }
-  // --- LOAD FABs ---
+
   const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
-  // Mobile navigation FAB
-  fetch(`${base}/fabs/mobile-nav.html`)
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch mobile nav: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        if (typeof window.initMobileNav === 'function') {
-          window.initMobileNav();
-        }
-      } else {
-        console.warn('Mobile nav HTML content is empty.');
-      }
-      return fetch(`${base}/fabs/fabs-new.html`);
-    })
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch FABs: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        initBigScreenFabs();
-      } else {
-        console.warn('FABs HTML content is empty.');
-      }
-      return fetch(`${base}/fabs/fabs-new.html`);
-    })
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch desktop FABs: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        initBigScreenFabs();
-      } else {
-        console.warn('Desktop FABs HTML content is empty.');
-      }
-    })
-    .catch(err => console.error('FABs load error:', err));
 
-  // Contact/Chatbot/Join FAB container
-  fetch(`${base}/fabs/fabs-new.html`)
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch new FABs: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        initBigScreenFabs();
-      } else {
-        console.warn('FAB container HTML is empty.');
-      }
-    })
-    .catch(err => console.error('FAB container load error:', err));
-
-  // --- BIG SCREEN FABs ---
-  function initBigScreenFabs() {
-    const fabContainer = document.querySelector('#fab-container');
-    if (fabContainer) {
-      // FABs are displayed or hidden via CSS based on screen size.
-      // No special JS logic needed for initialization at this moment.
-    }
-  }
   function appendToBody(html) {
     if (html && html.trim()) {
       document.body.insertAdjacentHTML('beforeend', html);
     }
   }
+
+  function initBigScreenFabs() {
+    const fabContainer = document.querySelector('#fab-container');
+    if (fabContainer) {
+      // FABs are displayed or hidden via CSS based on screen size.
+    }
+  }
+
+  let fabsHTMLCache = null;
+  function fetchFabsHTML() {
+    if (fabsHTMLCache) {
+      return Promise.resolve(fabsHTMLCache);
+    }
+    return fetch(`${base}/fabs/fabs-new.html`)
+      .then((r) => {
+        if (!r.ok) {
+          throw new Error(`fabs-new.html ${r.status} ${r.statusText}`);
+        }
+        return r.text();
+      })
+      .then((html) => {
+        fabsHTMLCache = html;
+        return html;
+      });
+  }
+
+  function insertFabs() {
+    return fetchFabsHTML()
+      .then((html) => {
+        if (!document.querySelector('#fab-container')) {
+          appendToBody(html);
+          initBigScreenFabs();
+        }
+      })
+      .catch((err) => console.error('FABs load error:', err));
+  }
+
+  function loadMobileNav() {
+    return fetch(`${base}/fabs/mobile-nav.html`)
+      .then((r) => {
+        if (!r.ok) {
+          throw new Error(`mobile-nav.html ${r.status} ${r.statusText}`);
+        }
+        return r.text();
+      })
+      .then((html) => {
+        if (html.trim()) {
+          appendToBody(html);
+          if (typeof window.initMobileNav === 'function') {
+            window.initMobileNav();
+          }
+        }
+      })
+      .catch((err) => console.error('mobile-nav fetch error:', err));
+  }
+
   if (window.location.protocol === 'file:') {
     const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
   <div class="nav-items">
@@ -129,39 +110,8 @@
     }
     initBigScreenFabs();
   } else {
-    const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
-
-    const mobileNavFetch = fetch(`${base}/fabs/mobile-nav.html`)
-      .then(r => {
-        if (!r.ok) {
-          throw new Error(`mobile-nav.html ${r.status} ${r.statusText}`);
-        }
-        return r.text();
-      })
-      .catch(err => {
-        console.error('mobile-nav fetch error:', err);
-        return '';
-      });
-
-    const fabsFetch = fetch(`${base}/fabs/fabs-new.html`)
-      .then(r => {
-        if (!r.ok) {
-          throw new Error(`fabs-new.html ${r.status} ${r.statusText}`);
-        }
-        return r.text();
-      })
-      .catch(err => {
-        console.error('fabs-new fetch error:', err);
-        return '';
-      });
-
-    Promise.all([mobileNavFetch, fabsFetch]).then(([mobileHTML, fabsHTML]) => {
-      appendToBody(mobileHTML);
-      appendToBody(fabsHTML);
-      if (mobileHTML.trim() && typeof window.initMobileNav === 'function') {
-        window.initMobileNav();
-      }
-      initBigScreenFabs();
-    });
+    loadMobileNav().then(insertFabs);
+    insertFabs();
   }
 })();
+
