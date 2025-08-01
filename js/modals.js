@@ -129,8 +129,7 @@ function openChatbotModal() {
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
       if (typeof makeDraggable === 'function') makeDraggable(modal, modal.querySelector('#chatbot-header'));
 
-      // script must load after DOM elements exist
-      loadScript();
+      // scripts from chatbot.html are appended above and execute automatically
     })
     .catch(err => console.error('Chatbot modal load error', err));
 }
