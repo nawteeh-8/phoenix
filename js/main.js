@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const langToggle = document.getElementById('lang-toggle');
+  const themeToggle = document.getElementById('theme-toggle');
   const savedTheme = localStorage.getItem('theme') || 'light';
   document.body.classList.toggle('dark', savedTheme === 'dark');
   if (themeToggle) themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
