@@ -170,7 +170,20 @@ function openJoinModal() {
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('.modal-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
-      if (typeof initJoinForm === 'function') initJoinForm(modal);
+
+      function init() {
+        if (typeof initJoinForm === 'function') initJoinForm(modal);
+      }
+
+      if (typeof initJoinForm === 'function') {
+        init();
+      } else {
+        const script = document.createElement('script');
+        script.src = `${base}/js/joinus.js`;
+        script.onload = init;
+        document.head.appendChild(script);
+      }
+
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })
     .catch(err => console.error('Join modal load error', err));
