@@ -94,13 +94,37 @@ function openChatbotModal() {
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const body = doc.body.innerHTML;
+      const scriptNodes = [...doc.querySelectorAll('script')];
+
       const m = document.createElement('div');
       m.id = 'chatbot-modal-backdrop';
       m.innerHTML = `<div id="chatbot-container" class="ops-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="title">${body}</div>`;
       document.body.appendChild(m);
+
       const modal = m.querySelector('.ops-modal');
       modal.focus();
-      function close() { document.body.removeChild(m); }
+
+      // track scripts added so we can remove them on close
+      const addedScripts = [];
+      scriptNodes.forEach(s => {
+        const src = s.getAttribute('src');
+        if (src && !document.querySelector(`script[src="${src}"]`)) {
+          const newScript = document.createElement('script');
+          newScript.src = src;
+          modal.appendChild(newScript);
+          addedScripts.push(newScript);
+        } else if (!src) {
+          const newScript = document.createElement('script');
+          newScript.textContent = s.textContent;
+          modal.appendChild(newScript);
+          addedScripts.push(newScript);
+        }
+      });
+
+      function close() {
+        addedScripts.forEach(el => el.remove());
+        document.body.removeChild(m);
+      }
       m.onclick = e => (e.target === m ? close() : 0);
       modal.querySelector('#chatbot-x').onclick = close;
       document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } }, { once: true });
