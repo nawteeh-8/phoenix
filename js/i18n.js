@@ -22,7 +22,7 @@ function applyTranslations() {
 function switchLanguage(l) {
   lang = l;
   localStorage.setItem('lang', l);
-  const toggle = document.getElementById('lang-toggle') || document.getElementById('btn-lang');
+  const toggle = document.getElementById('lang-toggle');
   if (toggle) {
     toggle.textContent = l === 'en' ? 'ES' : 'EN';
     toggle.setAttribute('aria-pressed', l === 'es');
