@@ -80,21 +80,9 @@ function initJoinForm(root) {
     }
   });
 
-  const sanitize = window.sanitizeForm || function(form) {
-    const fields = form.querySelectorAll('input, textarea');
-    for (const field of fields) {
-      const val = field.value.trim();
-      if (/[<>]/.test(val) || /script/i.test(val)) {
-        return false;
-      }
-      field.value = val;
-    }
-    return true;
-  };
-
   joinForm.addEventListener('submit', e => {
     e.preventDefault();
-    if (!sanitize(joinForm)) {
+    if (!window.sanitizeForm(joinForm)) {
       alert('Suspicious content detected. Submission rejected.');
       return;
     }
