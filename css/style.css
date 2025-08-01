@@ -237,6 +237,7 @@
       z-index: 3;
     }
     .modal-x:focus, .close-modal:focus { outline: 2px solid var(--clr-accent); }
+    /* --- CHATBOT (floating modal, draggable) --- */
     #chatbot-container {
       min-width: 310px;
       max-width: none;
