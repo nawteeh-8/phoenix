@@ -182,13 +182,10 @@
     .ops-modal, .modal-content, #chatbot-container {
       min-width: 310px;
       max-width: none;
-      width: 80vw;
-      height: 80vh;
       background: #fff;
       color: #1a1930;
       border-radius: 2rem;
       box-shadow: 0 6px 60px #5e24bb25, 0 0 0 2px #fff1;
-      padding: 2.1rem 2.2rem 1.3rem 2.2rem;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -197,6 +194,28 @@
       cursor: default;
       z-index: 2222;
     }
+
+    @media (min-width: 769px) {
+      .ops-modal, .modal-content, #chatbot-container {
+        width: 80vw;
+        height: 80vh;
+        padding: 2.1rem 2.2rem 1.3rem 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ops-modal, .modal-content, #chatbot-container {
+        width: 95vw;
+        height: 85vh;
+        padding: 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .modal-title {
+        font-size: 1.1rem;
+      }
+    }
+
     body.dark .ops-modal, body.dark .modal-content, body.dark #chatbot-container {
       background: #251541;
       color: #fafbfe;
@@ -324,16 +343,6 @@
         flex-direction: column;
         gap: 0.8rem;
         align-items: flex-end;
-      }
-
-      /* Modal changes */
-      .ops-modal, .modal-content, #chatbot-container, .modal {
-        padding: 1.2rem;
-        font-size: 0.9rem; /* Adjust base font size for modals on mobile */
-      }
-
-      .modal-title {
-        font-size: 1.1rem;
       }
 
       #chat-log {
