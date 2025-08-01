@@ -95,5 +95,125 @@
         "learn": "mainnav/pros.html"
       }
     }
+  },
+  "form": {
+    "contactTitle": "See What We Can Do for You",
+    "fullName": "Full Name",
+    "businessEmail": "Business Email",
+    "company": "Company",
+    "requestQuote": "Request Quote"
+  },
+  "chatbot": {
+    "title": "OPS AI Chatbot",
+    "placeholder": "Type your message...",
+    "human": "I am human"
+  },
+  "opera": {
+    "title": "Business Operations Optimization | Ops Online Support",
+    "hero": {
+      "heading": "Streamline Your Business Operations",
+      "desc": "We increase the efficiency, compliance, and precision of your operational workflows.",
+      "cta": "Get Started"
+    },
+    "card": {
+      "title": "Optimize Your Business Operations",
+      "desc": "Streamlined processes, performance boosts, and scalable growth—delivered with expertise.",
+      "list": [
+        "Standardize workflows for operational excellence",
+        "Identify & eliminate process inefficiencies",
+        "Ensure regulatory compliance across your org",
+        "Scale your business efficiently & securely"
+      ]
+    }
+  },
+  
+  "center": {
+    "title": "Contact Center Solutions | Ops Online Support",
+    "hero": {
+      "heading": "Need a Smarter, Scalable Contact Center?",
+      "desc": "Deliver faster, multilingual support–24/7. OPS builds and runs your contact center with trained agents, real-time insights, and full compliance.",
+      "cta": "Schedule My Free CX Assessment",
+      "tagline": "No cost. No hassle. Just actionable insights."
+    },
+    "walk": {
+      "title": "You’ll Walk Away With:",
+      "items": [
+        "A performance review of your current support setup",
+        "Omnichannel strategy recommendations",
+        "Forecasted CX improvements and ROI benchmarks"
+      ],
+      "tagline": "Trusted by eCommerce, fintech, and SaaS teams scaling globally"
+    },
+    "more": {
+      "title": "Contact Center",
+      "subtitle": "Boost customer satisfaction & engagement",
+      "desc": "Elevate your support experience at every touchpoint with 24/7 inbound and outbound call management, multichannel solutions, and advanced analytics.",
+      "list": [
+        "Round-the-clock call handling across inbound and outbound channels",
+        "Multilingual email, chat, social media support",
+        "Full integration with leading CRM platforms",
+        "In-depth analytics for satisfaction monitoring"
+      ]
+    },
+    "cta": {
+      "title": "Ready to Elevate Your Contact Center?",
+      "desc": "We help you deliver top-notch customer experiences by elevating every touchpoint with our multilingual, multichannel services.",
+      "demo": "▶ Schedule a CX Demo",
+      "demoDesc": "See how our multilingual agents and sentiment tracking work in real time.",
+      "tools": "⚙ Explore Contact Center Tools",
+      "toolsDesc": "From CRM integration to chat support, discover our full capabilities",
+      "launch": "🚀 Launch Support in 48 Hours",
+      "launchDesc": "Spin up multichannel coverage with minimal setup"
+    }
+  },
+
+  "it": {
+    "title": "IT Support Services | Ops Online Support",
+    "hero": {
+      "heading": "Keep Your Systems Secure and Stable",
+      "desc": "Dependable help desk, cybersecurity, and cloud services to keep your IT infrastructure running smoothly."
+    },
+    "tiers": {
+      "title": "Our IT Support Tiers",
+      "list": [
+        "24/7 tech support & system monitoring",
+        "Cybersecurity audits, patching, threat detection",
+        "Cloud infrastructure management",
+        "NIST, CISA, OPS Core CyberSec compliance"
+      ]
+    },
+    "story": {
+      "title": "Client Story",
+      "quote": "“We went from 6 support tickets per day to 1 — and our team morale shot up. Best decision this year.”",
+      "author": "– CTO, FinTech Startup"
+    }
+  },
+
+  "pros": {
+    "title": "Professional Services | Ops Online Support",
+    "hero": {
+      "heading": "Unlock Expertise. Deliver Results.",
+      "desc": "Our consultants bring decades of experience to your biggest business challenges.",
+      "cta": "Book Free Strategy Call"
+    },
+    "special": {
+      "title": "We Specialize In:",
+      "list": [
+        "Digital transformation & change management",
+        "Business continuity & risk planning",
+        "Revenue operations & analytics"
+      ]
+    },
+    "impact": {
+      "title": "Real Impact",
+      "quote": "“Their team didn’t just advise — they executed. We hit 120% of our revenue goal within two quarters.”",
+      "author": "– CEO, B2B SaaS",
+      "imgAlt": "Client logos"
+    },
+    "offer": {
+      "title": "Limited-Time Offer",
+      "desc": "Book by July 31 and get a free 90-minute ops strategy session (normally $650).",
+      "note": "Only 6 sessions left this month."
+    }
   }
 }

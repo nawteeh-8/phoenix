@@ -94,18 +94,14 @@
     </div>
     <a href="../index.html" class="nav-btn" title="Home" aria-label="Home"><i class="fa fa-home"></i></a>
   </div>
-
   <button id="toggleNav" class="nav-btn main sketch-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
     <i class="fa fa-bars" aria-hidden="true"></i>
   </button>
 </div>`;
-
     const fabsHTML = `<!-- Floating Action Buttons snippet -->\n<div id="fab-container">\n  <button onclick="openChatbotModal()" title="Chatbot"><i class="fa fa-comment"></i></button>\n  <button onclick="openContactModal()" title="Contact Us"><i class="fa-solid fa-envelope"></i></button>\n  <button onclick="openJoinModal()" title="Join Us"><i class="fa fa-user-plus"></i></button>\n</div>`;
-
     appendToBody(mobileNavHTML);
     appendToBody(fabsHTML);
-
-    if (typeof window.initMobileNav === 'function') {
+   if (typeof window.initMobileNav === 'function') {
       window.initMobileNav();
     }
     initBigScreenFabs();

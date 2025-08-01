@@ -12,18 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (langToggle) {
     let currentLang = typeof lang !== 'undefined' ? lang : 'en';
-    langToggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
-    langToggle.setAttribute('aria-pressed', currentLang === 'es');
+    const updateToggle = (l) => {
+      langToggle.textContent = l === 'en' ? 'ES' : 'EN';
+      langToggle.setAttribute('aria-pressed', l === 'es');
+      langToggle.setAttribute('aria-label', l === 'en' ? 'Switch to Spanish' : 'Switch to English');
+      const status = document.getElementById('lang-status');
+      if (status) status.textContent = l === 'en' ? 'English selected' : 'Spanish selected';
+    };
+    updateToggle(currentLang);
     langToggle.addEventListener('click', () => {
       const targetLang = currentLang === 'en' ? 'es' : 'en';
       if (typeof switchLanguage === 'function') {
         switchLanguage(targetLang);
-        currentLang = typeof lang !== 'undefined' ? lang : targetLang;
-      } else {
-        currentLang = targetLang;
-        langToggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
-        langToggle.setAttribute('aria-pressed', currentLang === 'es');
       }
+      currentLang = targetLang;
+      updateToggle(currentLang);
     });
   }
 
