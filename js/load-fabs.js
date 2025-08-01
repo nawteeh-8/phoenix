@@ -13,7 +13,7 @@
   }
   // --- LOAD FABs ---
   const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
-  // Load mobile and desktop FABs sequentially
+  // Mobile navigation FAB
   fetch(`${base}/fabs/mobile-nav.html`)
     .then(r => {
       if (!r.ok) {
@@ -63,9 +63,27 @@
     })
     .catch(err => console.error('FABs load error:', err));
 
+  // Contact/Chatbot/Join FAB container
+  fetch(`${base}/fabs/fabs-new.html`)
+    .then(r => {
+      if (!r.ok) {
+        throw new Error(`Failed to fetch new FABs: ${r.status}`);
+      }
+      return r.text();
+    })
+    .then(h => {
+      if (h.trim()) {
+        document.body.insertAdjacentHTML('beforeend', h);
+        initBigScreenFabs();
+      } else {
+        console.warn('FAB container HTML is empty.');
+      }
+    })
+    .catch(err => console.error('FAB container load error:', err));
+
   // --- BIG SCREEN FABs ---
   function initBigScreenFabs() {
-    const fabContainer = document.querySelector('.fab-container, #fab-container');
+    const fabContainer = document.querySelector('#fab-container');
     if (fabContainer) {
       // FABs are displayed or hidden via CSS based on screen size.
       // No special JS logic needed for initialization at this moment.
