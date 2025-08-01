@@ -79,12 +79,12 @@
     const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
   <div class="nav-items">
     <button onclick="openContactModal()" class="nav-btn" title="Contact Us" aria-label="Contact Us"><i class="fa-solid fa-envelope"></i></button>
-    <button onclick="openJoinModal()" class="nav-btn" title="Join Us" aria-label="Join Us"><i class="fa fa-user-plus"></i></button>
-    <button onclick="openChatbotModal()" class="nav-btn" title="Chatbot" aria-label="Chatbot"><i class="fa fa-comment"></i></button>
+    <button onclick="openJoinModal()" class="nav-btn" title="Join Us" aria-label="Join Us"><i class="fa-solid fa-user-plus"></i></button>
+    <button onclick="openChatbotModal()" class="nav-btn" title="Chatbot" aria-label="Chatbot"><i class="fa-solid fa-comment"></i></button>
     <button id="lang-toggle" class="nav-btn" aria-label="Toggle language">ES</button>
     <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">Dark</button>
     <div class="dropdown">
-      <button id="svcBtn" class="nav-btn" aria-expanded="false" aria-haspopup="true" aria-controls="svcMenu" aria-label="Toggle services menu"><i class="fa fa-bars"></i></button>
+      <button id="svcBtn" class="nav-btn" aria-expanded="false" aria-haspopup="true" aria-controls="svcMenu" aria-label="Toggle services menu"><i class="fa-solid fa-bars"></i></button>
       <div class="dropdown-menu" id="svcMenu" role="menu" aria-label="Services menu">
         <a href="../mainnav/opera.html" role="menuitem">Ops</a>
         <a href="../mainnav/center.html" role="menuitem">Center</a>
@@ -92,13 +92,13 @@
         <a href="../mainnav/pros.html" role="menuitem">Pros</a>
       </div>
     </div>
-    <a href="../index.html" class="nav-btn" title="Home" aria-label="Home"><i class="fa fa-home"></i></a>
+    <a href="../index.html" class="nav-btn" title="Home" aria-label="Home"><i class="fa-solid fa-home"></i></a>
   </div>
   <button id="toggleNav" class="nav-btn main sketch-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
-    <i class="fa fa-bars" aria-hidden="true"></i>
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </div>`;
-    const fabsHTML = `<!-- Floating Action Buttons snippet -->\n<div id="fab-container">\n  <button onclick="openChatbotModal()" title="Chatbot"><i class="fa fa-comment"></i></button>\n  <button onclick="openContactModal()" title="Contact Us"><i class="fa-solid fa-envelope"></i></button>\n  <button onclick="openJoinModal()" title="Join Us"><i class="fa fa-user-plus"></i></button>\n</div>`;
+    const fabsHTML = `<!-- Floating Action Buttons snippet -->\n<div id="fab-container">\n  <button onclick="openChatbotModal()" title="Chatbot"><i class="fa-solid fa-comment"></i></button>\n  <button onclick="openContactModal()" title="Contact Us"><i class="fa-solid fa-envelope"></i></button>\n  <button onclick="openJoinModal()" title="Join Us"><i class="fa-solid fa-user-plus"></i></button>\n</div>`;
     appendToBody(mobileNavHTML);
     appendToBody(fabsHTML);
    if (typeof window.initMobileNav === 'function') {
