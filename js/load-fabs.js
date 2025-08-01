@@ -13,75 +13,13 @@
   }
   // --- LOAD FABs ---
   const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
-  // Mobile navigation FAB
-  fetch(`${base}/fabs/mobile-nav.html`)
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch mobile nav: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        if (typeof window.initMobileNav === 'function') {
-          window.initMobileNav();
-        }
-      } else {
-        console.warn('Mobile nav HTML content is empty.');
-      }
-      return fetch(`${base}/fabs/fabs-new.html`);
-    })
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch FABs: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        initBigScreenFabs();
-      } else {
-        console.warn('FABs HTML content is empty.');
-      }
-      return fetch(`${base}/fabs/fabs-new.html`);
-    })
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch desktop FABs: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        initBigScreenFabs();
-      } else {
-        console.warn('Desktop FABs HTML content is empty.');
-      }
-    })
-    .catch(err => console.error('FABs load error:', err));
 
-  // Contact/Chatbot/Join FAB container
-  fetch(`${base}/fabs/fabs-new.html`)
-    .then(r => {
-      if (!r.ok) {
-        throw new Error(`Failed to fetch new FABs: ${r.status}`);
-      }
-      return r.text();
-    })
-    .then(h => {
-      if (h.trim()) {
-        document.body.insertAdjacentHTML('beforeend', h);
-        initBigScreenFabs();
-      } else {
-        console.warn('FAB container HTML is empty.');
-      }
-    })
-    .catch(err => console.error('FAB container load error:', err));
+  function appendToBody(html) {
+    if (html && html.trim()) {
+      document.body.insertAdjacentHTML('beforeend', html);
+    }
+  }
 
-  // --- BIG SCREEN FABs ---
   function initBigScreenFabs() {
     const fabContainer = document.querySelector('#fab-container');
     if (fabContainer) {
@@ -89,11 +27,7 @@
       // No special JS logic needed for initialization at this moment.
     }
   }
-  function appendToBody(html) {
-    if (html && html.trim()) {
-      document.body.insertAdjacentHTML('beforeend', html);
-    }
-  }
+
   if (window.location.protocol === 'file:') {
     const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
   <div class="nav-items">
@@ -129,39 +63,30 @@
     }
     initBigScreenFabs();
   } else {
-    const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
-
-    const mobileNavFetch = fetch(`${base}/fabs/mobile-nav.html`)
+    fetch(`${base}/fabs/mobile-nav.html`)
       .then(r => {
         if (!r.ok) {
           throw new Error(`mobile-nav.html ${r.status} ${r.statusText}`);
         }
         return r.text();
       })
-      .catch(err => {
-        console.error('mobile-nav fetch error:', err);
-        return '';
-      });
-
-    const fabsFetch = fetch(`${base}/fabs/fabs-new.html`)
+      .then(h => {
+        appendToBody(h);
+        if (h.trim() && typeof window.initMobileNav === 'function') {
+          window.initMobileNav();
+        }
+        return fetch(`${base}/fabs/fabs-new.html`);
+      })
       .then(r => {
         if (!r.ok) {
           throw new Error(`fabs-new.html ${r.status} ${r.statusText}`);
         }
         return r.text();
       })
-      .catch(err => {
-        console.error('fabs-new fetch error:', err);
-        return '';
-      });
-
-    Promise.all([mobileNavFetch, fabsFetch]).then(([mobileHTML, fabsHTML]) => {
-      appendToBody(mobileHTML);
-      appendToBody(fabsHTML);
-      if (mobileHTML.trim() && typeof window.initMobileNav === 'function') {
-        window.initMobileNav();
-      }
-      initBigScreenFabs();
-    });
+      .then(h => {
+        appendToBody(h);
+        initBigScreenFabs();
+      })
+      .catch(err => console.error('FABs load error:', err));
   }
 })();
