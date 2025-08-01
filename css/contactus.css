@@ -75,5 +75,4 @@
   button.submit-btn:hover {
     background: var(--clr-accent-dark);
   }
-
-.mt-1{margin-top:1rem;}
+  .mt-1{margin-top:1rem;}
