@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bNDdB2S/bRMyCV2wAPOQgpdnH3UX0DpD+s/COM24kTx5cDIeEJD7BqXc9EjoP6KDAdAm8YGtS+wGGyRyvCb4TQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
-  script-src 'self' https://www.gstatic.com https://www.google.com https://challenges.cloudflare.com;
+  script-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com https://www.google.com https://challenges.cloudflare.com;
   style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
   font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
   connect-src 'self' https://www.googleapis.com https://api.cloudflare.com;
@@ -107,9 +107,11 @@
       <button type="submit" data-i18n="form.requestQuote">Request Quote</button>
     </form>
   </section>
-  <script type="module" src="../js/load-mobile-nav.js"></script>
-  <script type="module" src="../js/i18n.js"></script>
-  <script type="module" src="../js/main.js"></script>
-  <script type="module" src="../js/page-init.js"></script>
+  <script src="../js/load-mobile-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js"></script>
+  <script src="../js/form-utils.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/page-init.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="description" content="Contact OPS Online Support with inquiries or service requests using this form." />
 <meta name="robots" content="index, follow" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; script-src 'self'; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https://placehold.co;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdn.jsdelivr.net; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https://placehold.co;">
 <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -86,10 +86,12 @@
   </form>
 </main>
 <footer>© 2025 OPS Online Support</footer>
-<script type="module" src="js/contactus.js"></script>
-<script type="module" src="js/i18n.js"></script>
-<script type="module" src="js/load-mobile-nav.js"></script>
-<script type="module" src="js/main.js"></script>
-<script type="module" src="js/mobile-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js"></script>
+<script src="js/form-utils.js" defer></script>
+<script src="js/contactus.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/load-mobile-nav.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/mobile-nav.js" defer></script>
 </body>
 </html>
