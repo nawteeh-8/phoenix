@@ -3,6 +3,13 @@ function initJoinForm(root) {
   const joinForm = root.querySelector('#joinForm');
   if (!joinForm) return;
 
+  const rules = {
+    name: { maxLength: 50, pattern: /^[a-zA-Z\s'-]+$/ },
+    email: { maxLength: 100, pattern: /^[^@\s]+@[^@\s]+\.[^@\s]+$/ },
+    phone: { maxLength: 20, pattern: /^[0-9+\-\s()]+$/ },
+    about: { maxLength: 500 }
+  };
+
   function toggleSectionState(section, accepted) {
     const inputs = section.querySelectorAll('input[type=text]');
     const acceptBtn = section.querySelector('.accept-btn');
@@ -41,6 +48,7 @@ function initJoinForm(root) {
         const input = document.createElement('input');
         input.type = 'text';
         input.placeholder = `Enter ${section.querySelector('h2').textContent}`;
+        input.maxLength = 100;
         inputsContainer.appendChild(input);
         input.focus();
       });
@@ -64,8 +72,13 @@ function initJoinForm(root) {
           return;
         }
         for (const input of inputs) {
-          if (!input.value.trim()) {
+          const val = input.value.trim();
+          if (!val) {
             alert('Please fill out all fields before accepting.');
+            return;
+          }
+          if (val.length > 100 || !/^[\w\s.,-]+$/.test(val)) {
+            alert('Entries must be under 100 characters and use only letters, numbers, spaces, commas, periods, or hyphens.');
             return;
           }
         }
@@ -82,9 +95,20 @@ function initJoinForm(root) {
 
   joinForm.addEventListener('submit', e => {
     e.preventDefault();
-    if (!window.sanitizeForm(joinForm)) {
+    if (typeof window.sanitizeForm === 'function' && !window.sanitizeForm(joinForm)) {
       alert('Suspicious content detected. Submission rejected.');
       return;
+    }
+    if (typeof window.validateFields === 'function' && !window.validateFields(joinForm, rules)) {
+      alert('Please correct the highlighted fields.');
+      return;
+    }
+    for (const input of joinForm.querySelectorAll('.form-section input[type=text]')) {
+      const val = input.value.trim();
+      if (val && (val.length > 100 || !/^[\w\s.,-]+$/.test(val))) {
+        alert('Entries must be under 100 characters and use only letters, numbers, spaces, commas, periods, or hyphens.');
+        return;
+      }
     }
 
     for (const section of formSections) {
