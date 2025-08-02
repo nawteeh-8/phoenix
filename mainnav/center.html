@@ -15,7 +15,7 @@
   style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
   font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
   connect-src 'self' https://www.googleapis.com https://api.cloudflare.com;
-  img-src 'self' data:;
+  img-src 'self' data: https://via.placeholder.com;
   frame-src 'self' https://www.google.com https://challenges.cloudflare.com;
   object-src 'none';
   base-uri 'self';
@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/mobile-nav.css">
   <link rel="stylesheet" href="../css/center.css">
+  <link rel="stylesheet" href="../css/z-layout.css">
 </head>
 <body>
   <!-- Navigation Menu -->
@@ -57,37 +58,51 @@
     </button>
   </nav>
 
-  <!-- Header -->
-  <header>
-    <h1 data-i18n="center.hero.heading">Need a Smarter, Scalable Contact Center?</h1>
-    <p data-i18n="center.hero.desc">Deliver faster, multilingual support–24/7. OPS builds and runs your contact center with trained agents, real-time insights, and full compliance.</p>
-    <a href="#form" class="cta-button" data-i18n="center.hero.cta">Schedule My Free CX Assessment</a>
-    <p class="opacity-85 mt-8 fw-500" data-i18n="center.hero.tagline">No cost. No hassle. Just actionable insights.</p>
-  </header>
+  <main class="z-layout-container">
+    <div class="z-row">
+      <div class="z-text">
+        <h1 data-i18n="center.hero.heading">Need a Smarter, Scalable Contact Center?</h1>
+        <p data-i18n="center.hero.desc">Deliver faster, multilingual support–24/7. OPS builds and runs your contact center with trained agents, real-time insights, and full compliance.</p>
+        <a href="#form" class="cta-button" data-i18n="center.hero.cta">Schedule My Free CX Assessment</a>
+        <p class="opacity-85 mt-8 fw-500" data-i18n="center.hero.tagline">No cost. No hassle. Just actionable insights.</p>
+      </div>
+      <div class="z-media">
+        <img src="https://via.placeholder.com/600x400.png?text=Contact+Center" alt="Contact Center">
+      </div>
+    </div>
 
-  <!-- What You Get -->
-  <section>
-    <h2 data-i18n="center.walk.title">You’ll Walk Away With:</h2>
-    <ul>
-      <li data-i18n="center.walk.items.0">A performance review of your current support setup</li>
-      <li data-i18n="center.walk.items.1">Omnichannel strategy recommendations</li>
-      <li data-i18n="center.walk.items.2">Forecasted CX improvements and ROI benchmarks</li>
-    </ul>
-    <p class="opacity-85 mt-15" data-i18n="center.walk.tagline">Trusted by eCommerce, fintech, and SaaS teams scaling globally</p>
-  </section>
+    <div class="z-row">
+      <div class="z-text">
+        <h2 data-i18n="center.walk.title">You’ll Walk Away With:</h2>
+        <ul>
+          <li data-i18n="center.walk.items.0">A performance review of your current support setup</li>
+          <li data-i18n="center.walk.items.1">Omnichannel strategy recommendations</li>
+          <li data-i18n="center.walk.items.2">Forecasted CX improvements and ROI benchmarks</li>
+        </ul>
+        <p class="opacity-85 mt-15" data-i18n="center.walk.tagline">Trusted by eCommerce, fintech, and SaaS teams scaling globally</p>
+      </div>
+      <div class="z-media">
+        <img src="https://via.placeholder.com/600x400.png?text=Analytics" alt="Analytics">
+      </div>
+    </div>
 
-  <!-- More Contact Center Info -->
-  <section>
-    <h2 data-i18n="center.more.title">Contact Center</h2>
-    <p data-i18n="center.more.subtitle">Boost customer satisfaction & engagement</p>
-    <p data-i18n="center.more.desc">Elevate your support experience at every touchpoint with 24/7 inbound and outbound call management, multichannel solutions, and advanced analytics.</p>
-    <ul>
-      <li data-i18n="center.more.list.0">Round-the-clock call handling across inbound and outbound channels</li>
-      <li data-i18n="center.more.list.1">Multilingual email, chat, social media support</li>
-      <li data-i18n="center.more.list.2">Full integration with leading CRM platforms</li>
-      <li data-i18n="center.more.list.3">In-depth analytics for satisfaction monitoring</li>
-    </ul>
-  </section>
+    <div class="z-row">
+      <div class="z-text">
+        <h2 data-i18n="center.more.title">Contact Center</h2>
+        <p data-i18n="center.more.subtitle">Boost customer satisfaction & engagement</p>
+        <p data-i18n="center.more.desc">Elevate your support experience at every touchpoint with 24/7 inbound and outbound call management, multichannel solutions, and advanced analytics.</p>
+        <ul>
+          <li data-i18n="center.more.list.0">Round-the-clock call handling across inbound and outbound channels</li>
+          <li data-i18n="center.more.list.1">Multilingual email, chat, social media support</li>
+          <li data-i18n="center.more.list.2">Full integration with leading CRM platforms</li>
+          <li data-i18n="center.more.list.3">In-depth analytics for satisfaction monitoring</li>
+        </ul>
+      </div>
+      <div class="z-media">
+        <img src="https://via.placeholder.com/600x400.png?text=Support" alt="Support">
+      </div>
+    </div>
+  </main>
 
   <!-- Call to Action Section -->
   <section>

@@ -22,7 +22,7 @@
       if (rule.maxLength && val.length > rule.maxLength) return false;
       if (rule.pattern && !rule.pattern.test(val)) return false;
     }
-    return true;
+    field.value = val;
   }
 
   if (typeof module !== 'undefined' && module.exports) {

@@ -1,3 +1,6 @@
+import { sanitizeForm } from './form-utils.js';
+import { switchLanguage, getCurrentLang } from './i18n.js';
+
 const mobileNav = document.getElementById('mobileNav');
 const toggleNav = document.getElementById('toggleNav');
 const langBtn = document.getElementById('langBtn');
@@ -51,9 +54,10 @@ if (svcBtn) {
 
 if (langBtn) {
   langBtn.onclick = () => {
-    lang = lang==='en'?'es':'en';
-    langBtn.textContent = lang==='en'?'ES':'EN';
-    document.documentElement.lang = lang;
+    const current = getCurrentLang();
+    const newLang = current === 'en' ? 'es' : 'en';
+    switchLanguage(newLang);
+    langBtn.textContent = newLang === 'en' ? 'ES' : 'EN';
   };
 }
 
@@ -265,18 +269,7 @@ function openJoinModal() {
       window.addEventListener('modal-close', close, { once: true });
       detach = attachModalClose(modal, close);
 
-      function init() {
-        if (typeof initJoinForm === 'function') initJoinForm(modal);
-      }
-
-      if (typeof initJoinForm === 'function') {
-        init();
-      } else {
-        const script = document.createElement('script');
-        script.src = `${base}/js/joinus.js`;
-        script.onload = init;
-        document.head.appendChild(script);
-      }
+      import('./joinus.js').then(m => m.initJoinForm(modal));
 
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })

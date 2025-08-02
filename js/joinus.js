@@ -1,5 +1,6 @@
-function initJoinForm(root) {
-  root = root || document;
+import { sanitizeForm } from './form-utils.js';
+
+export function initJoinForm(root = document) {
   const joinForm = root.querySelector('#joinForm');
   if (!joinForm) return;
 
@@ -131,4 +132,6 @@ function initJoinForm(root) {
   });
 }
 
-window.initJoinForm = initJoinForm;
+document.addEventListener('DOMContentLoaded', () => {
+  initJoinForm(document);
+});

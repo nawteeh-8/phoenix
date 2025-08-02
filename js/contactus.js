@@ -1,3 +1,5 @@
+import { sanitizeForm } from './form-utils.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const sanitize = window.sanitizeForm;
@@ -11,10 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     interest: { required: true },
     comments: { maxLength: 500 }
   };
-
   contactForm.addEventListener('submit', e => {
     e.preventDefault();
-    if (typeof sanitize === 'function' && !sanitize(contactForm)) {
+    if (!sanitizeForm(contactForm)) {
       alert('Suspicious content detected. Submission rejected.');
       return;
     }
