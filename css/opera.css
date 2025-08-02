@@ -1,71 +1,4 @@
-/* Reset & base */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #222;
-      margin: 0; padding: 20px;
-      background: #f0f0f5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      transition: background 0.3s, color 0.3s;
-    }
-    /* Navigation Bar */
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 25px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      user-select: none;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #444;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    nav a:hover,
-    nav a:focus {
-      background-color: #b39ddb;
-      color: #222;
-      outline: none;
-    }
-    /* Toggles container */
-    #toggles {
-      display: flex;
-      justify-content: flex-end;
-      gap: 16px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    /* Dark Mode (default) */
-    #toggles button {
-      background-color: transparent;
-      border: 2px solid #4dabf7;  /* Electric blue border */
-      color: #cbd6e7;             /* Soft pastel blue text */
-      padding: 8px 14px;
-      font-weight: 600;
-      border-radius: 20px;
-      cursor: pointer;
-      min-width: 120px;
-      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-      user-select: none;
-      background: #121212; /* Dark charcoal bg */
-    }
-    #toggles button:hover {
-      background-color: #1de9b6; /* Teal hover */
-      border-color: #1de9b6;
-      color: #121212;            /* Dark text on hover */
-    }
-    #toggles button.active {
-      background-color: #000000;  /* Pure black active background */
-      border-color: #0d47a1;     /* Darker blue border */
-      color: #a3c9f1;            /* Soft pastel blue text */
-    }
-
-    /* Header */
+/* Header */
     header {
       text-align: center;
       margin-bottom: 40px;
@@ -104,6 +37,7 @@
     /* Main layout */
     main {
       display: flex;
+      flex-direction: row;
       gap: 40px;
       flex-wrap: wrap;
       justify-content: center;
@@ -298,43 +232,9 @@
         width: 100%;
         max-width: 380px;
       }
-      nav {
-        justify-content: center;
-        gap: 20px;
-      }
-      #toggles {
-        justify-content: center;
-      }
     }
 
     /* Dark Theme Styles */
-    body.dark {
-      background: linear-gradient(135deg, #3a30cc, #8e44ad);
-      color: #fff;
-    }
-    body.dark nav a {
-      color: #d3d3ff;
-    }
-    body.dark #toggles button {
-      background: linear-gradient(135deg, #f9d423, #ff4e50); /* warm orange-yellow gradient */
-      border: 2px solid transparent;
-      color: #222222;                /* Dark gray text */
-      background-size: 200% 200%;
-      background-position: 0% 50%;
-      transition: background-position 0.5s ease, color 0.3s, border-color 0.3s;
-    }
-
-    body.dark #toggles button:hover {
-      background-position: 100% 50%;  /* shift gradient */
-      color: #fff;                   /* white text on hover */
-      border-color: #ff4e50;         /* bright orange border */
-    }
-
-    body.dark #toggles button.active {
-      background: linear-gradient(135deg, #ff512f, #dd2476); /* deeper reddish-pink gradient */
-      border-color: #dd2476;
-      color: #fff;
-    }
     body.dark header a.cta-button {
       background: linear-gradient(45deg, #ff6600, #e94e1b);
       color: #fff;
