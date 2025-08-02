@@ -39,36 +39,48 @@ function loadTranslations(l) {
       return translations[l];
     });
 }
+function getTranslation(data, keyPath) {
+  if (!data || !keyPath) return null;
+  const keys = keyPath.split('.');
+  let text = data;
+  for (const k of keys) {
+    if (text && Object.prototype.hasOwnProperty.call(text, k)) {
+      text = text[k];
+    } else {
+      console.warn('Missing i18n key:', keyPath);
+      return null;
+    }
+  }
+  if (text === undefined) {
+    console.warn('Missing i18n key:', keyPath);
+    return null;
+  }
+  return text;
+}
 function applyTranslations() {
   const data = translations[lang];
   if (!data) return;
   svc = data.svc || {};
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n').split('.');
-    let text = data;
-    key.forEach(k => { if (text) text = text[k]; });
+    const text = getTranslation(data, el.getAttribute('data-i18n'));
     if (typeof text === 'string') {
       if (/<[a-z][\s\S]*>/i.test(text)) {
         el.innerHTML = sanitizeHTML(text);
       } else {
         el.textContent = text;
       }
-    } else if (text) {
+    } else if (text !== null) {
       el.textContent = text;
     }
   });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const key = el.getAttribute('data-i18n-ph').split('.');
-    let text = data;
-    key.forEach(k => { if (text) text = text[k]; });
-    if (text) el.setAttribute('placeholder', text);
+    const text = getTranslation(data, el.getAttribute('data-i18n-ph'));
+    if (text !== null) el.setAttribute('placeholder', text);
   });
   document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-    const key = el.getAttribute('data-i18n-alt').split('.');
-    let text = data;
-    key.forEach(k => { if (text) text = text[k]; });
-    if (text) el.setAttribute('alt', text);
+    const text = getTranslation(data, el.getAttribute('data-i18n-alt'));
+    if (text !== null) el.setAttribute('alt', text);
   });
   if (typeof renderCards === 'function') renderCards();
 }
