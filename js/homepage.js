@@ -1,4 +1,5 @@
-let svc = {};
+import { svc } from './i18n.js';
+
 function renderCards() {
   ['ops','cc','it','pro'].forEach(key => {
     const c = svc[key];
@@ -22,3 +23,5 @@ function renderCards() {
     card.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') go(); };
   }
 });
+
+document.addEventListener('translations-applied', renderCards);

@@ -1,3 +1,5 @@
+import { switchLanguage } from './i18n.js';
+
 const qs=s=>document.querySelector(s);
 
 /* === Language toggle === */
