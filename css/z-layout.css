@@ -1,0 +1,43 @@
+.z-layout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 200px); /* Adjust 200px for nav and footer height */
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.z-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.z-row .z-text {
+  flex: 1;
+  padding: 2rem;
+}
+
+.z-row .z-media {
+  flex: 1;
+}
+
+.z-row .z-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.z-row:nth-child(even) .z-text {
+  order: 2;
+}
+
+@media (max-width: 768px) {
+  .z-row {
+    flex-direction: column;
+  }
+  .z-row:nth-child(even) .z-text {
+    order: 0;
+  }
+}

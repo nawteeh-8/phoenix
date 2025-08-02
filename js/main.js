@@ -3,14 +3,11 @@ import { switchLanguage, getCurrentLang } from './i18n.js';
 document.addEventListener('DOMContentLoaded', () => {
   const langToggle = document.getElementById('lang-toggle');
   const themeToggle = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.body.classList.toggle('dark', savedTheme === 'dark');
-  if (themeToggle) themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-  themeToggle && themeToggle.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeToggle.textContent = isDark ? 'Light' : 'Dark';
-  });
+  const langStatus = document.getElementById('lang-status');
+
+  if (themeToggle && typeof initTheme === 'function') {
+    initTheme({ button: themeToggle });
+  }
 
   if (langToggle) {
     let currentLang = getCurrentLang();
