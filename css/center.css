@@ -193,14 +193,12 @@
     section#form {
       max-width: 480px;
       margin: 0 auto 60px;
-      background: rgba(255 255 255 / 0.1);
       padding: 30px 30px 40px;
       border-radius: 14px;
       box-shadow: 0 8px 40px rgba(0,0,0,0.2);
       transition: background 0.3s, color 0.3s;
     }
     body.dark section#form {
-      background: #fff;
       color: #222;
       box-shadow: 0 8px 40px rgba(0,0,0,0.05);
     }
