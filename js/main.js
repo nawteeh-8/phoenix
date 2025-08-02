@@ -1,32 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const langToggle = document.getElementById('lang-toggle');
   const themeToggle = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.body.classList.toggle('dark', savedTheme === 'dark');
-  if (themeToggle) themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-  themeToggle && themeToggle.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeToggle.textContent = isDark ? 'Light' : 'Dark';
-  });
+  const langStatus = document.getElementById('lang-status');
 
-  if (langToggle) {
-    let currentLang = typeof lang !== 'undefined' ? lang : 'en';
-    const updateToggle = (l) => {
-      langToggle.textContent = l === 'en' ? 'ES' : 'EN';
-      langToggle.setAttribute('aria-pressed', l === 'es');
-      langToggle.setAttribute('aria-label', l === 'en' ? 'Switch to Spanish' : 'Switch to English');
-      const status = document.getElementById('lang-status');
-      if (status) status.textContent = l === 'en' ? 'English selected' : 'Spanish selected';
-    };
-    updateToggle(currentLang);
-    langToggle.addEventListener('click', () => {
-      const targetLang = currentLang === 'en' ? 'es' : 'en';
-      if (typeof switchLanguage === 'function') {
-        switchLanguage(targetLang);
-      }
-      currentLang = targetLang;
-      updateToggle(currentLang);
+  if (themeToggle && typeof initTheme === 'function') {
+    initTheme({ button: themeToggle });
+  }
+
+  if (langToggle && typeof initLanguage === 'function') {
+    const currentLang = typeof lang !== 'undefined' ? lang : 'en';
+    initLanguage({
+      button: langToggle,
+      statusEl: langStatus,
+      currentLang,
+      onSwitch: typeof switchLanguage === 'function' ? switchLanguage : undefined
     });
   }
 
