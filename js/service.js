@@ -1,3 +1,5 @@
+import { svc } from './i18n.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const key = params.get('svc');

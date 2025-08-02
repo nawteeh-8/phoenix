@@ -1,5 +1,6 @@
-function initJoinForm(root) {
-  root = root || document;
+import { sanitizeForm } from './form-utils.js';
+
+export function initJoinForm(root = document) {
   const joinForm = root.querySelector('#joinForm');
   if (!joinForm) return;
 
@@ -82,7 +83,7 @@ function initJoinForm(root) {
 
   joinForm.addEventListener('submit', e => {
     e.preventDefault();
-    if (!window.sanitizeForm(joinForm)) {
+    if (!sanitizeForm(joinForm)) {
       alert('Suspicious content detected. Submission rejected.');
       return;
     }
@@ -107,4 +108,6 @@ function initJoinForm(root) {
   });
 }
 
-window.initJoinForm = initJoinForm;
+document.addEventListener('DOMContentLoaded', () => {
+  initJoinForm(document);
+});

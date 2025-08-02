@@ -1,6 +1,7 @@
-var lang = 'en';
-var translations = {};
+let lang = 'en';
+const translations = {};
 const fallbackLang = { svc: {} };
+export let svc = {};
 
 function sanitizeHTML(html) {
   const template = document.createElement('template');
@@ -70,9 +71,9 @@ function applyTranslations() {
     key.forEach(k => { if (text) text = text[k]; });
     if (text) el.setAttribute('alt', text);
   });
-  if (typeof renderCards === 'function') renderCards();
+  document.dispatchEvent(new Event('translations-applied'));
 }
-function switchLanguage(l) {
+export function switchLanguage(l) {
   lang = l;
   localStorage.setItem('lang', l);
   const toggle = document.getElementById('lang-toggle');
@@ -90,6 +91,10 @@ function switchLanguage(l) {
       translations[l] = fallbackLang;
       applyTranslations();
     });
+}
+
+export function getCurrentLang() {
+  return lang;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

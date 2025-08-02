@@ -1,3 +1,5 @@
+import { switchLanguage, getCurrentLang } from './i18n.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const langToggle = document.getElementById('lang-toggle');
   const themeToggle = document.getElementById('theme-toggle');
@@ -11,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (langToggle) {
-    let currentLang = typeof lang !== 'undefined' ? lang : 'en';
+    let currentLang = getCurrentLang();
     const updateToggle = (l) => {
       langToggle.textContent = l === 'en' ? 'ES' : 'EN';
       langToggle.setAttribute('aria-pressed', l === 'es');
@@ -22,9 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateToggle(currentLang);
     langToggle.addEventListener('click', () => {
       const targetLang = currentLang === 'en' ? 'es' : 'en';
-      if (typeof switchLanguage === 'function') {
-        switchLanguage(targetLang);
-      }
+      switchLanguage(targetLang);
       currentLang = targetLang;
       updateToggle(currentLang);
     });
