@@ -3,14 +3,13 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0; padding: 20px;
       color: #222;
-      background: #f9f9fb;
+      background: #ffffff;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       transition: background 0.3s, color 0.3s;
     }
     body.dark {
-      background: linear-gradient(135deg, #1a237e, #512da8);
-      color: #fff;
+      background: #ffffff;
     }
     /* Navigation */
     nav {
