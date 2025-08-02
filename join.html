@@ -12,10 +12,11 @@
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <title>Join Us - OPS • Chattia</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bNDdB2S/bRMyCV2wAPOQgpdnH3UX0DpD+s/COM24kTx5cDIeEJD7BqXc9EjoP6KDAdAm8YGtS+wGGyRyvCb4TQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/mobile-nav.css">
-<link rel="stylesheet" href="css/center.css">
-<link rel="stylesheet" href="css/joinus.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shining-effect.css">
+  <link rel="stylesheet" href="css/mobile-nav.css">
+  <link rel="stylesheet" href="css/center.css">
+  <link rel="stylesheet" href="css/joinus.css">
 </head>
 <body>
 <nav class="ops-nav" aria-label="OPS Navigation">
@@ -41,18 +42,21 @@
   <form aria-label="Join us form" id="joinForm" autocomplete="off" novalidate action="#">
     <div class="form-pairs">
       <div>
-        <label for="name">Name</label>
-        <input id="name" name="name" required placeholder="Enter your name" />
+        <label for="name">Full Name</label>
+        <input id="name" name="name" required placeholder="" data-en="Full Name" data-es="Nombre Completo" />
       </div>
       <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required placeholder="Enter your email" />
+        <label for="email">Business Email</label>
+        <input id="email" type="email" name="email" required placeholder="" data-en="Business Email" data-es="Correo Electrónico Empresarial" />
       </div>
       <div>
-        <label for="phone">Phone</label>
-        <input id="phone" type="tel" name="phone" required placeholder="Enter your phone" />
+        <label for="phone">Your Phone Number</label>
+        <input id="phone" type="tel" name="phone" required placeholder="" data-en="Your Phone Number" data-es="Su Numero de Telefono" />
       </div>
-      <div></div>
+      <div>
+        <label for="company">Company</label>
+        <input id="company" type="text" name="company" required placeholder="" data-en="Company" data-es="Empresa" />
+      </div>
     </div>
     <div class="form-section" data-section="Skills">
       <div class="section-header">

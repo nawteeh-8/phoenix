@@ -33,6 +33,7 @@
 <!-- Remove referrer info for outbound links (privacy) -->
 <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/shining-effect.css">
   <link rel="stylesheet" href="../css/mobile-nav.css">
   <link rel="stylesheet" href="../css/pros.css">
 </head>
@@ -100,24 +101,10 @@
     <h2 id="pros-form-title" data-i18n="form.contactTitle">See What We Can Do for You</h2>
     <!-- Form submission handled via JavaScript -->
     <form aria-labelledby="pros-form-title" action="#">
-      <input
-        type="text" aria-label="Full Name"
-        placeholder="Full Name"
-        data-i18n-ph="form.fullName"
-        required
-      />
-      <input
-        type="email" aria-label="Business Email"
-        placeholder="Business Email"
-        data-i18n-ph="form.businessEmail"
-        required
-      />
-      <input
-        type="text" aria-label="Company"
-        placeholder="Company"
-        data-i18n-ph="form.company"
-        required
-      />
+      <input type="text" aria-label="Full Name" placeholder="" data-en="Full Name" data-es="Nombre Completo" required />
+      <input type="email" aria-label="Business Email" placeholder="" data-en="Business Email" data-es="Correo Electrónico Empresarial" required />
+      <input type="tel" aria-label="Your Phone Number" placeholder="" data-en="Your Phone Number" data-es="Su Numero de Telefono" required />
+      <input type="text" aria-label="Company" placeholder="" data-en="Company" data-es="Empresa" required />
       <button type="submit" data-i18n="form.requestQuote">Request Quote</button>
     </form>
   </section>

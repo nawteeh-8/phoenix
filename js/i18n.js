@@ -83,7 +83,15 @@ function applyTranslations() {
     const text = getTranslation(data, el.getAttribute('data-i18n-alt'));
     if (text !== null) el.setAttribute('alt', text);
   });
-  document.dispatchEvent(new Event('translations-applied'));
+  document.querySelectorAll('[data-en][data-es]').forEach(el => {
+    const text = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+    if (el.hasAttribute('placeholder')) {
+      el.setAttribute('placeholder', text);
+    } else {
+      el.textContent = text;
+    }
+  });
+  if (typeof renderCards === 'function') renderCards();
 }
 export function switchLanguage(l) {
   lang = l;

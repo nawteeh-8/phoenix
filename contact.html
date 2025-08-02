@@ -12,10 +12,11 @@
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <title>Contact Us - OPS</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bNDdB2S/bRMyCV2wAPOQgpdnH3UX0DpD+s/COM24kTx5cDIeEJD7BqXc9EjoP6KDAdAm8YGtS+wGGyRyvCb4TQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/mobile-nav.css">
-<link rel="stylesheet" href="css/center.css">
-<link rel="stylesheet" href="css/contactus.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shining-effect.css">
+  <link rel="stylesheet" href="css/mobile-nav.css">
+  <link rel="stylesheet" href="css/center.css">
+  <link rel="stylesheet" href="css/contactus.css">
 </head>
 <body>
 <nav class="ops-nav" aria-label="OPS Navigation">
@@ -41,29 +42,35 @@
   <form aria-label="Contact form" id="contactForm" autocomplete="off" action="#">
     <div class="form-row">
       <div class="form-cell">
-        <label for="name">Name</label>
-        <input id="name" required placeholder="Enter your name" />
+        <label for="name">Full Name</label>
+        <input id="name" required placeholder="" data-en="Full Name" data-es="Nombre Completo" />
       </div>
       <div class="form-cell">
-        <label for="email">Email</label>
-        <input id="email" type="email" required placeholder="Enter your email" />
+        <label for="email">Business Email</label>
+        <input id="email" type="email" required placeholder="" data-en="Business Email" data-es="Correo Electrónico Empresarial" />
       </div>
     </div>
     <div class="form-row">
       <div class="form-cell">
-        <label for="contactNumber">Contact Number</label>
-        <input id="contactNumber" type="tel" required placeholder="Enter your contact number" />
+        <label for="contactNumber">Your Phone Number</label>
+        <input id="contactNumber" type="tel" required placeholder="" data-en="Your Phone Number" data-es="Su Numero de Telefono" />
       </div>
+      <div class="form-cell">
+        <label for="company">Company</label>
+        <input id="company" type="text" required placeholder="" data-en="Company" data-es="Empresa" />
+      </div>
+    </div>
+    <div class="form-row">
       <div class="form-cell">
         <label for="preferredDate">Preferred Date</label>
         <input id="preferredDate" type="date" required placeholder="Select a date" />
       </div>
-    </div>
-    <div class="form-row">
       <div class="form-cell">
         <label for="preferredTime">Preferred Time</label>
         <input id="preferredTime" type="time" required placeholder="Select a time" />
       </div>
+    </div>
+    <div class="form-row">
       <div class="form-cell">
         <label for="interest">What are you interested about?</label>
         <select id="interest" required>
@@ -75,6 +82,7 @@
           <option>Professionals</option>
         </select>
       </div>
+      <div class="form-cell"></div>
     </div>
     <div class="mt-1">
       <label for="comments">Comments</label>
