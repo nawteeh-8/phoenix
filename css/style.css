@@ -46,6 +46,12 @@
       padding: 1.2rem 2rem;
       font-weight: 600;
       background: transparent;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark .ops-nav {
+      background: #000;
+      color: #fff;
+      transition: background-color 0.3s, color 0.3s;
     }
     .ops-logo {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -68,8 +74,11 @@
       cursor: pointer;
       padding: 0.15em 0.3em;
       position: relative;
-      transition: color 0.18s;
+      transition: color 0.3s;
       text-decoration: none;
+    }
+    .dark .nav-link {
+      color: #fff;
     }
     .nav-link:hover, .nav-link:focus { color: var(--clr-primary); outline: none; }
     .toggles { display: flex; gap: 0.5rem; }
