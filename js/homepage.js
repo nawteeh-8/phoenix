@@ -5,9 +5,11 @@ function renderCards() {
     const el = document.getElementById('card-'+key);
     if (el && c) {
       el.innerHTML = `
-        <div class="title">${c.title}</div>
-        <div class="icon">${c.icon}</div>
-        <div class="content"><p>${c.desc}</p></div>
+        <span>
+            <div class="title">${c.title}</div>
+            <div class="icon">${c.icon}</div>
+            <div class="content"><p>${c.desc}</p></div>
+        </span>
       `;
     }
   });
