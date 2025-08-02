@@ -70,6 +70,14 @@ function applyTranslations() {
     key.forEach(k => { if (text) text = text[k]; });
     if (text) el.setAttribute('alt', text);
   });
+  document.querySelectorAll('[data-en][data-es]').forEach(el => {
+    const text = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+    if (el.hasAttribute('placeholder')) {
+      el.setAttribute('placeholder', text);
+    } else {
+      el.textContent = text;
+    }
+  });
   if (typeof renderCards === 'function') renderCards();
 }
 function switchLanguage(l) {
