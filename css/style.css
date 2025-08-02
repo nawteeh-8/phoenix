@@ -168,8 +168,6 @@
       box-shadow: var(--clr-card-shadow-dark);
     }
     body.dark .card .icon > i { filter: drop-shadow(0 0 2px #00c4ff55); }
-<<<<<<< HEAD
-=======
     /* --- MODAL BASE --- */
     .ops-modal, .modal-content, #chatbot-container {
       min-width: 310px;
@@ -340,8 +338,6 @@
         align-items: flex-end;
       }
 
-<<<<<<< HEAD
-=======
       #chat-log {
         overflow-y: auto;
         -ms-overflow-style: none;  /* IE and Edge */
@@ -351,7 +347,6 @@
       #chat-log::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Opera */
       }
->>>>>>> main
   .page-content {
     min-height: 100vh;
     display: flex;
