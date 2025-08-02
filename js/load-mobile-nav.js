@@ -1,33 +1,32 @@
-(function () {
-  const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+import { initMobileNav } from './mobile-nav.js';
 
-  function appendToBody(html) {
-    if (html && html.trim()) {
-      document.body.insertAdjacentHTML('beforeend', html);
-    }
+const base = window.location.pathname.includes('/mainnav/') ? '..' : '.';
+
+function appendToBody(html) {
+  if (html && html.trim()) {
+    document.body.insertAdjacentHTML('beforeend', html);
   }
+}
 
-  function loadMobileNav() {
-    return fetch(`${base}/fabs/mobile-nav.html`)
-      .then((r) => {
-        if (!r.ok) {
-          throw new Error(`mobile-nav.html ${r.status} ${r.statusText}`);
-        }
-        return r.text();
-      })
-      .then((html) => {
-        if (html.trim()) {
-          appendToBody(html);
-          if (typeof window.initMobileNav === 'function') {
-            window.initMobileNav();
-          }
-        }
-      })
-      .catch((err) => console.error('mobile-nav fetch error:', err));
-  }
+function loadMobileNav() {
+  return fetch(`${base}/fabs/mobile-nav.html`)
+    .then((r) => {
+      if (!r.ok) {
+        throw new Error(`mobile-nav.html ${r.status} ${r.statusText}`);
+      }
+      return r.text();
+    })
+    .then((html) => {
+      if (html.trim()) {
+        appendToBody(html);
+        initMobileNav();
+      }
+    })
+    .catch((err) => console.error('mobile-nav fetch error:', err));
+}
 
-  if (window.location.protocol === 'file:') {
-    const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
+if (window.location.protocol === 'file:') {
+  const mobileNavHTML = `<div id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
   <div class="nav-items">
     <a href="${base}/contact.html?ref=mobile" class="nav-btn" title="Contact Us" aria-label="Contact Us"><i class="fa-solid fa-envelope"></i></a>
     <a href="${base}/join.html?ref=mobile" class="nav-btn" title="Join Us" aria-label="Join Us"><i class="fa-solid fa-user-plus"></i></a>
@@ -49,12 +48,9 @@
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </div>`;
-    appendToBody(mobileNavHTML);
-    if (typeof window.initMobileNav === 'function') {
-      window.initMobileNav();
-    }
-  } else {
-    loadMobileNav();
-  }
-})();
+  appendToBody(mobileNavHTML);
+  initMobileNav();
+} else {
+  loadMobileNav();
+}
 

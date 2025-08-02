@@ -1,0 +1,14 @@
+{
+  "name": "phoenix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "dependencies": {
+    "dompurify": "^3.0.3",
+    "jsdom": "^24.0.0"
+  }
+}
+

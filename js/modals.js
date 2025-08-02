@@ -1,3 +1,6 @@
+import { sanitizeForm } from './form-utils.js';
+import { switchLanguage, getCurrentLang } from './i18n.js';
+
 const mobileNav = document.getElementById('mobileNav');
 const toggleNav = document.getElementById('toggleNav');
 const langBtn = document.getElementById('langBtn');
@@ -51,9 +54,10 @@ if (svcBtn) {
 
 if (langBtn) {
   langBtn.onclick = () => {
-    lang = lang==='en'?'es':'en';
-    langBtn.textContent = lang==='en'?'ES':'EN';
-    document.documentElement.lang = lang;
+    const current = getCurrentLang();
+    const newLang = current === 'en' ? 'es' : 'en';
+    switchLanguage(newLang);
+    langBtn.textContent = newLang === 'en' ? 'ES' : 'EN';
   };
 }
 
@@ -124,8 +128,21 @@ function openContactModal() {
       if (form) {
         form.addEventListener('submit', e => {
           e.preventDefault();
-          if (!sanitizeForm(form)) {
+          if (typeof sanitizeForm === 'function' && !sanitizeForm(form)) {
             alert('Suspicious content detected. Submission rejected.');
+            return;
+          }
+          const rules = {
+            name: { maxLength: 50, pattern: /^[a-zA-Z\s'-]+$/ },
+            email: { maxLength: 100, pattern: /^[^@\s]+@[^@\s]+\.[^@\s]+$/ },
+            contactNumber: { maxLength: 20, pattern: /^[0-9+\-\s()]+$/ },
+            preferredDate: { required: true },
+            preferredTime: { required: true },
+            interest: { required: true },
+            comments: { maxLength: 500 }
+          };
+          if (typeof validateFields === 'function' && !validateFields(form, rules)) {
+            alert('Please correct the highlighted fields.');
             return;
           }
           alert('Contact form submitted!');
@@ -252,18 +269,7 @@ function openJoinModal() {
       window.addEventListener('modal-close', close, { once: true });
       detach = attachModalClose(modal, close);
 
-      function init() {
-        if (typeof initJoinForm === 'function') initJoinForm(modal);
-      }
-
-      if (typeof initJoinForm === 'function') {
-        init();
-      } else {
-        const script = document.createElement('script');
-        script.src = `${base}/js/joinus.js`;
-        script.onload = init;
-        document.head.appendChild(script);
-      }
+      import('./joinus.js').then(m => m.initJoinForm(modal));
 
       if (typeof makeDraggable === 'function') makeDraggable(modal);
     })

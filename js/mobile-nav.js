@@ -1,4 +1,4 @@
-function initMobileNav() {
+export function initMobileNav() {
   const mobileNav = document.getElementById('mobileNav');
   const toggleNav = document.getElementById('toggleNav');
   const svcBtn = document.getElementById('svcBtn');
@@ -79,5 +79,3 @@ function initMobileNav() {
     svg.addEventListener('animationend', () => button.classList.remove('start'));
   });
 }
-
-window.initMobileNav = initMobileNav;
